@@ -19,7 +19,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.blankj.utilcode.util.SPUtils;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.EMConnectionListener;
 import com.hyphenate.EMError;
@@ -158,10 +157,6 @@ public class MainActivity extends BaseActivity {
         }
         EMClient.getInstance().addMultiDeviceListener(mMyMultiDeviceListener);
 
-        boolean isShowed = SPUtils.getInstance().getBoolean(EaseConstant.WHITE_LIST_SHOW, false);
-        if (!isShowed) {
-            SPUtils.getInstance().put(EaseConstant.WHITE_LIST_SHOW, true);
-        }
         AppHelper.getInstance().onMainActivityCreate();
 
         StickerPackageStorageTask.init(getApplicationContext(), BaseRequest.getAppKey(), EMClient.getInstance().getCurrentUser());
