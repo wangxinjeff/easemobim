@@ -11,13 +11,10 @@ import android.widget.Toast;
 
 import androidx.multidex.MultiDex;
 
-import com.facebook.stetho.Stetho;
 import com.hyphenate.easemob.im.mp.AppHelper;
 import com.hyphenate.easemob.im.officeautomation.ui.MainActivity;
-import com.hyphenate.easemob.imlibs.cache.OnlineCache;
 import com.hyphenate.easemob.imlibs.mp.ConnectionListener;
 import com.hyphenate.easemob.imlibs.mp.utils.MPLog;
-import com.lxj.xpopup.XPopup;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -25,7 +22,6 @@ import java.io.IOException;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class MyApplication extends Application {
     private static final String TAG = "MyApplication";

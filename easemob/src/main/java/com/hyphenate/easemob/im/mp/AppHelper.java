@@ -99,12 +99,6 @@ public class AppHelper {
         InternalAppHelper.getInstance().init(context);
         PrefsUtil.getInstance().init(context);
         EMOptions options = initChatOptions();
-//        options.setRestServer("10.0.11.54:12503");
-//        options.setIMServer("10.0.11.54");
-//        options.setImPort(12502);
-//        options.setRestServer("https://cmim.cmcc-cs.cn:12503");
-//        options.setIMServer("cmim.cmcc-cs.cn");
-//        options.setImPort(12502);
         EnvHelper.BaseEnv baseEnv = EnvHelper.getEnv();
         options.enableDNSConfig(baseEnv.enableDnsConfig());
         if (!baseEnv.enableDnsConfig()) {
@@ -116,41 +110,9 @@ public class AppHelper {
 
         PrefsUtil.getInstance().setWhiteBoardServer(baseEnv.wbServer());
 
-
-//        if (isPad(context)) {
-//            //出版社环境
-//
-//            PrefsUtil.getInstance().setImServer("10.11.56.11:6717");
-//            PrefsUtil.getInstance().setRestServer("10.11.56.11:12001");
-//            PrefsUtil.getInstance().setCcsServer("http://10.11.56.11:12008");
-//            PrefsUtil.getInstance().setWhiteBoardServer("http://10.11.56.11:10081");
-//            PrefsUtil.getInstance().setAppkey1("102191112021543#mpapp3");
-//        } else {
-//            //内部测试环境
-//            PrefsUtil.getInstance().setImServer("47.93.40.123:6717");
-//            PrefsUtil.getInstance().setRestServer("47.93.40.123:12001");
-//            PrefsUtil.getInstance().setCcsServer("http://oa-server-sjs-dev.easemob.com");
-//            PrefsUtil.getInstance().setAppkey1("102191106151444#mpapp2");
-////            //集群B环境
-////            PrefsUtil.getInstance().setImServer("msync-im-b.easemob.com:12004");
-////            PrefsUtil.getInstance().setRestServer("a1-sjs-b.easemob.com");
-////            PrefsUtil.getInstance().setCcsServer("https://oa-server-sjs-b.easemob.com");
-////            PrefsUtil.getInstance().setAppkey1("102191106151444#mpapp2");
-//        }
-
-
-//        String[] imServer = PrefsUtil.getInstance().getImServer().split(":");
-//        options.setRestServer(PrefsUtil.getInstance().getRestServer());
-//        options.setIMServer(imServer[0]);
-//        options.setImPort(Integer.valueOf(imServer[1]));
-//        options.setAppKey(PrefsUtil.getInstance().getAppkey1());
-
         //use default options if options is null
         if (MPClient.get().init(context, options)) {
 
-//            EaseUI.getInstance().setAppServer("https://mp.easemob.com");
-//            EaseUI.getInstance().setAppServer("http://39.106.20.174");
-//            EaseUI.getInstance().setAppServer("http://47.95.248.114");
             EaseUI.getInstance().setAppServer(baseEnv.ccsServer());
             EaseUI.getInstance().init(context, options);
             //debug mode, you'd better set it to false, if you want release your App officially.
