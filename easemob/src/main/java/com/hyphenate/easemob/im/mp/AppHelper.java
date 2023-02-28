@@ -8,6 +8,7 @@ import android.os.Looper;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.facebook.stetho.Stetho;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.EMConferenceListener;
 import com.hyphenate.EMMessageListener;
@@ -30,6 +31,7 @@ import com.hyphenate.easemob.easeui.model.EaseAtMessageHelper;
 import com.hyphenate.easemob.easeui.model.EaseNotifier;
 import com.hyphenate.easemob.easeui.utils.EaseCommonUtils;
 import com.hyphenate.easemob.easeui.utils.EaseUserUtils;
+import com.hyphenate.easemob.imlibs.cache.OnlineCache;
 import com.hyphenate.easemob.imlibs.mp.ConnectionListener;
 import com.hyphenate.easemob.imlibs.mp.MPClient;
 import com.hyphenate.eventbus.MPEventBus;
@@ -46,6 +48,7 @@ import com.hyphenate.easemob.imlibs.officeautomation.domain.MPOrgEntity;
 import com.hyphenate.easemob.im.officeautomation.ui.ChatActivity;
 import com.hyphenate.easemob.im.officeautomation.utils.Constant;
 import com.hyphenate.easemob.im.officeautomation.utils.MyToast;
+import com.lxj.xpopup.XPopup;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -54,6 +57,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 public class AppHelper {
 
@@ -165,6 +169,11 @@ public class AppHelper {
             setEaseUIProviders();
             //set Global listeners
             setGlobalListeners();
+
+            Stetho.initializeWithDefaults(context);
+
+            XPopup.setPrimaryColor(context.getResources().getColor(com.hyphenate.easemob.R.color.text_btn));
+            OnlineCache.init(30, TimeUnit.SECONDS);
         }
 
         confMuteList = new HashMap<>();

@@ -13,6 +13,7 @@ import androidx.multidex.MultiDex;
 
 import com.facebook.stetho.Stetho;
 import com.hyphenate.easemob.im.mp.AppHelper;
+import com.hyphenate.easemob.im.officeautomation.ui.MainActivity;
 import com.hyphenate.easemob.imlibs.cache.OnlineCache;
 import com.hyphenate.easemob.imlibs.mp.ConnectionListener;
 import com.hyphenate.easemob.imlibs.mp.utils.MPLog;
@@ -42,12 +43,8 @@ public class MyApplication extends Application {
         AppHelper.getInstance().init(applicationContext);
 
         registerLifecycleCallbacks();
-//        MultiLanguageUtil.init(this);
-        Stetho.initializeWithDefaults(this);
 
         registerConnectionListener();
-        XPopup.setPrimaryColor(getResources().getColor(com.hyphenate.easemob.R.color.text_btn));
-        OnlineCache.init(30, TimeUnit.SECONDS);
 
 
     }

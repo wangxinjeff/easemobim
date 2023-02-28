@@ -1,4 +1,4 @@
-package com.hyphenate.easemobim;
+package com.hyphenate.easemob.im.officeautomation.ui;
 
 import android.Manifest;
 import android.content.Context;
@@ -28,6 +28,7 @@ import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMCmdMessageBody;
 import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMMessage;
+import com.hyphenate.easemob.R;
 import com.hyphenate.easemob.easeui.EaseConstant;
 import com.hyphenate.easemob.easeui.EaseMessageUtils;
 import com.hyphenate.easemob.easeui.EaseUI;
@@ -40,7 +41,6 @@ import com.hyphenate.easemob.im.officeautomation.fragment.ConversationListFragme
 import com.hyphenate.easemob.im.officeautomation.http.BaseRequest;
 import com.hyphenate.easemob.im.officeautomation.runtimepermissions.PermissionsManager;
 import com.hyphenate.easemob.im.officeautomation.runtimepermissions.PermissionsResultAction;
-import com.hyphenate.easemob.im.officeautomation.ui.BaseActivity;
 import com.hyphenate.easemob.im.officeautomation.utils.Constant;
 import com.hyphenate.easemob.imlibs.interfaces.MultiClickListener;
 import com.hyphenate.easemob.imlibs.message.MessageUtils;
@@ -173,9 +173,9 @@ public class MainActivity extends BaseActivity {
 //        mJPTabBar.setTitles(R.string.title_conversation, R.string.title_contact, R.string.title_apps, R.string.title_my);
         mJPTabBar.setTitles(R.string.title_conversation, R.string.title_contact );
 //        mJPTabBar.setNormalIcons(R.drawable.mp_nav_conv_normal, R.drawable.mp_nav_remind_normal, R.drawable.mp_nav_contacts_normal, R.drawable.mp_nav_apps_normal, R.drawable.mp_nav_my_normal);
-        mJPTabBar.setNormalIcons(R.mipmap.mp_nav_conv_normal, R.mipmap.mp_nav_contacts_normal);
+        mJPTabBar.setNormalIcons(R.drawable.mp_nav_conv_normal, R.drawable.mp_nav_contacts_normal);
 //        mJPTabBar.setSelectedIcons(R.drawable.mp_nav_conv_selected, R.drawable.mp_nav_remind_selected, R.drawable.mp_nav_contacts_selected, R.drawable.mp_nav_apps_selected, R.drawable.mp_nav_my_selected);
-        mJPTabBar.setSelectedIcons(R.mipmap.mp_nav_conv_selected, R.mipmap.mp_nav_contacts_selected);
+        mJPTabBar.setSelectedIcons(R.drawable.mp_nav_conv_selected, R.drawable.mp_nav_contacts_selected);
 //        mJPTabBar.setNormalColor(Color.parseColor("#2F2E41"));
 //        mJPTabBar.setSelectedColor(Color.parseColor("#5AAAF9"));
 //        mJPTabBar.setBackgroundColor(Color.parseColor("#EDEFF2"));
