@@ -253,24 +253,9 @@
         <activity
             android:name=".im.mp.ui.ForwardGroupActivity"
             android:theme="@style/horizontal_slide" />
-        <activity
-            android:name=".im.mp.ui.collect.FavListActivity"
-            android:theme="@style/SwipeBackTheme" />
 
         <!--相册-->
         <activity android:name="me.iwf.photopicker.PhotoPickerActivity" />
-        <activity
-            android:name=".im.mp.ui.collect.FavDetailActivity"
-            android:theme="@style/SwipeBackTheme" />
-        <activity
-            android:name=".im.mp.ui.collect.FavFilterListActivity"
-            android:theme="@style/SwipeBackTheme" />
-        <activity
-            android:name=".im.mp.ui.collect.FavSearchUI"
-            android:theme="@style/horizontal_slide" />
-        <activity
-            android:name=".im.mp.ui.collect.FavForwardActivity"
-            android:theme="@style/SwipeBackTheme" />
 
         <activity
             android:name=".im.mp.ui.burn.BurnMsgPreviewActivity"
@@ -332,12 +317,8 @@
             android:theme="@style/SwipeBackTheme"
             android:windowSoftInputMode="adjustPan|stateHidden" />
 
-        <activity android:name=".im.mp.ui.login.ConfirmLoginActivity" />
         <activity
             android:name=".im.officeautomation.ui.group.GroupMembersManagerActivity"
-            android:theme="@style/SwipeBackTheme" />
-        <activity
-            android:name=".im.mp.ui.ChatsCollectionActivity"
             android:theme="@style/SwipeBackTheme" />
         <activity
             android:name=".im.officeautomation.ui.ChatHistoryCurrActivity"
