@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    style="@style/style_bubble_padding"
+    >
+
+    <TextView
+        android:id="@+id/timestamp"
+        style="@style/chat_text_date_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_chat_top">
+
+        <LinearLayout
+            android:id="@+id/ll_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <com.hyphenate.easemob.easeui.widget.AvatarImageView
+                android:id="@+id/iv_userhead"
+                android:layout_width="@dimen/size_message_avatar"
+                android:layout_height="@dimen/size_message_avatar"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_activity"
+                android:scaleType="fitXY"
+                android:src="@drawable/boy1" />
+
+            <CheckBox
+                android:id="@+id/cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginEnd="@dimen/dp_20"
+                android:theme="@style/CustomCheckBoxTheme2"
+                android:visibility="gone" />
+        </LinearLayout>
+        <com.hyphenate.easemob.easeui.shape.ChatView
+            android:id="@+id/bubble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin_chat_bubble"
+            app:layout_constraintEnd_toStartOf="@+id/ll_right"
+            app:layout_constraintTop_toTopOf="parent"
+            app:arrow_height="@dimen/dp_10"
+            app:arrow_width="@dimen/dp_8"
+            app:arrow_direction="right"
+            app:conner_radius="8dp"
+            app:fill_color="@color/buble_right_color"
+            app:stroke_color="@color/buble_right_color"
+            app:arrow_up_distance="@dimen/dp_10"
+            android:paddingEnd="@dimen/dp_15"
+            >
+
+            <TextView
+                android:id="@+id/tv_chatcontent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:autoLink="web"
+                android:gravity="center|left"
+                android:lineSpacingExtra="2dp"
+                android:maxWidth="@dimen/dp_225"
+                android:minHeight="@dimen/dp_36"
+                android:paddingStart="@dimen/dp_2"
+                android:paddingEnd="@dimen/dp_7"
+                android:paddingTop="@dimen/dp_6"
+                android:paddingBottom="@dimen/dp_6"
+                android:textColor="@android:color/white"
+                android:textColorLink="@android:color/white"
+                android:textSize="@dimen/sp_16" />
+
+        </com.hyphenate.easemob.easeui.shape.ChatView>
+
+        <LinearLayout
+            android:id="@+id/reference_bubble"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/bubble"
+            app:layout_constraintEnd_toStartOf="@+id/ll_right"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constrainedWidth="true"
+            android:layout_marginTop="@dimen/dp_6"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:layout_marginStart="@dimen/dp_80"
+            android:visibility="gone"
+            >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/reference_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/dp_8"
+                android:paddingBottom="@dimen/dp_8"
+                android:paddingStart="@dimen/dp_10"
+                android:paddingEnd="@dimen/dp_5"
+                android:background="@drawable/shape_reference_bubble"
+                >
+            <com.hyphenate.easemob.easeui.widget.textview.AlignTextView
+                android:id="@+id/reference_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:text="昵称："
+                android:ellipsize="end"
+                android:textColor="@color/reference_text_color"
+                android:textSize="@dimen/sp_14"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/reference_img"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginEnd="@dimen/dp_5"
+                app:layout_constrainedWidth="true"
+                />
+
+            <ImageView
+                android:id="@+id/reference_img"
+                android:layout_width="@dimen/dp_32"
+                android:layout_height="@dimen/dp_32"
+                android:src="@drawable/reference_default_image"
+                android:scaleType="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                />
+
+            <ImageView
+                android:id="@+id/reference_video"
+                android:layout_width="@dimen/dp_14"
+                android:layout_height="@dimen/dp_14"
+                app:layout_constraintTop_toTopOf="@+id/reference_img"
+                app:layout_constraintBottom_toBottomOf="@+id/reference_img"
+                app:layout_constraintStart_toStartOf="@+id/reference_img"
+                app:layout_constraintEnd_toEndOf="@+id/reference_img"
+                android:background="@drawable/ease_video_play_btn_small_nor"
+                />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
+
+<!--        <RelativeLayout-->
+<!--            android:id="@+id/bubble"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginRight="@dimen/margin_chat_activity"-->
+<!--            android:layout_toLeftOf="@id/ll_right"-->
+<!--            android:background="@drawable/mp_ic_send_bubble">-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_chatcontent"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:autoLink="web"-->
+<!--                android:gravity="center|left"-->
+<!--                android:lineSpacingExtra="2dp"-->
+<!--                android:maxWidth="@dimen/dp_225"-->
+<!--                android:minHeight="@dimen/dp_35"-->
+<!--                android:paddingLeft="@dimen/dp_6"-->
+<!--                android:paddingTop="@dimen/dp_5"-->
+<!--                android:paddingRight="@dimen/dp_12"-->
+<!--                android:paddingBottom="@dimen/dp_5"-->
+<!--                android:textColor="#333333"-->
+<!--                android:textColorLink="#333333"-->
+<!--                android:textSize="@dimen/sp_15" />-->
+<!--        </RelativeLayout>-->
+
+        <TextView
+            android:id="@+id/tv_ack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bubble"
+            app:layout_constraintTop_toBottomOf="@+id/reference_bubble"
+            app:layout_constraintEnd_toEndOf="@+id/bubble"
+            android:paddingEnd="@dimen/dp_5"
+            android:textColor="#cccccc"
+            android:textSize="@dimen/sp_12" />
+
+        <ImageView
+            android:id="@+id/msg_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/bubble"
+            app:layout_constraintTop_toTopOf="@id/bubble"
+            app:layout_constraintBottom_toBottomOf="@id/bubble"
+            android:clickable="true"
+            android:src="@drawable/ease_msg_state_failed_resend"
+            android:visibility="gone" />
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_ack"-->
+        <!--style="@style/chat_text_name_style"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_toLeftOf="@id/bubble"-->
+        <!--android:text="@string/text_ack_msg"-->
+        <!--android:textSize="12sp"-->
+        <!--android:visibility="visible" />-->
+
+        <TextView
+            android:id="@+id/tv_delivered"
+            style="@style/chat_text_name_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toStartOf="@+id/bubble"
+            app:layout_constraintTop_toTopOf="@id/bubble"
+            app:layout_constraintBottom_toBottomOf="@id/bubble"
+            android:text="@string/text_delivered_msg"
+            android:textSize="@dimen/sp_12"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="@dimen/dp_25"
+            android:layout_height="@dimen/dp_25"
+            app:layout_constraintEnd_toStartOf="@+id/bubble"
+            app:layout_constraintTop_toTopOf="@id/bubble"
+            app:layout_constraintBottom_toBottomOf="@id/bubble"
+            android:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</LinearLayout>

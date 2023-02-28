@@ -1,0 +1,182 @@
+<resources>
+
+    <style name="chat_room_menu_item_text_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">50dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">#000000</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:lineSpacingExtra">2dp</item>
+    </style>
+
+    <style name="chat_room_menu_item_splitter">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dip</item>
+        <item name="android:layout_marginLeft">10dip</item>
+        <item name="android:layout_marginRight">10dip</item>
+        <item name="android:background">#E6E6E6</item>
+    </style>
+
+    <style name="chat_room_menu_item_wrapper">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="RightTop2PopAnim" parent="@android:style/Animation.Activity">
+        <item name="android:windowEnterAnimation">@anim/right_top_in_2</item>
+        <item name="android:windowExitAnimation">@anim/right_top_out_2</item>
+    </style>
+
+
+    <!-- 群组 -->
+    <style name="devide_line_group" parent="divider_line_eee_small">
+    </style>
+
+    <style name="group_name_edit">
+        <item name="colorControlNormal">#6C8AB6</item>
+        <item name="colorControlActivated">#6C8AB6</item>
+    </style>
+
+    <style name="style_clear_edit">
+        <item name="android:background">@drawable/bg_search_memberlist</item>
+        <item name="android:drawableLeft">@drawable/search</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:hint">@string/search</item>
+        <item name="android:drawablePadding">@dimen/dp_5</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textSize">@dimen/sp_13</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/dp_29</item>
+        <item name="android:layout_marginLeft">@dimen/dp_17</item>
+        <item name="android:layout_marginTop">@dimen/dp_6</item>
+        <item name="android:layout_marginRight">@dimen/dp_17</item>
+        <item name="android:layout_marginBottom">@dimen/dp_6</item>
+        <item name="android:imeOptions">actionSearch</item>
+        <item name="android:paddingLeft">@dimen/dp_10</item>
+        <item name="android:paddingRight">@dimen/dp_10</item>
+    </style>
+
+    <!--ActionSheet Dialog样式-->
+    <style name="ActionSheetDialogStyle" parent="@android:style/Theme.Dialog">
+        <!-- 背景透明 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 浮于Activity之上 -->
+        <item name="android:windowIsFloating">true</item>
+        <!-- 边框 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- Dialog以外的区域模糊效果 -->
+        <item name="android:backgroundDimEnabled">true</item>
+        <!-- 无标题 -->
+        <item name="android:windowNoTitle">true</item>
+        <!-- 半透明 -->
+        <item name="android:windowIsTranslucent">true</item>
+        <!-- Dialog进入及退出动画 -->
+        <item name="android:windowAnimationStyle">@style/ActionSheetDialogAnimation</item>
+    </style>
+
+    <!-- ActionSheet进出动画 -->
+    <style name="ActionSheetDialogAnimation" parent="@android:style/Animation.Dialog">
+        <item name="android:windowEnterAnimation">@anim/actionsheet_dialog_in</item>
+        <item name="android:windowExitAnimation">@anim/actionsheet_dialog_out</item>
+    </style>
+
+    <!--//For GifView Declaration-->
+    <style name="Widget.GifView" parent="@android:style/Widget"/>
+
+    <style name="AppThemeCustom" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="android:navigationBarColor">@color/main_background</item>
+    </style>
+
+
+    <style name="chat_text_name_style">
+        <item name="android:textColor">#818181</item>
+        <item name="android:textSize">@dimen/sp_15</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="chat_text_date_style">
+        <item name="android:padding">@dimen/dp_2</item>
+        <item name="android:paddingTop">@dimen/dp_2</item>
+        <item name="android:paddingBottom">@dimen/dp_12</item>
+        <item name="android:paddingLeft">@dimen/dp_12</item>
+        <item name="android:paddingRight">@dimen/dp_12</item>
+        <item name="android:textColor">#666666</item>
+        <item name="android:textSize">@dimen/sp_12</item>
+        <!--        <item name="android:background">@drawable/ease_timestampe_bg</item>-->
+    </style>
+
+    <style name="AnimFade2" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_in_from_right</item>
+        <item name="android:activityOpenExitAnimation">@anim/slide_out_to_left</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_out_to_right</item>
+        <item name="android:activityCloseEnterAnimation">@anim/slide_in_from_left</item>
+    </style>
+
+    <style name="horizontal_slide" parent="AppThemeCustom">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowAnimationStyle">@style/AnimFade2</item>
+    </style>
+    <style name="SplashStyle" parent="AppThemeCustom">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <!--    <style name="ThemeSplash" parent="AppTheme">-->
+    <!--        <item name="android:windowBackground">@drawable/img_splash</item>-->
+    <!--        <item name="colorPrimaryDark">@color/white</item>-->
+    <!--        <item name="android:windowLayoutInDisplayCutoutMode">shortEdges</item>-->
+    <!--        <item name="windowActionBar">false</item>-->
+    <!--        <item name="windowNoTitle">true</item>-->
+    <!--    </style>-->
+
+    <!--
+    <style name="horizontal_slide2" parent="android:style/Theme.Holo.Light.NoActionBar">
+        <item name="android:windowAnimationStyle">@style/AnimFade2</item>
+    </style>
+    -->
+
+
+    <style name="MyAlertDialog" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+
+    <style name="devide_line_eee" parent="divider_line_eee_small">
+    </style>
+
+    <style name="divider_line_eee_small">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0.5dp</item>
+        <!--    #E1E4EA    -->
+        <item name="android:background">#F5F5F5</item>
+    </style>
+
+    <style name="style_line_chat">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">@color/color_chat_line</item>
+    </style>
+
+    <style name="style_line" parent="divider_line_eee_small">
+        <item name="android:background">@color/gray_3d3d3d</item>
+    </style>
+
+
+    <style name="CustomCheckBoxTheme2" parent="Theme.AppCompat.Light">
+        <item name="colorControlNormal">@android:color/darker_gray</item>
+        <item name="colorControlActivated">#0AC481</item>
+    </style>
+
+    <style name="style_bubble_padding">
+        <item name="android:paddingTop">@dimen/dp_5</item>
+        <item name="android:paddingBottom">@dimen/dp_5</item>
+    </style>
+
+    <!--<style name="MultiCheckBoxStyle" parent="Widget.AppCompat.CompoundButton.CheckBox">-->
+    <!--</style>-->
+</resources>

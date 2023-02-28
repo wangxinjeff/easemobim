@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_top_title_height"
+        android:background="@color/bg_top_bar_2">
+
+        <include layout="@layout/layout_back_view"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/group_member_list"
+            android:textColor="@color/topbar_title_color"
+            android:textSize="@dimen/activity_top_title_textsize" />
+
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/group_add_member_ok_btn_padding_right"
+            android:text="添加"
+            android:textColor="@color/topbar_btn_textcolor"
+            android:textSize="@dimen/activity_top_btn_textsize" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#EEEEEE" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg_strick">
+
+        <com.hyphenate.easemob.easeui.widget.search.SearchEditText
+            android:id="@+id/filter_edit_owner"
+            style="@style/style_clear_edit"
+            />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#EEEEEE" />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/white">
+
+        <com.hyphenate.easemob.easeui.widget.listview.check.KylinCheckListView
+            android:id="@+id/cv_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:cb_width="@dimen/group_list_item_checkbox_height"
+            app:cb_height="@dimen/group_list_item_checkbox_height"
+            app:item_decoration="@dimen/dp_1"
+            />
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>

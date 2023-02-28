@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/bg"
+        android:paddingBottom="@dimen/dp_10"
+        android:paddingLeft="@dimen/dp_15"
+        android:paddingTop="@dimen/dp_10"
+        android:text="@string/groups"
+        android:textColor="@color/color_text9"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/layout_content"
+        android:layout_width="match_parent"
+        android:background="@drawable/pressed_bg_select_grey_white"
+        android:layout_height="@dimen/dp_60"
+        android:paddingLeft="@dimen/dp_15"
+        android:paddingRight="@dimen/dp_15">
+
+        <com.hyphenate.easemob.easeui.widget.EaseImageView
+            android:id="@+id/iv_avatar"
+            android:layout_width="@dimen/dp_45"
+            android:layout_height="@dimen/dp_45"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ease_groups_icon"
+            app:ease_shape_type="round" />
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_toRightOf="@+id/iv_avatar"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textColor="@color/color_black"
+            android:textSize="@dimen/sp_15" />
+
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/tv_more"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAccent"
+        android:gravity="center"
+        android:padding="@dimen/dp_10"
+        android:text="@string/show_more"
+        android:textColor="@color/color_white"
+        android:visibility="gone" />
+</LinearLayout>

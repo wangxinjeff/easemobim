@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_top_title_height"
+        android:background="@color/bg_top_bar_2"
+        >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="10dp"
+            android:tint="@color/topbar_title_color"
+            android:src="@drawable/ease_mm_title_back"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="文件预览"
+            android:textColor="@color/topbar_title_color"
+            android:textSize="@dimen/activity_top_title_textsize"
+            />
+    </RelativeLayout>
+
+
+    <ImageView
+        android:id="@+id/iv_file"
+        android:layout_width="96dp"
+        android:layout_height="96dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/ease_icon_file_ppt"
+        />
+
+    <TextView
+        android:id="@+id/tv_file_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:layout_margin="10dp"
+        android:ellipsize="middle"
+        android:singleLine="true"
+        android:text="关于启动..的通知.pdf"
+        android:textSize="18sp"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/tv_file_size"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="20M"
+        android:textSize="14sp"
+        android:textColor="@color/btn_gray_pressed_status"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:visibility="gone"
+        >
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="20dip"
+            android:layout_marginRight="20dip"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:layout_centerHorizontal="true" />
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_below="@id/progressBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/downwaiting"
+            android:textColor="@android:color/black"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="30dp"
+        >
+
+
+        <Button
+            android:id="@+id/btn_internal_open"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="用内置浏览器打开"
+            android:textSize="18sp"
+            android:background="@color/colorAccent"
+            android:textColor="@android:color/white"
+            android:visibility="gone"
+            />
+
+        <Button
+            android:id="@+id/btn_open"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="用其他应用打开"
+            android:textSize="18sp"
+            android:background="@color/colorAccent"
+            android:textColor="@android:color/white"
+            />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

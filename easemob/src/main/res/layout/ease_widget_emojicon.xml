@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.hyphenate.easemob.easeui.widget.emojicon.EaseEmojiconPagerView
+        android:id="@+id/pager_view"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_142" />
+
+    <com.hyphenate.easemob.easeui.widget.emojicon.EaseEmojiconIndicatorView
+        android:id="@+id/indicator_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/dp_2" />
+
+    <View
+        style="@style/divider_line_eee_small"
+         />
+    <com.hyphenate.easemob.easeui.widget.emojicon.EaseEmojiconScrollTabBar
+        android:id="@+id/tab_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_35" />
+
+</LinearLayout>

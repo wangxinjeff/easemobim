@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:hyphenate="http://schemas.android.com/tools"
+    android:background="@color/bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_top_title_height"
+        android:background="@color/bg_top_bar_2">
+
+        <include layout="@layout/layout_back_view"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/group_settings"
+            android:textColor="@color/topbar_title_color"
+            android:textSize="@dimen/activity_top_title_textsize" />
+
+    </RelativeLayout>
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/swipe_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:id="@+id/rl_group_avatar"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_77"
+                    android:background="@android:color/white"
+                    android:paddingLeft="@dimen/dp_18">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="群头像"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                    <ImageView
+                        android:id="@+id/iv_right"
+                        android:layout_width="@dimen/more_btn_height"
+                        android:layout_height="@dimen/more_btn_height"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_layout_right" />
+
+                    <com.hyphenate.easemob.easeui.widget.AvatarImageView
+                        android:id="@+id/iv_avatar"
+                        android:layout_width="@dimen/size_avatar"
+                        android:layout_height="@dimen/size_avatar"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/iv_right"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ease_group_icon"
+                        app:aiv_TextSizeRatio="0.3" />
+                </RelativeLayout>
+
+                <View style="@style/devide_line_group" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_group_members"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp_18"
+                        android:text="群成员"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                    <ImageView
+                        android:id="@+id/iv_arrow"
+                        android:layout_width="@dimen/more_btn_height"
+                        android:layout_height="@dimen/more_btn_height"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_layout_right" />
+
+                    <TextView
+                        android:id="@+id/tv_members_size"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/iv_arrow"
+                        android:textColor="@color/color_text9"
+                        android:textSize="@dimen/sp_13" />
+                </RelativeLayout>
+
+                <com.hyphenate.easemob.easeui.widget.EaseExpandGridView
+                    android:id="@+id/gridview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:gravity="start"
+                    android:horizontalSpacing="@dimen/dp_19"
+                    android:listSelector="@android:color/transparent"
+                    android:numColumns="6"
+                    android:paddingLeft="@dimen/dp_18"
+                    android:paddingTop="@dimen/dp_8"
+                    android:paddingRight="@dimen/dp_18"
+                    android:verticalSpacing="@dimen/dp_10" />
+
+                <View style="@style/devide_line_group" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_group_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/group_option_item_height"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@android:color/white"
+                    android:paddingLeft="@dimen/group_option_title_margin_left">
+
+                    <TextView
+                        android:id="@+id/tv_lable_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="群聊名称"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                    <TextView
+                        android:id="@+id/tv_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp_8"
+                        android:layout_toRightOf="@id/tv_lable_name"
+                        android:textColor="@color/color_text9"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                    <ImageView
+                        android:id="@+id/iv_chevron_name"
+                        android:layout_width="@dimen/more_btn_height"
+                        android:layout_height="@dimen/more_btn_height"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_layout_right" />
+                </RelativeLayout>
+
+                <View style="@style/devide_line_group" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_group_owner"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/group_option_item_height"
+                    android:background="@android:color/white"
+                    android:paddingLeft="@dimen/group_option_title_margin_left">
+
+                    <TextView
+                        android:id="@+id/tv_lable_owner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="群主"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                    <TextView
+                        android:id="@+id/tv_group_owner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp_38"
+                        android:layout_toRightOf="@id/tv_lable_owner"
+                        android:textColor="@color/color_text9"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                    <ImageView
+                        android:id="@+id/iv_owner_chevron"
+                        android:layout_width="@dimen/more_btn_height"
+                        android:layout_height="@dimen/more_btn_height"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_layout_right" />
+                </RelativeLayout>
+
+                <View style="@style/devide_line_group" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_group_notification"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/group_option_item_height"
+                    android:background="@android:color/white"
+                    android:paddingLeft="@dimen/group_option_title_margin_left">
+
+                    <TextView
+                        android:id="@+id/tv_lable_notification"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="群通知"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp_23"
+                        android:layout_toRightOf="@id/tv_lable_notification"
+                        android:textColor="@color/color_text9"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                    <ImageView
+                        android:layout_width="@dimen/more_btn_height"
+                        android:layout_height="@dimen/more_btn_height"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_layout_right" />
+                </RelativeLayout>
+
+                <View
+                    android:id="@+id/rl_group_notification_devider"
+                    style="@style/devide_line_group" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_group_announcement"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/group_option_item_height"
+                    android:background="@android:color/white"
+                    android:paddingLeft="@dimen/group_option_title_margin_left">
+
+                    <TextView
+                        android:id="@+id/tv_lable_announcement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="群公告"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                    <ImageView
+                        android:id="@+id/iv_arrow"
+                        android:layout_width="@dimen/more_btn_height"
+                        android:layout_height="@dimen/more_btn_height"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_layout_right" />
+
+                    <TextView
+                        android:id="@+id/tv_group_announcement"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="@dimen/dp_10"
+                        android:layout_toLeftOf="@id/iv_arrow"
+                        android:layout_toRightOf="@id/tv_lable_announcement"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/group_option_title_text_size" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_group_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/group_option_item_height"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@android:color/white"
+                    android:paddingLeft="@dimen/group_option_title_margin_left">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="搜索群消息"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                    <ImageView
+                        android:layout_width="@dimen/more_btn_height"
+                        android:layout_height="@dimen/more_btn_height"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/icon_layout_right" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_group_disturb"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/group_option_item_height"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@android:color/white"
+                    android:paddingLeft="@dimen/group_option_title_margin_left">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="消息免打扰"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:id="@+id/switch_btn_disturb"
+                        android:layout_width="@dimen/group_option_switch_width"
+                        android:layout_height="@dimen/group_option_switch_height"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:clickable="false"
+                        android:layout_marginRight="@dimen/dp_10"
+                        hyphenate:kswTintColor="@color/theme_color" />
+                </RelativeLayout>
+
+                <View style="@style/devide_line_group" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_group_sticky"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/group_option_item_height"
+                    android:background="@android:color/white"
+                    android:paddingLeft="@dimen/group_option_title_margin_left">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="置顶"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:id="@+id/switch_btn_sticky"
+                        android:layout_width="@dimen/group_option_switch_width"
+                        android:layout_height="@dimen/group_option_switch_height"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:clickable="false"
+                        android:layout_marginRight="@dimen/dp_10"
+                        hyphenate:kswTintColor="@color/theme_color" />
+
+                </RelativeLayout>
+
+                <View style="@style/devide_line_group" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_group_save"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/group_option_item_height"
+                    android:background="@android:color/white"
+                    android:paddingLeft="@dimen/group_option_title_margin_left">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="保存到通讯录"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:id="@+id/switch_btn_save"
+                        android:layout_width="@dimen/group_option_switch_width"
+                        android:layout_height="@dimen/group_option_switch_height"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:clickable="false"
+                        android:layout_marginRight="@dimen/dp_10"
+                        hyphenate:kswTintColor="@color/theme_color" />
+
+                </RelativeLayout>
+
+                <View style="@style/devide_line_group" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_group_validation"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/group_option_item_height"
+                    android:background="@android:color/white"
+                    android:paddingLeft="@dimen/group_option_title_margin_left">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="入群验证"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                    <com.kyleduo.switchbutton.SwitchButton
+                        android:id="@+id/switch_btn_validation"
+                        android:layout_width="@dimen/group_option_switch_width"
+                        android:layout_height="@dimen/group_option_switch_height"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:clickable="false"
+                        android:layout_marginRight="@dimen/dp_10"
+                        hyphenate:kswTintColor="@color/theme_color" />
+                </RelativeLayout>
+
+                <View style="@style/devide_line_group" />
+
+                <RelativeLayout
+                    android:id="@+id/rl_group_mute"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/group_option_item_height"
+                    android:background="@android:color/white"
+                    android:paddingLeft="@dimen/group_option_title_margin_left">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="群禁言"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                    <ImageView
+                        android:layout_width="@dimen/more_btn_height"
+                        android:layout_height="@dimen/more_btn_height"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/mp_ic_right_arrow" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_group_clear"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/group_option_item_height"
+                    android:layout_marginTop="@dimen/dp_10"
+                    android:background="@android:color/white"
+                    android:paddingLeft="@dimen/group_option_title_margin_left"
+                    android:visibility="visible">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:text="清空聊天记录"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+
+                    <ImageView
+                        android:layout_width="@dimen/more_btn_height"
+                        android:layout_height="@dimen/more_btn_height"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/mp_ic_right_arrow"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rl_group_delete"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/group_option_item_height"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/white"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="解散群聊"
+                        android:textColor="@android:color/holo_red_light"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                </RelativeLayout>
+
+
+                <RelativeLayout
+                    android:id="@+id/rl_group_exit"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/group_option_item_height"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/white"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="退出群聊"
+                        android:textColor="@android:color/black"
+                        android:textSize="@dimen/group_option_title_text_size" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+        </ScrollView>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hyphenate="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <com.hyphenate.easemob.easeui.widget.EaseTitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        hyphenate:titleBarTitle="@string/title_session" />
+
+    <include
+        android:id="@+id/rl_search"
+        layout="@layout/ease_layout_search" />
+
+    <LinearLayout
+        android:id="@+id/ll_pc_status"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_41"
+        android:background="@color/bg_label_color"
+        android:gravity="center_vertical"
+        android:visibility="gone"
+        tools:ignore="UseCompoundDrawables">
+
+
+        <ImageView
+            android:layout_width="@dimen/dp_21"
+            android:layout_height="@dimen/dp_21"
+            android:layout_marginLeft="@dimen/dp_18"
+            android:src="@drawable/mp_ic_computer_small" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:text="电脑端已登录"
+            android:textColor="@color/label_text_color"
+            android:textSize="@dimen/sp_13" />
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/fl_error_item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:visibility="gone"
+        android:background="@color/divider_list" />
+
+
+    <com.hyphenate.easemob.easeui.widget.EaseConversationList
+        android:id="@+id/list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:cacheColorHint="#00000000"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0dp"
+        android:visibility="gone"
+        hyphenate:cvsListPrimaryTextColor="#333333"
+        hyphenate:cvsListPrimaryTextSize="@dimen/sp_15"
+        hyphenate:cvsListSecondaryTextColor="#999999"
+        hyphenate:cvsListSecondaryTextSize="@dimen/sp_13"
+        hyphenate:cvsListTimeTextColor="#999999"
+        hyphenate:cvsListTimeTextSize="@dimen/sp_12" />
+
+    <ImageView
+        android:id="@+id/empty_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scaleType="centerInside"
+        android:src="@drawable/mp_ic_empty_conversations" />
+
+</LinearLayout>

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">easemobim</string>
+    <string name="title_conversation">聊天</string>
+    <string name="title_contact">通讯录</string>
+</resources>

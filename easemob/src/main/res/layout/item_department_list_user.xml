@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_check_all"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_64"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@drawable/pressed_bg_select_grey_white"
+        android:gravity="right"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <CheckBox
+            android:id="@+id/cb_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="@dimen/dp_10"
+            android:text="全选"
+            android:textSize="@dimen/sp_16" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_department_user"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_64"
+        android:background="@drawable/pressed_bg_select_grey_white">
+
+        <CheckBox
+            android:id="@+id/cb_pick"
+            android:layout_width="@dimen/group_list_item_checkbox_height"
+            android:layout_height="@dimen/group_list_item_checkbox_height"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone" />
+
+        <FrameLayout
+            android:id="@+id/fl_avatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10">
+
+            <com.hyphenate.easemob.easeui.widget.AvatarImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="@dimen/size_avatar"
+                android:layout_height="@dimen/size_avatar"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ease_default_avatar"
+                app:aiv_TextSizeRatio="0.3" />
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:id="@+id/ll_real_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_toRightOf="@+id/fl_avatar"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/content_text_color"
+                android:textSize="@dimen/sp_16"
+                android:visibility="visible"
+                tools:text="我叫xxx" />
+
+            <TextView
+                android:id="@+id/tv_online"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:textColor="@color/content_text_color"
+                android:textSize="@dimen/sp_15"
+                android:visibility="gone"
+                tools:text="[在线]" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_owner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_toLeftOf="@id/cb_pick"
+            android:layout_toRightOf="@id/ll_real_name"
+            android:background="@drawable/owner_txt_bg"
+            android:paddingLeft="@dimen/dp_2"
+            android:paddingRight="@dimen/dp_2"
+            android:text="@string/not_active"
+            android:textColor="@color/color_owner_txt"
+            android:textSize="@dimen/sp_12"
+            android:visibility="gone" />
+
+
+    </RelativeLayout>
+</LinearLayout>

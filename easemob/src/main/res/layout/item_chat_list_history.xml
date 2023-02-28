@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:paddingTop="@dimen/dp_2"
+        android:paddingBottom="@dimen/dp_2"
+        android:textColor="@color/color_text3"
+        android:textSize="@dimen/sp_12"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/list_itease_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical">
+
+        <RelativeLayout
+            android:id="@+id/avatar_container"
+            android:layout_width="@dimen/dp_59"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:paddingLeft="@dimen/dp_10"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingBottom="@dimen/dp_10">
+
+            <com.hyphenate.easemob.easeui.widget.AvatarImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="@dimen/size_avatar"
+                android:layout_height="@dimen/size_avatar"
+                android:layout_centerVertical="true"
+                android:scaleType="fitXY"
+                android:src="@drawable/ease_default_avatar"
+                app:aiv_TextSizeRatio="0.3" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_7"
+            android:layout_marginTop="@dimen/dp_6"
+            android:layout_toRightOf="@id/avatar_container"
+            android:textColor="@color/list_itease_primary_color"
+            android:textSize="@dimen/sp_16" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_6"
+            android:layout_marginRight="@dimen/dp_7"
+            android:textColor="@color/list_itease_secondary_color"
+            android:textSize="@dimen/sp_13" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/name"
+            android:layout_toLeftOf="@id/time"
+            android:layout_toRightOf="@id/avatar_container">
+
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/mp_ic_recv_bubble"
+                android:gravity="center_vertical"
+                android:text="asdlkjsdlfj"
+                android:textColor="@color/list_itease_secondary_color"
+                android:textSize="@dimen/sp_14" />
+
+            <ImageView
+                android:id="@+id/iv_image"
+                android:layout_width="@dimen/dp_120"
+                android:layout_height="@dimen/dp_120"
+                android:background="@drawable/mp_ic_recv_bubble"
+                android:scaleType="centerCrop" />
+
+            <RelativeLayout
+                android:id="@+id/rl_video"
+                android:layout_width="@dimen/dp_130"
+                android:layout_height="@dimen/dp_130"
+                android:background="@drawable/mp_ic_recv_bubble">
+
+                <ImageView
+                    android:id="@+id/iv_video"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY" />
+
+                <ImageView
+                    android:id="@+id/chatting_status_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/ease_video_play_btn_small_nor" />
+            </RelativeLayout>
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>

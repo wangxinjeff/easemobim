@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/bg_chat_input">
+
+    <FrameLayout
+        android:id="@+id/voice_keyboard_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/dp_7"
+        >
+
+        <ImageView
+            android:id="@+id/btn_set_mode_voice"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/mp_ic_voice"
+            android:visibility="visible"
+            />
+
+        <ImageView
+            android:id="@+id/btn_set_mode_keyboard"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/mp_ic_keyboard"
+            android:visibility="gone"/>
+
+
+    </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_press_to_speak"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_5"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:background="@drawable/ease_chat_press_speak_btn"
+            android:gravity="center"
+            android:visibility="gone"
+            app:layout_constraintStart_toEndOf="@+id/voice_keyboard_layout"
+            app:layout_constraintEnd_toStartOf="@+id/rl_face"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            >
+
+            <TextView
+                android:id="@+id/tv_press_prompt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:text="@string/button_pushtotalk"
+                android:textColor="#666666"
+                android:textSize="@dimen/sp_16" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/edittext_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/dp_5"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_5"
+            android:layout_marginBottom="@dimen/dp_10"
+            app:layout_constraintStart_toEndOf="@+id/voice_keyboard_layout"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/rl_face"
+            app:layout_constraintBottom_toTopOf="@+id/reference_layout"
+            >
+
+            <com.hyphenate.easemob.easeui.widget.CustomizeEditText
+                android:id="@+id/et_sendmessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ease_input_bar_bg"
+                android:imeOptions="actionSend"
+                android:inputType="text"
+                android:maxLines="3"
+                android:minHeight="@dimen/dp_32"
+                android:paddingLeft="@dimen/dp_8"
+                android:paddingRight="@dimen/dp_8"
+                android:textSize="@dimen/sp_14" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/reference_layout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@+id/edittext_layout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/edittext_layout"
+            app:layout_constraintEnd_toEndOf="@+id/edittext_layout"
+            android:layout_marginBottom="@dimen/dp_15"
+            android:background="@drawable/shape_reference_input"
+            android:paddingTop="@dimen/dp_3"
+            android:paddingBottom="@dimen/dp_3"
+            android:visibility="gone"
+            >
+
+            <com.hyphenate.easemob.easeui.widget.textview.AlignTextView
+                android:id="@+id/reference_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="2"
+                android:ellipsize="end"
+                android:layout_marginStart="@dimen/dp_8"
+                android:textSize="@dimen/sp_14"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/reference_close"
+                android:layout_marginEnd="@dimen/dp_15"
+                android:textColor="@color/reference_text_color"
+                />
+
+            <ImageView
+                android:id="@+id/reference_close"
+                android:layout_width="@dimen/dp_16"
+                android:layout_height="@dimen/dp_16"
+                android:layout_alignParentEnd="true"
+                android:layout_marginEnd="@dimen/dp_10"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ease_ic_close"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_face"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/send_more_layout"
+            android:layout_marginBottom="@dimen/dp_7"
+            >
+
+            <ImageView
+                android:id="@+id/iv_face_normal"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mp_ic_face"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/iv_face_checked"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:scaleType="fitCenter"
+                android:src="@drawable/mp_ic_keyboard"
+                android:visibility="invisible" />
+
+        </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/send_more_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginBottom="@dimen/dp_7"
+        >
+
+        <ImageView
+            android:id="@+id/btn_more"
+            android:layout_width="@dimen/dp_40"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginRight="@dimen/dp_4"
+            android:background="?attr/selectableItemBackground"
+            android:src="@drawable/mp_ic_add_more"
+            android:visibility="visible"
+            />
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="@dimen/dp_46"
+            android:layout_height="@dimen/dp_32"
+            android:layout_marginRight="@dimen/dp_5"
+            android:background="@drawable/ease_chat_send_btn_selector"
+            android:text="@string/button_send"
+            android:textColor="#2F2E41"
+            android:textSize="@dimen/sp_13"
+            android:visibility="gone"
+            android:layout_marginBottom="@dimen/dp_3"
+            />
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

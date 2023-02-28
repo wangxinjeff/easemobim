@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:hyphenate="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <com.hyphenate.easemob.easeui.widget.EaseTitleBar
+        android:id="@+id/title_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        hyphenate:titleBarLeftImage="@drawable/mp_ic_back_black"
+        hyphenate:titleBarTitle="@string/chat_info" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:id="@+id/rl_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/dp_18"
+            android:paddingTop="@dimen/dp_14"
+            android:paddingBottom="@dimen/dp_14">
+
+            <com.hyphenate.easemob.easeui.widget.AvatarImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="@dimen/size_avatar"
+                android:layout_height="@dimen/size_avatar"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ease_default_avatar"
+                hyphenate:aiv_TextSizeRatio="0.3" />
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:layout_toRightOf="@id/iv_avatar"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/sp_15" />
+
+            <ImageView
+                android:id="@+id/iv_right_arrow"
+                android:layout_width="@dimen/more_btn_height"
+                android:layout_height="@dimen/more_btn_height"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_layout_right" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/divider_color" />
+
+        <RelativeLayout
+            android:visibility="gone"
+            android:id="@+id/rl_add_member"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_51"
+            android:background="@android:color/white">
+
+            <ImageView
+                android:id="@+id/iv_add_member"
+                android:layout_width="@dimen/dp_25"
+                android:layout_height="@dimen/dp_25"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:src="@drawable/em_add"
+                android:tint="@color/blue" />
+
+            <TextView
+                android:id="@+id/add_member"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_51"
+                android:layout_toRightOf="@id/iv_add_member"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dp_10"
+                android:text="@string/add_member"
+                android:textColor="@color/color_333333"
+                android:textSize="@dimen/sp_15" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_color" />
+
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="@color/divider_color" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/color_white"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_51"
+            android:background="@android:color/white"
+            android:paddingLeft="@dimen/dp_18"
+            android:paddingRight="@dimen/dp_13">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="聊天置顶"
+                android:textColor="@color/color_333333"
+                android:textSize="@dimen/sp_15" />
+
+            <com.kyleduo.switchbutton.SwitchButton
+                android:id="@+id/sb_sticky_chat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingTop="@dimen/dp_4"
+                android:paddingBottom="@dimen/dp_4"
+                hyphenate:kswThumbHeight="@dimen/dp_22"
+                hyphenate:kswThumbWidth="@dimen/dp_22"
+                hyphenate:kswTintColor="@color/theme_color" />
+
+        </RelativeLayout>
+
+        <View
+            style="@style/devide_line_eee"
+            android:visibility="gone" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_51"
+            android:background="@android:color/white"
+            android:paddingLeft="@dimen/dp_18"
+            android:paddingRight="@dimen/dp_13"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/mute_notifications"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/sp_15" />
+
+            <com.kyleduo.switchbutton.SwitchButton
+                android:id="@+id/sb_mute_notifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_4"
+                android:paddingRight="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_4"
+                hyphenate:kswTintColor="@color/theme_color" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider_color" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="@dimen/dp_10"
+        android:background="#dde0ef" />
+
+    <TextView
+        android:id="@+id/tv_clear_all_records"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_51"
+        android:background="@color/color_white"
+        android:gravity="center"
+        android:text="@string/clear_chat_records"
+        android:textColor="@color/logout_txt_color"
+        android:textSize="@dimen/sp_15" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#dde0ef" />
+
+</LinearLayout>

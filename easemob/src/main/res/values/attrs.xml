@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--底部导航-->
+    <declare-styleable name="BottomNavigationBar">
+        <attr name="bnbElevation" format="dimension" />
+        <attr name="bnbActiveColor" format="color" />
+        <attr name="bnbInactiveColor" format="color" />
+        <attr name="bnbBackgroundColor" format="color" />
+        <attr name="bnbAnimationDuration" format="integer" />
+        <attr name="bnbMode" format="enum">
+            <enum name="mode_default" value="0" />
+            <enum name="mode_fixed" value="1" />
+            <enum name="mode_shifting" value="2" />
+            <enum name="mode_fixed_no_title" value="3" />
+            <enum name="mode_shifting_no_title" value="4" />
+        </attr>
+        <attr name="bnbBackgroundStyle" format="enum">
+            <enum name="background_style_default" value="0" />
+            <enum name="background_style_static" value="1" />
+            <enum name="background_style_ripple" value="2" />
+        </attr>
+        <attr name="bnbAutoHideEnabled" format="boolean" />
+    </declare-styleable>
+
+    <!--毛毛虫指示器-->
+    <declare-styleable name="CaterpillarIndicator">
+        <attr name="slide_text_color" format="color|reference" />
+        <attr name="slide_text_size_normal" format="dimension" />
+        <attr name="slide_text_size_selected" format="dimension" />
+        <attr name="slide_text_color_normal" format="color" />
+        <attr name="slide_text_color_selected" format="color" />
+        <attr name="slide_footer_line_height" format="dimension" />
+        <attr name="slide_footer_color" format="color" />
+        <attr name="slide_round" format="boolean" />
+        <attr name="slide_item_width" format="dimension" />
+        <attr name="slide_caterpillar" format="boolean" />
+        <attr name="slide_count" format="integer" />
+        <attr name="slide_padding_bottom" format="dimension" />
+        <attr name="slide_text_center_flag">
+            <enum name="textCenter" value="0" />
+            <enum name="lineCenter" value="1" />
+        </attr>
+
+    </declare-styleable>
+
+    <declare-styleable name="SynthesizedImageView">
+        <!--合成图片的背景-->
+        <attr name="synthesized_image_bg" format="color" />
+        <!--合成图片的默认图片-->
+        <attr name="synthesized_default_image" format="reference" />
+        <!--合成图片的尺寸-->
+        <attr name="synthesized_image_size" format="dimension" />
+        <!--多图片之间的空隙间隔-->
+        <attr name="synthesized_image_gap" format="dimension" />
+    </declare-styleable>
+
+    <declare-styleable name="GroupView">
+        <attr name="type" format="enum">
+            <enum name="circle" value="1" />
+            <enum name="square" value="2" />
+        </attr>
+        <attr name="padding" format="dimension" />
+        <attr name="cornor" format="dimension" />
+        <attr name="backgroundGP" format="reference|color" />
+
+    </declare-styleable>
+
+    <declare-styleable name="CircleRelativeLayoutLayout">
+        <attr name="background_color" format="color" />
+        <attr name="background_alpha" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="vericationCodeView">
+        <!--输入框的数量-->
+        <attr name="vcv_et_number" format="integer" />
+        <!--输入类型-->
+        <attr name="vcv_et_inputType">
+            <enum name="number" value="0" />
+            <enum name="numberPassword" value="1" />
+            <enum name="text" value="2" />
+            <enum name="textPassword" value="3" />
+        </attr>
+        <!--输入框的宽度-->
+        <attr name="vcv_et_width" format="dimension|reference" />
+        <!--输入框文字颜色-->
+        <attr name="vcv_et_text_color" format="color|reference" />
+        <!--输入框文字大小-->
+        <attr name="vcv_et_text_size" format="dimension|reference" />
+        <!--输入框背景-->
+        <attr name="vcv_et_bg" format="reference" />
+        <!--光标样式-->
+        <attr name="vcv_et_cursor" format="reference" />
+    </declare-styleable>
+
+
+    <!--设置字体大小控件-->
+    <declare-styleable name="SetTextSizeView">
+        <attr name="lineWidth" format="dimension|reference" />
+        <attr name="lineColor" format="color|reference" />
+        <attr name="totalCount" format="integer" />
+        <attr name="circleColor" format="color|reference" />
+        <attr name="circleRadius" format="dimension|reference" />
+    </declare-styleable>
+
+    <!--音视频电话加载动画-->
+    <declare-styleable name="monindicator">
+        <attr name="circle_Radius" format="dimension" />
+        <attr name="circleSpacing" format="dimension" />
+        <attr name="cycle" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="SpreadView">
+        <!--中心圆颜色-->
+        <attr name="spread_center_color" format="color" />
+        <!--中心圆半径-->
+        <attr name="spread_radius" format="dimension|reference" />
+        <!--扩散圆颜色-->
+        <attr name="spread_spread_color" format="color" />
+        <!--扩散间距-->
+        <attr name="spread_distance" format="dimension|reference" />
+        <!--扩散延迟间隔-->
+        <attr name="spread_delay_milliseconds" format="integer" />
+    </declare-styleable>
+    <declare-styleable name="GifView">
+        <attr name="gif" format="reference" />
+        <attr name="paused" format="boolean" />
+    </declare-styleable>
+
+    <declare-styleable name="CustomTheme">
+        <attr name="gifViewStyle" format="reference" />
+    </declare-styleable>
+</resources>

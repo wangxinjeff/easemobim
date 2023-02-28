@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    style="@style/style_bubble_padding">
+
+    <TextView
+        android:id="@+id/timestamp"
+        style="@style/chat_text_date_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_chat_top">
+
+        <com.hyphenate.easemob.easeui.widget.AvatarImageView
+            android:id="@+id/iv_userhead"
+            android:layout_width="@dimen/size_message_avatar"
+            android:layout_height="@dimen/size_message_avatar"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="@dimen/margin_chat_activity"
+            android:scaleType="fitXY"
+            android:src="@drawable/ease_default_avatar"
+            app:aiv_TextSizeRatio="0.3"
+             />
+
+        <com.hyphenate.easemob.easeui.shape.ChatView
+            android:id="@+id/bubble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:minHeight="@dimen/dp_36"
+            android:layout_below="@+id/tv_userid"
+            app:arrow_direction="left"
+            app:arrow_height="@dimen/dp_10"
+            app:conner_radius="8dp"
+            app:fill_color="@color/bubble_left_color"
+            app:stroke_color="@color/bubble_left_color"
+            app:arrow_up_distance="@dimen/dp_10"
+            android:layout_marginLeft="@dimen/margin_chat_bubble"
+            android:layout_toRightOf="@id/iv_userhead"
+            android:paddingLeft="@dimen/dp_10">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal"
+                >
+                <View
+                    android:id="@+id/id_recorder_anim"
+                    android:layout_width="@dimen/dp_25"
+                    android:layout_height="@dimen/dp_25"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/mp_ic_voice_recv_anim_3" />
+
+                <TextView
+                    android:id="@+id/tv_length"
+                    style="@style/chat_text_name_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="3&apos;&apos;"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/sp_12"
+                    tools:ignore="HardcodedText" />
+
+                <ImageView
+                    android:id="@+id/iv_unread_voice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/dp_10"
+                    android:src="@drawable/ease_voice_unread" />
+            </LinearLayout>
+        </com.hyphenate.easemob.easeui.shape.ChatView>
+
+
+<!--        <LinearLayout-->
+<!--            android:id="@+id/bubble"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/tv_userid"-->
+<!--            android:layout_marginLeft="@dimen/dp_10"-->
+<!--            android:layout_toRightOf="@id/iv_userhead"-->
+<!--            android:orientation="horizontal"-->
+<!--            android:background="@drawable/mp_ic_recv_bubble"-->
+<!--            android:paddingLeft="@dimen/dp_10">-->
+
+<!--            <View-->
+<!--                android:id="@+id/id_recorder_anim"-->
+<!--                android:layout_width="@dimen/dp_25"-->
+<!--                android:layout_height="@dimen/dp_25"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:background="@drawable/mp_ic_voice_recv_anim_3" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_length"-->
+<!--                style="@style/chat_text_name_style"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:text="3&apos;&apos;"-->
+<!--                android:textColor="#333333"-->
+<!--                android:textSize="@dimen/sp_12"-->
+<!--                tools:ignore="HardcodedText" />-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_unread_voice"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginRight="@dimen/dp_10"-->
+<!--                android:src="@drawable/ease_voice_unread" />-->
+<!--        </LinearLayout>-->
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="@dimen/dp_30"
+            android:layout_height="@dimen/dp_30"
+            android:layout_marginTop="@dimen/dp_5"
+            android:layout_toRightOf="@id/bubble"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/tv_userid"
+            style="@style/chat_text_name_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/chat_nick_margin_left"
+            android:layout_toRightOf="@id/bubble"
+            android:textSize="@dimen/chat_nick_text_size"
+            android:visibility="gone" />
+
+        <CheckBox
+            android:id="@+id/cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_20"
+            android:theme="@style/CustomCheckBoxTheme2"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</LinearLayout>

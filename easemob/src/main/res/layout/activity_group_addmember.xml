@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_top_title_height"
+        android:background="@color/bg_top_bar_2">
+
+        <include layout="@layout/layout_back_view"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="添加成员"
+            android:textColor="@color/topbar_title_color"
+            android:textSize="@dimen/activity_top_title_textsize" />
+
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/group_add_member_ok_btn_padding_right"
+            android:background="?attr/selectableItemBackground"
+            android:text="确定"
+            android:textColor="@color/topbar_btn_textcolor"
+            android:textSize="@dimen/activity_top_btn_textsize" />
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/rl_search"
+        layout="@layout/ease_layout_search" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#EEEEEE" />
+
+    <RelativeLayout
+        android:id="@+id/rl_my_friends"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/group_add_member_item_height"
+        android:background="@drawable/pressed_bg_select_grey_white"
+        android:paddingLeft="@dimen/group_add_member_item_padding"
+        android:paddingRight="@dimen/group_add_member_item_padding">
+
+        <ImageView
+            android:id="@+id/icon_man"
+            android:layout_width="@dimen/group_add_member_item_icon_height"
+            android:layout_height="@dimen/group_add_member_item_icon_height"
+            android:layout_centerVertical="true"
+            android:src="@drawable/mp_ic_my_friends" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/group_add_member_item_text_margin_left"
+            android:layout_toRightOf="@id/icon_man"
+            android:text="@string/friends"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/group_add_member_item_text_size" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_layout_right"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+
+    <View style="@style/devide_line_group" />
+
+    <RelativeLayout
+        android:id="@+id/rl_star_friends"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/group_add_member_item_height"
+        android:background="@drawable/pressed_bg_select_grey_white"
+        android:paddingLeft="@dimen/group_add_member_item_padding"
+        android:paddingRight="@dimen/group_add_member_item_padding">
+
+        <ImageView
+            android:id="@+id/icon_star"
+            android:layout_width="@dimen/group_add_member_item_icon_height"
+            android:layout_height="@dimen/group_add_member_item_icon_height"
+            android:layout_centerVertical="true"
+            android:src="@drawable/mp_ic_star_friend" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/group_add_member_item_text_margin_left"
+            android:layout_toRightOf="@id/icon_star"
+            android:text="@string/starred_friends"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/group_add_member_item_text_size" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_layout_right"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+    <View style="@style/devide_line_eee" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/ll_company_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+
+    <View style="@style/devide_line_eee" />
+
+
+</LinearLayout>

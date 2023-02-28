@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="#F5F5F5"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_top_title_height"
+        android:background="@color/bg_top_bar_2"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10"
+        >
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/dp_10"
+            android:scaleType="fitCenter"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ease_mm_title_back"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/select_contacts"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_20"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:cacheColorHint="#00000000"
+            android:descendantFocusability="afterDescendants"
+            android:divider="#E2E2E2"
+            android:dividerHeight="@dimen/dp_1" />
+
+        <com.hyphenate.easemob.easeui.widget.EaseSidebar
+            android:id="@+id/sidebar"
+            android:layout_width="@dimen/dp_25"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@android:color/transparent"
+            android:clickable="true" />
+
+        <TextView
+            android:id="@+id/floating_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/em_show_head_toast_bg"
+            android:gravity="center"
+            android:paddingLeft="@dimen/dp_25"
+            android:paddingRight="@dimen/dp_25"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_40"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+</LinearLayout>

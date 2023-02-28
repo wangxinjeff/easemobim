@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content">
+
+    <!--<com.hyphenate.easemob.easeui.widget.EaseImageView-->
+    <!--android:id="@+id/image_view"-->
+    <!--android:layout_width="@dimen/dp_40"-->
+    <!--android:layout_height="@dimen/dp_40"-->
+    <!--android:layout_marginRight="@dimen/dp_2"-->
+    <!--android:scaleType="centerCrop"-->
+    <!--app:ease_border_color="@color/colorAccent"-->
+    <!--app:ease_border_width="@dimen/dp_2"-->
+    <!--app:ease_shape_type="round" />-->
+
+    <com.hyphenate.easemob.easeui.widget.AvatarImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="@dimen/dp_40"
+        android:layout_height="@dimen/dp_40"
+        android:src="@drawable/em_default_avatar"
+        android:scaleType="centerCrop"
+        app:aiv_TextSizeRatio="0.3"
+        app:aiv_BoarderColor="@color/colorAccent"
+        app:aiv_BoarderWidth="@dimen/dp_2"
+        />
+</LinearLayout>

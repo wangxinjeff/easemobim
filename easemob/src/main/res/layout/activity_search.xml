@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_top_bar"
+        android:background="@color/color_grey_light"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/dp_5"
+        android:paddingRight="@dimen/dp_5">
+
+        <include
+            layout="@layout/ease_search_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:padding="@dimen/dp_5"
+            android:text="@string/cancel"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/sp_16" />
+
+    </LinearLayout>
+
+    <com.hyphenate.easemob.im.officeautomation.widget.CaterpillarIndicator
+        android:id="@+id/search_tab"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_51"
+        android:background="@color/color_white"
+        app:layout_scrollFlags="scroll"
+        app:slide_caterpillar="true"
+        app:slide_footer_color="@color/nav_text_selected"
+        app:slide_footer_line_height="@dimen/dp_2"
+        app:slide_item_width="@dimen/dp_24"
+        app:slide_padding_bottom="@dimen/dp_2"
+        app:slide_round="true"
+        app:slide_text_center_flag="textCenter"
+        app:slide_text_color_normal="@color/nav_text_normal"
+        app:slide_text_color_selected="@color/nav_text_selected"
+        app:slide_text_size_normal="@dimen/sp_15"
+        app:slide_text_size_selected="@dimen/sp_15" />
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/search_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/dp_7" />
+
+</LinearLayout>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:jp="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        >
+
+        <FrameLayout
+            android:id="@+id/content_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/gray_3d3d3d"
+            android:alpha="0.5"
+            android:visibility="gone"
+            />
+
+        <com.hyphenate.easemob.im.officeautomation.widget.NavMoreView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/nav_more_bg"
+            android:visibility="gone"
+            />
+
+    </RelativeLayout>
+
+    <View style="@style/devide_line_eee" />
+
+    <com.jpeng.jptabbar.JPTabBar
+        android:id="@+id/navigation"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_57"
+        android:layout_gravity="bottom"
+        android:background="@color/main_background"
+        android:padding="@dimen/dp_9"
+        jp:BadgeColor="@color/badge_color"
+        jp:BadgeTextSize="@dimen/sp_10"
+        jp:TabIconSize="@dimen/dp_22"
+        jp:TabMargin="@dimen/dp_2"
+        jp:TabSelectColor="@color/colorAccent"
+        jp:TabNormalColor="@color/content_text_color"
+        jp:TabTextSize="@dimen/sp_10" />
+</LinearLayout>

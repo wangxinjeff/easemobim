@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+
+    <!-- Your custom size defind by references, can be writted in anywhere, any module, any values/*.xml, for example: -->
+
+
+    <dimen name="height_top_bar">@dimen/activity_top_title_height</dimen>
+    <dimen name="padding_search_bar">@dimen/dp_7</dimen>
+    <dimen name="size_avatar">@dimen/dp_38</dimen>
+    <dimen name="size_message_avatar">@dimen/dp_36</dimen>
+    <dimen name="margin_chat_top">@dimen/dp_0</dimen>
+    <dimen name="margin_chat_activity">@dimen/dp_11</dimen>
+    <dimen name="margin_chat_bubble">@dimen/dp_2</dimen>
+    <dimen name="activity_horizontal_margin">@dimen/dp_16</dimen>
+    <dimen name="activity_vertical_margin">@dimen/dp_16</dimen>
+    <dimen name="image_thumbnail_size">@dimen/dp_100</dimen>
+    <dimen name="image_thumbnail_spacing">@dimen/dp_1</dimen>
+    <dimen name="chat_nick_margin_left">@dimen/dp_12</dimen>
+    <dimen name="chat_nick_text_size">@dimen/sp_13</dimen>
+    <dimen name="recall_dimen">@dimen/dp_8</dimen>
+    <dimen name="recall_dimen_4">@dimen/dp_4</dimen>
+    <dimen name="recall_dimen_256">@dimen/dp_256</dimen>
+    <dimen name="recall_size_12">@dimen/sp_12</dimen>
+
+    <dimen name="activity_top_title_height">@dimen/dp_44</dimen>
+    <dimen name="activity_top_title_textsize">@dimen/sp_17</dimen>
+    <dimen name="activity_top_btn_textsize">@dimen/sp_14</dimen>
+    <dimen name="activity_top_btn_height">@dimen/activity_top_title_height</dimen>
+    <dimen name="user_status_size">@dimen/dp_8</dimen>
+
+    <!-- dp and sp values, must be defind in this file! -->
+    <!-- view size,you can add if there is no one -->
+    <dimen name="dp_0">0dp</dimen>
+    <dimen name="dp_0_5">0.5dp</dimen>
+    <dimen name="dp_1">1dp</dimen>
+    <dimen name="dp_2">2dp</dimen>
+    <dimen name="dp_3">3dp</dimen>
+    <dimen name="dp_4">4dp</dimen>
+    <dimen name="dp_5">5dp</dimen>
+    <dimen name="dp_6">6dp</dimen>
+    <dimen name="dp_7">7dp</dimen>
+    <dimen name="dp_8">8dp</dimen>
+    <dimen name="dp_9">9dp</dimen>
+    <dimen name="dp_10">10dp</dimen>
+    <dimen name="dp_11">11dp</dimen>
+    <dimen name="dp_12">12dp</dimen>
+    <dimen name="dp_13">13dp</dimen>
+    <dimen name="dp_14">14dp</dimen>
+    <dimen name="dp_15">15dp</dimen>
+    <dimen name="dp_16">16dp</dimen>
+    <dimen name="dp_17">17dp</dimen>
+    <dimen name="dp_18">18dp</dimen>
+    <dimen name="dp_19">19dp</dimen>
+    <dimen name="dp_20">20dp</dimen>
+    <dimen name="dp_21">21dp</dimen>
+    <dimen name="dp_22">22dp</dimen>
+    <dimen name="dp_23">23dp</dimen>
+    <dimen name="dp_24">24dp</dimen>
+    <dimen name="dp_25">25dp</dimen>
+    <dimen name="dp_26">26dp</dimen>
+    <dimen name="dp_27">27dp</dimen>
+    <dimen name="dp_28">28dp</dimen>
+    <dimen name="dp_29">29dp</dimen>
+    <dimen name="dp_30">30dp</dimen>
+    <dimen name="dp_31">31dp</dimen>
+    <dimen name="dp_32">32dp</dimen>
+    <dimen name="dp_35">35dp</dimen>
+    <dimen name="dp_36">36dp</dimen>
+    <dimen name="dp_38">38dp</dimen>
+    <dimen name="dp_40">40dp</dimen>
+    <dimen name="dp_41">41dp</dimen>
+    <dimen name="dp_42">42dp</dimen>
+    <dimen name="dp_43">43dp</dimen>
+    <dimen name="dp_44">44dp</dimen>
+    <dimen name="dp_45">45dp</dimen>
+    <dimen name="dp_46">46dp</dimen>
+    <dimen name="dp_47">47dp</dimen>
+    <dimen name="dp_48">48dp</dimen>
+    <dimen name="dp_50">50dp</dimen>
+    <dimen name="dp_51">51dp</dimen>
+    <dimen name="dp_52">52dp</dimen>
+    <dimen name="dp_53">53dp</dimen>
+    <dimen name="dp_54">54dp</dimen>
+    <dimen name="dp_55">55dp</dimen>
+    <dimen name="dp_56">56dp</dimen>
+    <dimen name="dp_57">57dp</dimen>
+    <dimen name="dp_59">59dp</dimen>
+    <dimen name="dp_60">60dp</dimen>
+    <dimen name="dp_61">61dp</dimen>
+    <dimen name="dp_64">64dp</dimen>
+    <dimen name="dp_67">67dp</dimen>
+    <dimen name="dp_70">70dp</dimen>
+    <dimen name="dp_72">72dp</dimen>
+    <dimen name="dp_73">73dp</dimen>
+    <dimen name="dp_76">76dp</dimen>
+    <dimen name="dp_77">77dp</dimen>
+    <dimen name="dp_80">80dp</dimen>
+    <dimen name="dp_90">90dp</dimen>
+    <dimen name="dp_96">96dp</dimen>
+    <dimen name="dp_100">100dp</dimen>
+    <dimen name="dp_110">110dp</dimen>
+    <dimen name="dp_120">120dp</dimen>
+    <dimen name="dp_130">130dp</dimen>
+    <dimen name="dp_140">140dp</dimen>
+    <dimen name="dp_142">142dp</dimen>
+    <dimen name="dp_145">145dp</dimen>
+    <dimen name="dp_150">150dp</dimen>
+    <dimen name="dp_156">156dp</dimen>
+    <dimen name="dp_160">160dp</dimen>
+    <dimen name="dp_167">167dp</dimen>
+    <dimen name="dp_200">200dp</dimen>
+    <dimen name="dp_211">211dp</dimen>
+    <dimen name="dp_215">215dp</dimen>
+    <dimen name="dp_225">225dp</dimen>
+    <dimen name="dp_235">235dp</dimen>
+    <dimen name="dp_256">256dp</dimen>
+    <dimen name="dp_269">269dp</dimen>
+    <dimen name="dp_277">277dp</dimen>
+    <dimen name="dp_300">300dp</dimen>
+
+    <!-- font size,you can add if there is no one -->
+    <dimen name="sp_8">8sp</dimen>
+    <dimen name="sp_9">9sp</dimen>
+    <dimen name="sp_10">10sp</dimen>
+    <dimen name="sp_11">11sp</dimen>
+    <dimen name="sp_12">12sp</dimen>
+    <dimen name="sp_13">13sp</dimen>
+    <dimen name="sp_14">14sp</dimen>
+    <dimen name="sp_15">15sp</dimen>
+    <dimen name="sp_16">16sp</dimen>
+    <dimen name="sp_17">17sp</dimen>
+    <dimen name="sp_18">18sp</dimen>
+    <dimen name="sp_19">19sp</dimen>
+    <dimen name="sp_20">20sp</dimen>
+    <dimen name="sp_22">22sp</dimen>
+    <dimen name="sp_24">24sp</dimen>
+    <dimen name="sp_36">36sp</dimen>
+    <dimen name="sp_40">40sp</dimen>
+
+    <!--底部导航栏-->
+
+    <dimen name="indicator_dot_size">4dp</dimen>
+    <dimen name="indicator_dot_space">10dp</dimen>
+
+    <dimen name="download_text_size">16sp</dimen>
+    <dimen name="download_progress_text_size">15sp</dimen>
+    <dimen name="download_progress_stroke_width">1dp</dimen>
+    <dimen name="download_progress_radius">4dp</dimen>
+
+    <dimen name="popup_window_xoff">45dp</dimen>
+
+    <!-- 群组 -->
+    <dimen name="more_btn_height">@dimen/dp_42</dimen>
+    <dimen name="group_add_member_ok_btn_padding_right">@dimen/dp_17</dimen>
+    <dimen name="group_add_member_item_height">@dimen/dp_61</dimen>
+    <dimen name="group_add_member_item_padding">@dimen/dp_18</dimen>
+    <dimen name="group_add_member_item_icon_height">@dimen/dp_38</dimen>
+    <dimen name="group_add_member_item_text_size">@dimen/sp_15</dimen>
+    <dimen name="group_add_member_item_text_margin_left">@dimen/dp_10</dimen>
+    <dimen name="group_add_member_item_org_icon_height">@dimen/dp_21</dimen>
+    <dimen name="group_add_member_item_org_padding_left">@dimen/dp_31</dimen>
+    <dimen name="group_add_member_item_org_collapse_icon_height">@dimen/dp_21</dimen>
+    <dimen name="group_add_member_item_org_text_margin_left">@dimen/dp_14</dimen>
+    <dimen name="group_list_item_checkbox_height">@dimen/dp_42</dimen>
+    <dimen name="group_user_list_item_avatar_size">@dimen/dp_38</dimen>
+    <dimen name="group_option_item_height">@dimen/dp_51</dimen>
+    <dimen name="group_option_title_text_size">@dimen/sp_15</dimen>
+    <dimen name="group_option_title_margin_left">@dimen/dp_18</dimen>
+    <dimen name="group_option_switch_width">@dimen/dp_41</dimen>
+    <dimen name="group_option_switch_height">@dimen/dp_22</dimen>
+
+    <!-- 通讯录 -->
+    <dimen name="contact_list_item_height">@dimen/dp_61</dimen>
+    <dimen name="contact_list_item_icon_size">@dimen/dp_38</dimen>
+    <dimen name="contact_list_item_padding">@dimen/dp_18</dimen>
+    <dimen name="contact_list_item_title_margin_left">@dimen/dp_10</dimen>
+    <dimen name="contact_list_item_text_size">@dimen/sp_15</dimen>
+    <!-- 收藏 -->
+
+</resources>

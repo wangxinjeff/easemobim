@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+
+    <com.baidu.mapapi.map.MapView
+        android:id="@+id/bmapView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.baidu.mapapi.map.MapView>
+
+    <ImageButton
+        android:id="@+id/ib_my_location"
+        android:layout_width="@dimen/dp_32"
+        android:layout_height="@dimen/dp_32"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/dp_20"
+        android:background="@android:color/white"
+        android:scaleType="center"
+        android:src="@drawable/ease_icon_my_location" />
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#77000000"
+        android:gravity="center_vertical"
+        android:padding="@dimen/dp_10">
+
+        <ImageButton
+            android:id="@+id/ib_exit"
+            android:layout_width="@dimen/dp_26"
+            android:layout_height="@dimen/dp_26"
+            android:background="@drawable/bg_btn_rt_location"
+            android:scaleType="fitXY"
+            android:src="@drawable/ease_icon_turn_off" />
+
+        <ImageButton
+            android:id="@+id/ib_minium"
+            android:layout_width="@dimen/dp_26"
+            android:layout_height="@dimen/dp_26"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/bg_btn_rt_location"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ease_icon_minimizeg" />
+
+        <com.hyphenate.easemob.im.mp.widget.loc.LocAvatarGroup
+            android:id="@+id/ll_container"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/ib_minium"
+            android:layout_toRightOf="@id/ib_exit"
+            android:gravity="center"
+            android:orientation="horizontal" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

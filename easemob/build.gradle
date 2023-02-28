@@ -1,0 +1,103 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.hyphenate.easemob'
+    compileSdk 33
+
+    defaultConfig {
+        minSdk 24
+        targetSdk 33
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+}
+
+dependencies {
+    api fileTree(include: '*.jar', dir: 'libs')
+    compileOnly fileTree(include: '*.aar', dir: 'libs')
+    implementation 'androidx.core:core-ktx:1.7.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    implementation 'com.google.android.material:material:1.5.0'
+    implementation 'androidx.room:room-common:2.4.2'
+    implementation 'androidx.room:room-ktx:2.4.2'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    api 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.13'
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+
+    api 'androidx.recyclerview:recyclerview:1.0.0'
+    api "androidx.constraintlayout:constraintlayout:1.1.3"
+
+    api 'com.zhy:okhttputils:2.4.1'
+
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxjava:1.2.1'
+
+    api 'com.google.zxing:core:3.3.3'
+
+    // 工具类： https://github.com/Blankj/AndroidUtilCode
+    api 'com.blankj:utilcodex:1.30.0'
+
+    api'com.facebook.stetho:stetho:1.6.0'
+    api'com.facebook.stetho:stetho-okhttp3:1.6.0'
+    api'com.facebook.stetho:stetho-urlconnection:1.6.0'
+
+    api 'com.github.liyuzhao:badgeutil:v1.0.1'
+    implementation 'androidx.core:core-ktx:1.7.0'
+
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
+
+    implementation 'com.github.gzu-liyujiang.AndroidPicker:WheelPicker:4.1.7'
+
+    implementation 'com.kyleduo.switchbutton:library:2.0.0'
+
+    implementation 'com.github.liyuzhao:swipebackhelper:v1.0.1'
+    api 'com.jpeng:JPTabBar:1.4.0'
+    api 'com.github.li-xiaojun:XPopup:2.9.15'
+
+    implementation 'org.jsoup:jsoup:1.9.2'
+
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1"
+
+    implementation 'com.github.zyyoona7:EasyPopup:1.1.1'
+    implementation 'com.github.liyuzhao:mediapicker:v2.0.3'
+    implementation 'com.mylhyl:circleDialog:5.0.7'
+
+    implementation 'me.zhouzhuo.zzletterssidebar:zz-letters-sidebar:1.0.2'
+
+    implementation 'androidx.preference:preference:1.0.0'
+
+    implementation "com.github.skydoves:powermenu:2.0.5"
+
+    implementation 'com.drawthink:expandable-recyclerview:0.0.3'
+    implementation 'com.dasu.image:blur:0.0.6'
+    implementation 'com.github.yalantis:ucrop:2.2.8-native'
+    implementation 'com.lovedise:permissiongen:0.0.6'
+    implementation 'com.github.liyuzhao:photopicker:v1.0.1'
+    implementation 'com.github.liyuzhao:qpopupwidow:v1.0.1'
+    implementation 'com.github.liyuzhao:camera:v1.0.1'
+    implementation 'com.github.liyuzhao:compoundlayout:v1.0.1'
+    implementation 'com.github.invissvenska:Toaster:1.0.3'
+
+}

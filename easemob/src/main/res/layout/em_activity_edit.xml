@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_50"
+        android:background="@color/bg_top_bar_2"
+        android:gravity="center_vertical">
+
+        <LinearLayout
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="match_parent"
+            android:background="@drawable/ease_common_tab_bg"
+            android:onClick="back">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="9dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ease_mm_title_back" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/Change_the_group_name"
+            android:textColor="@color/color_white"
+            android:textSize="@dimen/sp_20" />
+
+        <Button
+            android:id="@+id/btn_save"
+            android:layout_width="@dimen/dp_70"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/em_mm_title_act_btn"
+            android:onClick="save"
+            android:text="@string/button_save"
+            android:textColor="#fff"
+            android:textSize="@dimen/sp_14" />
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:textSize="@dimen/sp_18" />
+
+</LinearLayout>

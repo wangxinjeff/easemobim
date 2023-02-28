@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/dp_277"
+    android:layout_height="@dimen/dp_167"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/dialog_group_detail_edit_name_bg"
+    app:layout_constraintCircleRadius="@dimen/dp_4">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginTop="@dimen/dp_29"
+        android:text="群名称"
+        android:textSize="@dimen/sp_19"
+        android:textColor="@color/color_333333"/>
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/et_input"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入群名称"
+        android:layout_marginTop="@dimen/dp_80"
+        android:layout_marginLeft="@dimen/dp_20"
+        android:layout_marginRight="@dimen/dp_20"
+        android:theme="@style/group_name_edit"
+        android:textSize="@dimen/sp_15"
+        android:textColor="@color/color_text9"/>
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="@dimen/dp_20"
+        android:layout_marginBottom="@dimen/dp_29"
+        android:text="确定"
+        android:textSize="@dimen/sp_13"
+        android:textColor="#6C8AB6"/>
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginRight="@dimen/dp_76"
+        android:layout_marginBottom="@dimen/dp_29"
+        android:text="取消"
+        android:textSize="@dimen/sp_13"
+        android:textColor="#6C8AB6"/>
+
+</RelativeLayout>

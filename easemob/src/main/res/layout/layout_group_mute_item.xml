@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="14dp"
+    android:paddingRight="15dp">
+
+    <com.hyphenate.easemob.easeui.widget.AvatarImageView
+        android:id="@+id/iv_avatar"
+        android:layout_width="@dimen/size_avatar"
+        android:layout_height="@dimen/size_avatar"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/ease_default_avatar"
+        app:aiv_TextSizeRatio="0.3" />
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_11"
+        android:layout_weight="1"
+        android:textColor="#666666"
+        android:textSize="@dimen/sp_16" />
+
+    <TextView
+        android:id="@+id/tv_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_btn_unmute"
+        android:paddingLeft="@dimen/dp_15"
+        android:paddingTop="@dimen/dp_6"
+        android:paddingRight="@dimen/dp_15"
+        android:paddingBottom="@dimen/dp_6"
+        android:text="解禁"
+        android:textSize="@dimen/sp_12"
+        android:textColor="@color/color_text9"/>
+
+</LinearLayout>

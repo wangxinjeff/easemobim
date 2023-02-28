@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_top_title_height"
+        android:background="@color/bg_top_bar_2">
+
+        <include layout="@layout/layout_back_view"/>
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/topbar_title_color"
+            android:textSize="@dimen/activity_top_title_textsize" />
+
+        <TextView
+            android:id="@+id/tv_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/group_add_member_ok_btn_padding_right"
+            android:background="?attr/selectableItemBackground"
+            android:text="@string/save"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/activity_top_btn_textsize"
+            android:visibility="gone" />
+
+<!--        <ImageView-->
+<!--            android:id="@+id/iv_close"-->
+<!--            android:layout_width="@dimen/activity_top_btn_height"-->
+<!--            android:layout_height="@dimen/activity_top_btn_height"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:padding="@dimen/dp_2"-->
+<!--            android:src="@drawable/mp_ic_close"-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_toLeftOf="@id/tv_submit"-->
+<!--            android:visibility="visible"-->
+<!--            />-->
+
+
+    </RelativeLayout>
+
+    <com.hyphenate.easemob.im.officeautomation.widget.CustomHorizontalScrollview
+        android:id="@+id/custom_hsv"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_47"
+        android:background="@color/color_white"
+        android:paddingLeft="@dimen/dp_18"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" />
+    </com.hyphenate.easemob.im.officeautomation.widget.CustomHorizontalScrollview>
+
+    <View
+        style="@style/divider_line_eee_small"
+        android:layout_height="@dimen/dp_10"
+        />
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+        android:id="@+id/srl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none" />
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</LinearLayout>

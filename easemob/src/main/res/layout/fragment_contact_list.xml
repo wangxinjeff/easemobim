@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_top_title_height"
+        android:background="@color/bg_top_bar_2"
+        android:paddingLeft="@dimen/dp_10"
+        android:paddingRight="@dimen/dp_10">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/address_book"
+            android:textColor="@color/topbar_title_color"
+            android:textSize="@dimen/activity_top_title_textsize" />
+
+        <ImageView
+            android:id="@+id/iv_add_friend"
+            android:layout_width="@dimen/dp_35"
+            android:layout_height="@dimen/dp_35"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:padding="@dimen/dp_5"
+            android:src="@drawable/mp_temp_icon_man_add_white"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/rl_search"
+        layout="@layout/ease_layout_search" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/rl_my_friends"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/contact_list_item_height"
+                android:background="@drawable/pressed_bg_select_grey_white"
+                android:paddingLeft="@dimen/contact_list_item_padding"
+                android:paddingRight="@dimen/contact_list_item_padding"
+                >
+
+                <ImageView
+                    android:id="@+id/icon_man"
+                    android:layout_width="@dimen/contact_list_item_icon_size"
+                    android:layout_height="@dimen/contact_list_item_icon_size"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/mp_ic_my_friends" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/contact_list_item_title_margin_left"
+                    android:layout_toRightOf="@id/icon_man"
+                    android:text="@string/friends"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/contact_list_item_text_size" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_layout_right"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View style="@style/devide_line_eee" android:visibility="gone"/>
+
+            <RelativeLayout
+                android:id="@+id/rl_notify"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/contact_list_item_height"
+                android:background="@drawable/pressed_bg_select_grey_white"
+                android:paddingLeft="@dimen/contact_list_item_padding"
+                android:paddingRight="@dimen/contact_list_item_padding"
+                android:visibility="gone"
+                >
+
+                <ImageView
+                    android:id="@+id/icon_man_add"
+                    android:layout_width="@dimen/contact_list_item_icon_size"
+                    android:layout_height="@dimen/contact_list_item_icon_size"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/mp_ic_friend_invite" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/contact_list_item_title_margin_left"
+                    android:layout_toRightOf="@id/icon_man_add"
+                    android:text="@string/friend_invites"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/contact_list_item_text_size" />
+
+                <ImageView
+                    android:id="@+id/imageview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_layout_right"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/iv_notify_prompt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_toLeftOf="@id/imageview"
+                    android:src="@drawable/ease_unread_dot"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View style="@style/devide_line_eee" />
+
+            <RelativeLayout
+                android:id="@+id/rl_group_notify"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/contact_list_item_height"
+                android:background="@drawable/pressed_bg_select_grey_white"
+                android:paddingLeft="@dimen/contact_list_item_padding"
+                android:paddingRight="@dimen/contact_list_item_padding">
+
+                <ImageView
+                    android:id="@+id/iv_group_apply_icon"
+                    android:layout_width="@dimen/contact_list_item_icon_size"
+                    android:layout_height="@dimen/contact_list_item_icon_size"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/mp_ic_friend_invite" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/contact_list_item_title_margin_left"
+                    android:layout_toRightOf="@id/iv_group_apply_icon"
+                    android:text="@string/group_invites"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/contact_list_item_text_size" />
+
+                <ImageView
+                    android:id="@+id/imageview1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_layout_right"
+                    android:visibility="gone" />
+
+                <ImageView
+                    android:id="@+id/iv_group_notify_prompt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="20dp"
+                    android:layout_toLeftOf="@id/imageview1"
+                    android:src="@drawable/ease_unread_dot"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View style="@style/devide_line_eee" />
+
+            <RelativeLayout
+                android:id="@+id/rl_groups"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/contact_list_item_height"
+                android:background="@drawable/pressed_bg_select_grey_white"
+                android:paddingLeft="@dimen/contact_list_item_padding"
+                android:paddingRight="@dimen/contact_list_item_padding">
+
+                <ImageView
+                    android:id="@+id/icon_group"
+                    android:layout_width="@dimen/contact_list_item_icon_size"
+                    android:layout_height="@dimen/contact_list_item_icon_size"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/mp_ic_groups" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/contact_list_item_title_margin_left"
+                    android:layout_toRightOf="@id/icon_group"
+                    android:text="@string/my_groups"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/contact_list_item_text_size" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_layout_right"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View style="@style/devide_line_eee" />
+
+            <RelativeLayout
+                android:id="@+id/rl_star_friends"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/contact_list_item_height"
+                android:background="@drawable/pressed_bg_select_grey_white"
+                android:paddingLeft="@dimen/contact_list_item_padding"
+                android:paddingRight="@dimen/contact_list_item_padding">
+
+                <ImageView
+                    android:id="@+id/icon_star"
+                    android:layout_width="@dimen/contact_list_item_icon_size"
+                    android:layout_height="@dimen/contact_list_item_icon_size"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/mp_ic_star_friend" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="@dimen/contact_list_item_title_margin_left"
+                    android:layout_toRightOf="@id/icon_star"
+                    android:text="@string/starred_friends"
+                    android:textColor="@color/color_333333"
+                    android:textSize="@dimen/contact_list_item_text_size" />
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_layout_right"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <View style="@style/devide_line_eee" />
+
+            <LinearLayout
+                android:id="@+id/ll_company_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <View style="@style/devide_line_eee" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

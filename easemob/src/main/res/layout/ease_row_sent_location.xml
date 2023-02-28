@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    style="@style/style_bubble_padding">
+
+    <TextView
+        android:id="@+id/timestamp"
+        style="@style/chat_text_date_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_chat_top">
+
+        <LinearLayout
+            android:id="@+id/ll_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <com.hyphenate.easemob.easeui.widget.EaseImageView
+                android:id="@+id/iv_userhead"
+                android:layout_width="@dimen/size_message_avatar"
+                android:layout_height="@dimen/size_message_avatar"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_activity"
+                android:scaleType="fitXY"
+                android:src="@drawable/ease_default_avatar" />
+
+            <CheckBox
+                android:id="@+id/cb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginRight="@dimen/dp_20"
+                android:theme="@style/CustomCheckBoxTheme2"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bubble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_chat_activity"
+            android:layout_toLeftOf="@id/ll_right"
+            android:background="@drawable/shape_white_radius_5"
+            android:padding="@dimen/dp_2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_location"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#ffffff"
+                android:gravity="center|left"
+                android:maxLines="2"
+                android:paddingLeft="@dimen/dp_10"
+                android:paddingTop="@dimen/dp_5"
+                android:paddingRight="@dimen/dp_10"
+                android:paddingBottom="@dimen/dp_5"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/sp_12" />
+
+            <RelativeLayout
+                android:id="@+id/content_container"
+                android:layout_width="@dimen/dp_215"
+                android:layout_height="@dimen/dp_145"
+                android:background="@drawable/ease_location_msg"
+                android:paddingBottom="@dimen/dp_5" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_ack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/bubble"
+            android:layout_alignRight="@id/bubble"
+            android:paddingRight="@dimen/dp_5"
+            android:textColor="#cccccc"
+            android:textSize="@dimen/sp_12" />
+
+        <ImageView
+            android:id="@+id/msg_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/bubble"
+            android:clickable="true"
+            android:src="@drawable/ease_msg_state_failed_resend"
+            android:visibility="gone" />
+
+        <!--<TextView-->
+        <!--android:id="@+id/tv_ack"-->
+        <!--style="@style/chat_text_name_style"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_centerVertical="true"-->
+        <!--android:layout_toLeftOf="@id/bubble"-->
+        <!--android:text="@string/text_ack_msg"-->
+        <!--android:textSize="12sp"-->
+        <!--android:visibility="invisible" />-->
+
+        <TextView
+            android:id="@+id/tv_delivered"
+            style="@style/chat_text_name_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/bubble"
+            android:text="@string/text_delivered_msg"
+            android:textSize="@dimen/sp_12"
+            android:visibility="invisible" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="@dimen/dp_25"
+            android:layout_height="@dimen/dp_25"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/bubble"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+</LinearLayout>

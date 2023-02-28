@@ -1,0 +1,108 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dp_10"
+        android:background="@drawable/bg_corner_4dp_white"
+        android:elevation="@dimen/dp_4"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/conversation_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_20"
+            android:paddingBottom="@dimen/dp_10"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/sp_14"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/sticky_conversation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_20"
+            android:paddingBottom="@dimen/dp_10"
+            android:text="@string/sticky_conversation"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/sticky_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_20"
+            android:paddingBottom="@dimen/dp_10"
+            android:text="@string/sticky_cancel"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp_14"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_20"
+            android:paddingBottom="@dimen/dp_10"
+            android:text="@string/no_disturb_mode"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp_14"
+            android:visibility="gone" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_20"
+            android:paddingBottom="@dimen/dp_10"
+            android:text="@string/sticky_cancel"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp_14"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/delete_conversation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_20"
+            android:paddingBottom="@dimen/dp_10"
+            android:text="删除"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp_14" />
+
+        <TextView
+            android:id="@+id/delete_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:paddingLeft="@dimen/dp_20"
+            android:paddingTop="@dimen/dp_10"
+            android:paddingRight="@dimen/dp_20"
+            android:paddingBottom="@dimen/dp_10"
+            android:text="@string/delete_conversation_messages"
+            android:textColor="@color/color_333333"
+            android:textSize="@dimen/sp_14"
+            android:visibility="gone" />
+    </LinearLayout>
+
+</LinearLayout>

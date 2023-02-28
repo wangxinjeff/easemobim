@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <external-path
+        name="files_root"
+        path="/sdcard/Android/data/com/hyphenate/oa/" />
+    <external-path
+        name="files_root"
+        path="/sdcard/Android/data/com/hyphenate/oa/sandbox/" />
+    <external-path
+        name="external_storage_root"
+        path="." />
+    <external-path
+        name="updateversion_apkfile"
+        path="." />
+    <external-path
+        name="download"
+        path="/Download" />
+    <external-path
+        name="external_files"
+        path="." />
+    <root-path
+        name="root_path"
+        path="." />
+    <root-path
+        name="root_path"
+        path="." />
+</paths>

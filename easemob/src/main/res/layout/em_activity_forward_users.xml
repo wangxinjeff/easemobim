@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_top_title_height"
+        android:background="@color/bg_top_bar_2">
+
+        <ImageView
+            android:id="@+id/iv_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/dp_10"
+            android:src="@drawable/ease_mm_title_back"
+            android:tint="@color/topbar_title_color" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="选择联系人"
+            android:textColor="@color/topbar_title_color"
+            android:textSize="@dimen/activity_top_title_textsize" />
+
+        <TextView
+            android:id="@+id/tv_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/dp_10"
+            android:padding="@dimen/dp_5"
+            android:text="确定"
+            android:textColor="@color/topbar_btn_textcolor"
+            android:textSize="@dimen/activity_top_btn_textsize" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <me.zhouzhuo.zzletterssidebar.widget.ZzRecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/white" />
+
+        <TextView
+            android:id="@+id/tv_dialog"
+            android:layout_width="@dimen/dp_100"
+            android:layout_height="@dimen/dp_90"
+            android:layout_centerInParent="true"
+            android:background="@drawable/tv_dialog_bg"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_36"
+            android:visibility="gone" />
+
+        <me.zhouzhuo.zzletterssidebar.ZzLetterSideBar
+            android:id="@+id/sidebar"
+            android:layout_width="@dimen/dp_24"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/dp_50"
+            android:layout_marginBottom="@dimen/dp_50" />
+
+    </RelativeLayout>
+
+
+</LinearLayout>

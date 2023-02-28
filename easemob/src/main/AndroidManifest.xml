@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.STOP_APP_SWITCHES"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.STOP_APP_SWITCHES"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-permission android:name="android.permission.BODY_SENSORS" />
+    <!-- 悬浮窗权限 -->
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" />
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission
+        android:name="android.permission.WRITE_SETTINGS"
+        tools:ignore="ProtectedPermissions" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <!--<uses-permission android:name="android.permission.RECEIVE_SMS" />-->
+    <!--<uses-permission android:name="android.permission.READ_SMS" />-->
+    <uses-permission
+        android:name="android.permission.INTERACT_ACROSS_USERS_FULL"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD" />
+
+    <uses-permission
+        android:name="android.permission.READ_LOGS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission
+        android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"
+        tools:ignore="ProtectedPermissions" />
+    <uses-permission android:name="${applicationId}.permission.MIPUSH_RECEIVE" />
+
+    <permission
+        android:name="${applicationId}.permission.MIPUSH_RECEIVE"
+        android:protectionLevel="signature" />
+
+
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <uses-permission android:name="oppo.permission.OPPO_COMPONENT_SAFE"/>
+    <uses-permission android:name="com.huawei.permission.external_app_settings.USE_COMPONENT"/>
+    <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+
+    <!-- 安卓11额外权限 -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+    <!-- 华为角标 -->
+    <uses-permission android:name="com.huawei.permission.sec.SDK_LAUNCHER"/>
+
+    <application
+        android:usesCleartextTraffic="true"
+
+        >
+
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <activity
+            android:name=".im.officeautomation.ui.ChatActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/SwipeBackThemeChat"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".im.officeautomation.ui.GroupPickContactsActivity"
+            android:theme="@style/SwipeBackTheme"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".im.officeautomation.ui.GroupSearchMessageActivity"
+            android:theme="@style/SwipeBackTheme"
+            android:windowSoftInputMode="stateVisible" />
+        <activity
+            android:name=".im.officeautomation.ui.GroupDetailsActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.ImageGridActivity"
+            android:theme="@style/SwipeBackTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:name=".im.mp.ui.group.GroupEditActivity"
+            android:theme="@style/SwipeBackTheme" />
+
+        <activity
+            android:name=".im.mp.ui.PictureActivity"
+            android:label="@string/label_sendto"
+            android:theme="@style/horizontal_slide"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <data android:mimeType="image/*" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+
+        <activity
+            android:name=".im.officeautomation.ui.PickAtUserActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.SharedFilesActivity"
+            android:theme="@style/SwipeBackTheme" />
+
+        <activity
+            android:name=".im.mp.ui.ModifyActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <!--<activity-->
+        <!--android:name=".ui.ContextMenuActivity"-->
+        <!--android:screenOrientation="portrait"-->
+        <!--android:theme="@style/MyDialogStyle" />-->
+        <activity
+            android:name=".im.officeautomation.ui.ForwardMessageActivity"
+            android:theme="@style/SwipeBackTheme"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- 显示下载大图页面 -->
+        <activity
+            android:name=".easeui.ui.EaseShowBigImageActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <!-- 下载文件 -->
+        <activity
+            android:name=".easeui.ui.EaseShowNormalFileActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".easeui.ui.EaseShowVideoActivity"
+            android:theme="@style/SwipeBackTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- Ding msg send activity -->
+        <activity
+            android:name=".easeui.ui.EaseDingMsgSendActivity"
+            android:theme="@style/SwipeBackTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- Ding ack user list activity -->
+        <activity
+            android:name=".easeui.ui.EaseDingAckUserListActivity"
+            android:theme="@style/SwipeBackTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <!-- 地图 -->
+        <activity
+            android:name=".im.officeautomation.ui.EMBaiduMapActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.ChatDetailsActivity"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name=".im.officeautomation.ui.GeneralActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.SetTextSizeActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.NewMsgNotifyActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.SetNoDisturbModeActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.OrgStructureActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.PersonalCardActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.SearchActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.StarredFriendsActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.GroupMembersActivity"
+            android:theme="@style/SwipeBackTheme" />
+
+        <!--裁剪图片页面-->
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
+        <activity
+            android:name=".im.officeautomation.ui.ChatHistoryActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.mp.ui.ChatsHistoryActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.CreateGroupActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name=".im.officeautomation.ui.GroupsActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.EditActivity"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name=".im.officeautomation.ui.ExitGroupDialog"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name=".im.officeautomation.ui.UpdateDepartNameActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.NewChatSelectActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.CreateUserActivity"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name=".im.officeautomation.ui.CreateEventActivity"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name=".im.officeautomation.ui.SetEventReminderActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.SetEventRepeatActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.CameraActivity"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name="me.iwf.photopicker.PhotoPagerActivity"
+            android:theme="@style/Theme.AppCompat.NoActionBar" />
+        <activity
+            android:name=".im.mp.ui.ForwardActivity"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name=".im.mp.ui.ForwardUsersActivity"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name=".im.mp.ui.ForwardGroupActivity"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name=".im.mp.ui.collect.FavListActivity"
+            android:theme="@style/SwipeBackTheme" />
+
+        <!--相册-->
+        <activity android:name="me.iwf.photopicker.PhotoPickerActivity" />
+        <activity
+            android:name=".im.mp.ui.collect.FavDetailActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.mp.ui.collect.FavFilterListActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.mp.ui.collect.FavSearchUI"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name=".im.mp.ui.collect.FavForwardActivity"
+            android:theme="@style/SwipeBackTheme" />
+
+        <activity
+            android:name=".im.mp.ui.burn.BurnMsgPreviewActivity"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name=".im.mp.ui.location.ShareLocationActivity"
+            android:theme="@style/horizontal_slide" />
+        <activity
+            android:name=".im.officeautomation.ui.MyFriendsActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.NewFriendsActivity"
+            android:theme="@style/SwipeBackTheme" />
+
+        <activity android:name=".im.mp.ui.group.GroupInviteActivity"
+            android:theme="@style/SwipeBackTheme"
+            />
+        <activity
+            android:name=".im.officeautomation.ui.ContactDetailsActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.FindUserActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.WebActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/SwipeBackTheme" />
+
+        <activity
+            android:name=".im.officeautomation.ui.group.GroupDetailInfoActivity"
+            android:launchMode="singleTask"
+            android:theme="@style/SwipeBackTheme" />
+
+        <activity
+            android:name=".im.officeautomation.ui.group.GroupMember3Activity"
+            android:theme="@style/SwipeBackTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity
+            android:name=".im.officeautomation.ui.group.DeleteGroupMemberActivity"
+            android:theme="@style/SwipeBackTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+        <activity
+            android:name=".im.officeautomation.ui.group.ChangeGroupOwnerActivity"
+            android:theme="@style/SwipeBackTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity
+            android:name=".im.officeautomation.ui.group.GroupAddMemberActivity"
+            android:theme="@style/SwipeBackTheme" />
+
+        <activity
+            android:name=".im.officeautomation.ui.group.GroupMutesActivity"
+            android:theme="@style/SwipeBackTheme" />
+
+        <activity
+            android:name=".im.officeautomation.ui.group.GroupMuteSettingActivity"
+            android:theme="@style/SwipeBackTheme"
+            android:windowSoftInputMode="adjustPan|stateHidden" />
+
+        <activity android:name=".im.mp.ui.login.ConfirmLoginActivity" />
+        <activity
+            android:name=".im.officeautomation.ui.group.GroupMembersManagerActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.mp.ui.ChatsCollectionActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.ChatHistoryCurrActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.ChatHistoryContextActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.CompanyStructureActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity
+            android:name=".im.officeautomation.ui.ModifyNoteActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity android:name=".im.officeautomation.ui.SystemNotifyActivity"
+            android:theme="@style/SwipeBackTheme" />
+        <activity android:name=".easeui.ui.EaseFilePreviewActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".easeui.ui.EaseTBSActivity" android:screenOrientation="portrait"/>
+
+        <!-- 声明SDK所需的service SDK核心功能-->
+        <service
+            android:name="com.hyphenate.chat.EMChatService"
+            android:exported="true" />
+        <service
+            android:name="com.hyphenate.chat.EMJobService"
+            android:exported="true"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+        <!-- 声明SDK所需的receiver -->
+        <receiver android:name="com.hyphenate.chat.EMMonitorReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PACKAGE_REMOVED" />
+                <data android:scheme="package" />
+            </intent-filter>
+            <!-- 可选filter -->
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.USER_PRESENT" />
+            </intent-filter>
+        </receiver>
+        <!-- 百度地图所需的service -->
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:process=":remote" />
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="3ecea51f560650b1ed8a4b99808f52e8" />
+
+
+        <provider
+            android:name="com.hyphenate.easemob.im.mp.utils.MPProvider"
+            android:authorities="${applicationId}.easemob"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/em_provider_paths" />
+        </provider>
+        <!--.imagePicker.provider-->
+
+        <service android:name=".im.mp.service.BDLocationService" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/v_arrow"
+        android:layout_width="@dimen/dp_20"
+        android:layout_height="@dimen/dp_10"
+        android:layout_gravity="end"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/dp_10"
+        android:layout_marginRight="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10"
+        android:background="@drawable/bg_corner_4dp_white"
+        android:elevation="@dimen/dp_4"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:showDividers="middle">
+
+        <TextView
+            android:id="@+id/tv_add_friend"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:drawableLeft="@drawable/mp_ic_add_friend"
+            android:drawablePadding="@dimen/dp_1"
+            android:gravity="center"
+            android:padding="@dimen/dp_13"
+            android:text="@string/add_friend"
+            android:textColor="@color/content_text_color"
+            android:textSize="@dimen/sp_13"
+            android:visibility="gone"
+            />
+
+        <TextView
+            android:id="@+id/tv_start_group"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:drawableLeft="@drawable/mp_ic_create_group"
+            android:drawablePadding="@dimen/dp_5"
+            android:padding="@dimen/dp_13"
+            android:text="@string/start_group"
+            android:textColor="@color/content_text_color"
+            android:textSize="@dimen/sp_13" />
+
+        <TextView
+            android:id="@+id/tv_scan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:drawableLeft="@drawable/mp_icon_scan"
+            android:drawablePadding="@dimen/dp_5"
+            android:padding="@dimen/dp_13"
+            android:text="@string/scan"
+            android:textColor="@color/content_text_color"
+            android:textSize="@dimen/sp_13" />
+
+        <TextView
+            android:id="@+id/tv_file_transfer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground"
+            android:drawableLeft="@drawable/mp_icon_scan"
+            android:drawablePadding="@dimen/dp_5"
+            android:padding="@dimen/dp_13"
+            android:text="@string/transfer"
+            android:textColor="@color/content_text_color"
+            android:textSize="@dimen/sp_13" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentBottom="true"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/dp_2"
+        android:paddingBottom="@dimen/dp_2">
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:background="@color/gray_normal" />
+
+        <LinearLayout
+            android:id="@+id/rl_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#EDEFF2"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+
+            >
+
+            <RelativeLayout
+                android:id="@+id/edittext_layout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_10"
+                android:layout_marginBottom="@dimen/dp_10"
+                android:layout_marginLeft="@dimen/dp_5"
+                android:layout_marginRight="@dimen/dp_5"
+                android:layout_weight="1"
+                android:gravity="bottom">
+
+                <com.hyphenate.easemob.easeui.widget.CustomizeEditText
+                    android:id="@+id/et_sendmessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ease_input_bar_fire_bg"
+                    android:imeOptions="actionSend"
+                    android:paddingLeft="@dimen/dp_8"
+                    android:paddingRight="@dimen/dp_8"
+                    android:inputType="text"
+                    android:maxLines="3"
+                    android:minHeight="@dimen/dp_32"
+                    android:textSize="@dimen/sp_16" />
+            </RelativeLayout>
+
+
+            <ImageView
+                android:id="@+id/btn_destory_image"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:src="@drawable/mp_ic_fire_pic" />
+
+            <ImageView
+                android:id="@+id/btn_destory_exit"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:src="@drawable/mp_ic_fire_exit" />
+
+            <Button
+                android:id="@+id/btn_send"
+                android:layout_width="@dimen/dp_46"
+                android:layout_height="@dimen/dp_32"
+                android:layout_marginRight="4dp"
+                android:background="@drawable/bg_chatrow_border_fire"
+                android:text="@string/button_send"
+                android:textColor="#2F2E41"
+                android:textSize="@dimen/sp_13"
+                android:visibility="gone" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/dp_10"
+    android:orientation="vertical">
+
+    <View style="@style/devide_line_eee" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/group_add_member_item_height"
+        android:background="@drawable/pressed_bg_select_grey_white"
+        android:paddingLeft="@dimen/group_add_member_item_padding"
+        android:paddingRight="@dimen/group_add_member_item_padding">
+
+        <ImageView
+            android:id="@+id/icon_orgs"
+            android:layout_width="@dimen/group_add_member_item_icon_height"
+            android:layout_height="@dimen/group_add_member_item_icon_height"
+            android:layout_centerVertical="true"
+            android:src="@drawable/mp_ic_orgs" />
+
+        <TextView
+            android:id="@+id/tv_my_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/group_add_member_item_text_margin_left"
+            android:layout_toRightOf="@id/icon_orgs"
+            android:text="公司名称"
+            android:textColor="@color/content_text_color"
+            android:textSize="@dimen/group_add_member_item_text_size" />
+
+        <ImageView
+            android:id="@+id/iv_org_up"
+            android:layout_width="@dimen/group_add_member_item_org_collapse_icon_height"
+            android:layout_height="@dimen/group_add_member_item_org_collapse_icon_height"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/mp_ic_arrow_up" />
+
+        <ImageView
+            android:id="@+id/iv_org_down"
+            android:layout_width="@dimen/group_add_member_item_org_collapse_icon_height"
+            android:layout_height="@dimen/group_add_member_item_org_collapse_icon_height"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/mp_ic_arrow_down"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+    <View style="@style/divider_line_eee_small" />
+
+    <LinearLayout
+        android:id="@+id/ll_orgs_and_myorg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <RelativeLayout
+            android:id="@+id/rl_org_structure"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/group_add_member_item_height"
+            android:background="@drawable/pressed_bg_select_grey_white"
+            android:paddingLeft="@dimen/group_add_member_item_org_padding_left">
+
+            <ImageView
+                android:id="@+id/iv_org_label"
+                android:layout_width="@dimen/group_add_member_item_org_icon_height"
+                android:layout_height="@dimen/group_add_member_item_org_icon_height"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/mp_ic_orgs_left" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/group_add_member_item_org_text_margin_left"
+                android:layout_toRightOf="@id/iv_org_label"
+                android:text="@string/org_structure"
+                android:textColor="@color/sub_content_text_color"
+                android:textSize="@dimen/group_add_member_item_text_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_layout_right"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <View style="@style/divider_line_eee_small" />
+
+        <RelativeLayout
+            android:id="@+id/rl_my_org"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/group_add_member_item_height"
+            android:background="@drawable/pressed_bg_select_grey_white"
+            android:paddingLeft="@dimen/group_add_member_item_org_padding_left">
+
+            <ImageView
+                android:id="@+id/iv_my_org_label"
+                android:layout_width="@dimen/group_add_member_item_org_icon_height"
+                android:layout_height="@dimen/group_add_member_item_org_icon_height"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/mp_ic_myorg_left" />
+
+
+            <TextView
+                android:id="@+id/tv_my_org"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/group_add_member_item_org_text_margin_left"
+                android:layout_toRightOf="@id/iv_my_org_label"
+                android:text="@string/my_org"
+                android:textColor="@color/sub_content_text_color"
+                android:textSize="@dimen/group_add_member_item_text_size" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/icon_layout_right"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>

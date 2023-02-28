@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/activity_top_title_height"
+    android:background="@color/bg_top_bar_2"
+    android:gravity="center_vertical">
+
+    <RelativeLayout
+        android:id="@+id/left_layout"
+        android:layout_width="@dimen/activity_top_btn_height"
+        android:layout_height="match_parent"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/left_image"
+            android:layout_width="@dimen/dp_42"
+            android:layout_height="@dimen/dp_42"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="@dimen/dp_60"
+        android:layout_marginRight="@dimen/dp_60"
+        android:gravity="center"
+        >
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="middle"
+            android:singleLine="true"
+            android:textColor="@color/topbar_title_color"
+            android:textSize="@dimen/activity_top_title_textsize" />
+
+        <ImageView
+            android:id="@+id/iv_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/title"
+            android:layout_marginLeft="@dimen/dp_2"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ease_icon_status_offline"
+            android:visibility="gone"
+            />
+    </LinearLayout>
+
+
+
+    <RelativeLayout
+        android:id="@+id/right_layout"
+        android:layout_width="@dimen/activity_top_btn_height"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:background="?attr/selectableItemBackground">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/right_image"
+            android:layout_width="@dimen/dp_42"
+            android:layout_height="@dimen/dp_42"
+            android:layout_centerInParent="true"
+            android:tint="@color/topbar_title_color" />
+    </RelativeLayout>
+
+</RelativeLayout>
