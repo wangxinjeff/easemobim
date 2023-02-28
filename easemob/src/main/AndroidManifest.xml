@@ -64,6 +64,8 @@
     <uses-permission android:name="oppo.permission.OPPO_COMPONENT_SAFE"/>
     <uses-permission android:name="com.huawei.permission.external_app_settings.USE_COMPONENT"/>
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
+    <uses-permission android:name="android.permission.STOP_APP_SWITCHES"
+        tools:ignore="ProtectedPermissions" />
 
     <!-- 安卓11额外权限 -->
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
