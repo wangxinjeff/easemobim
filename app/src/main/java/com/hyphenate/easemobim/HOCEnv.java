@@ -15,17 +15,17 @@ public class HOCEnv implements EnvHelper.BaseEnv {
 
     @Override
     public String imServer() {
-        return "180.184.135.29";
+        return "106.38.243.169";
     }
 
     @Override
     public String restServer() {
-        return "http://180.184.135.29:12001";
+        return "http://106.38.243.169:12001";
     }
 
     @Override
     public String ccsServer() {
-        return "http://180.184.135.29:12007";
+        return "http://106.38.243.169:12007";
     }
 
     @Override

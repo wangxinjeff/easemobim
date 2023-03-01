@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-    implementation files('libs/BaiduLBS_Android.jar')
+//    implementation files('libs/BaiduLBS_Android.jar')
     implementation files('libs/eventbus.jar')
     api files('libs/hyphenatechat_3.7.2.jar')
     implementation files('libs/tbs_sdk_thirdapp_v3.6.0.1249_43610_sharewithdownload_withoutGame_obfs_20180608_114954.jar')
@@ -103,6 +103,11 @@ dependencies {
     implementation 'com.github.liyuzhao:camera:v1.0.1'
     implementation 'com.github.liyuzhao:compoundlayout:v1.0.1'
     implementation 'com.github.invissvenska:Toaster:1.0.3'
+
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Map:7.4.0'
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Search:7.4.0'
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Util:7.4.0'
+    implementation 'com.baidu.lbsyun:BaiduMapSDK_Location:9.1.8'
 
 }
 

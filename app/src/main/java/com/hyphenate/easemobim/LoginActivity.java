@@ -29,7 +29,7 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_login);
         findViewById(R.id.btn_login).setOnClickListener(v -> {
-            AppHelper.getInstance().login("wangxin", "123456", new EMCallBack() {
+            AppHelper.getInstance().login("yw2024707", "123456", new EMCallBack() {
                 @Override
                 public void onSuccess() {
                     runOnUiThread(() ->{
