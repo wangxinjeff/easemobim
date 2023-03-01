@@ -28,34 +28,26 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.layout_login);
-        if (EMClient.getInstance().isLoggedInBefore()) {
-            Intent intent = new Intent();
-            intent.setClass(LoginActivity.this, MainActivity.class);
-            startActivity(intent);
-            getGroupsDisturb();
-        } else {
-            findViewById(R.id.btn_login).setOnClickListener(v -> {
-                AppHelper.getInstance().login("wangxin", "123456", new EMCallBack() {
-                    @Override
-                    public void onSuccess() {
-                        runOnUiThread(() ->{
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        });
+        findViewById(R.id.btn_login).setOnClickListener(v -> {
+            AppHelper.getInstance().login("wangxin", "123456", new EMCallBack() {
+                @Override
+                public void onSuccess() {
+                    runOnUiThread(() ->{
+                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    });
+                }
 
-                    }
+                @Override
+                public void onError(int i, String s) {
 
-                    @Override
-                    public void onError(int i, String s) {
+                }
 
-                    }
+                @Override
+                public void onProgress(int i, String s) {
 
-                    @Override
-                    public void onProgress(int i, String s) {
-
-                    }
-                });
+                }
             });
-        }
+        });
     }
 
     private void getGroupsDisturb() {
