@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import android.text.TextUtils;
@@ -33,6 +34,8 @@ import com.hyphenate.easemob.easeui.ui.EaseConversationListFragment;
 import com.hyphenate.easemob.easeui.utils.EaseUserUtils;
 import com.hyphenate.easemob.easeui.widget.WaterMarkBg;
 import com.hyphenate.easemob.easeui.widget.WaterMarkBgView;
+import com.hyphenate.easemob.im.officeautomation.runtimepermissions.PermissionsManager;
+import com.hyphenate.easemob.im.officeautomation.runtimepermissions.PermissionsResultAction;
 import com.hyphenate.eventbus.Subscribe;
 import com.hyphenate.eventbus.ThreadMode;
 import com.hyphenate.easemob.im.mp.AppHelper;
@@ -88,6 +91,8 @@ public class ConversationListFragment extends EaseConversationListFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        MPEventBus.getDefault().register(this);
+        // runtime permission for android 6.0, just require all permissions here for simple
+        requestAllPermissions();
     }
 
     @Override
@@ -565,4 +570,24 @@ public class ConversationListFragment extends EaseConversationListFragment {
 
     }
 
+    private void requestAllPermissions() {
+        PermissionsManager.getInstance().requestAllManifestPermissionsIfNecessary(getActivity(), new PermissionsResultAction() {
+            @Override
+            public void onGranted() {
+                MPLog.d(TAG, "All permissions have been granted");
+            }
+
+            @Override
+            public void onDenied(String permission) {
+                MPLog.e(TAG, "Permission:" + permission + "  has been denied");
+            }
+        });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        PermissionsManager.getInstance().notifyPermissionsChange(permissions, grantResults);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
 }

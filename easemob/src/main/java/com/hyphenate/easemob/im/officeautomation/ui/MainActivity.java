@@ -108,7 +108,7 @@ public class MainActivity extends BaseActivity {
         setSwipeEnabled(false);
 
         // runtime permission for android 6.0, just require all permissions here for simple
-        requestAllPermissions();
+//        requestAllPermissions();
 
         initView();
 
@@ -659,7 +659,6 @@ public class MainActivity extends BaseActivity {
 //                }
 //                if (permission == permissions.length) {
 //
-//                } else {
 //
 //                }
 //
