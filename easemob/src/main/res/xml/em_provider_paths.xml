@@ -24,4 +24,6 @@
     <root-path
         name="root_path"
         path="." />
+
+    <external-path path="." name="camera_photos" />
 </paths>
