@@ -123,6 +123,9 @@ public class ConversationListFragment extends EaseConversationListFragment {
             EMClient.getInstance().chatManager().updateMessage(message);
         }
         SessionCache.getInstance().onMessageReceived(message);
+        getActivity().runOnUiThread(() -> {
+            refresh();
+        });
     }
 
 

@@ -31,9 +31,15 @@ import com.hyphenate.easemob.easeui.model.EaseAtMessageHelper;
 import com.hyphenate.easemob.easeui.model.EaseNotifier;
 import com.hyphenate.easemob.easeui.utils.EaseCommonUtils;
 import com.hyphenate.easemob.easeui.utils.EaseUserUtils;
+import com.hyphenate.easemob.im.officeautomation.domain.NoDisturbEntity;
+import com.hyphenate.easemob.im.officeautomation.http.BaseRequest;
+import com.hyphenate.easemob.im.officeautomation.utils.CommonUtils;
 import com.hyphenate.easemob.imlibs.cache.OnlineCache;
+import com.hyphenate.easemob.imlibs.easeui.prefs.PreferenceUtils;
 import com.hyphenate.easemob.imlibs.mp.ConnectionListener;
+import com.hyphenate.easemob.imlibs.mp.EMDataCallBack;
 import com.hyphenate.easemob.imlibs.mp.MPClient;
+import com.hyphenate.easemob.imlibs.officeautomation.emrequest.EMAPIManager;
 import com.hyphenate.eventbus.MPEventBus;
 import com.hyphenate.exceptions.HyphenateException;
 import com.hyphenate.easemob.imlibs.mp.events.EventEMMessageReceived;
@@ -50,6 +56,7 @@ import com.hyphenate.easemob.im.officeautomation.utils.Constant;
 import com.hyphenate.easemob.im.officeautomation.utils.MyToast;
 import com.lxj.xpopup.XPopup;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -450,6 +457,26 @@ public class AppHelper {
                         MPLog.e(TAG, "received cmd message but action is null or empty");
                         return;
                     }
+
+                    if(TextUtils.equals("app_config_update", action)){
+                        // 服务配置修改
+                        try {
+                            JSONObject jsonObject = message.getJSONObjectAttribute("content");
+                            if (jsonObject != null){
+                                String code = jsonObject.optString("code");
+                                String configValue = jsonObject.optString("configValue");
+                                if(TextUtils.equals(code, "msg_recall")){
+                                    PreferenceUtils.getInstance().setRecallDuration(Long.parseLong(configValue));
+                                } else if (TextUtils.equals(code, "read_ack")){
+                                    PreferenceUtils.getInstance().setShowRead(Boolean.parseBoolean(configValue));
+                                }  else if (TextUtils.equals(code, "voice_duration")){
+                                    PreferenceUtils.getInstance().setVoiceDuration(Long.parseLong(configValue));
+                                }
+                            }
+                        } catch (HyphenateException e) {
+                            e.printStackTrace();
+                        }
+                    }
                 }
             }
 
@@ -599,7 +626,114 @@ public class AppHelper {
      * @param callBack
      */
     public void login(String username, String password, EMCallBack callBack) {
-        InternalAppHelper.getInstance().appLogin(username, password, callBack);
+        if (EMClient.getInstance().isLoggedInBefore()) {
+            fetchServiceConfig();
+            getGroupsDisturb();
+            onMainActivityCreate();
+            if (callBack != null) {
+                callBack.onSuccess();
+            }
+        } else {
+            InternalAppHelper.getInstance().appLogin(username, password, new EMCallBack() {
+                @Override
+                public void onSuccess() {
+                    fetchServiceConfig();
+                    getGroupsDisturb();
+                    onMainActivityCreate();
+                    handler.post(() -> {
+                        PreferenceUtils.getInstance().setCryptedPwd(CommonUtils.getMd5Hash(password));
+                        AppHelper.getInstance().setCurrentUserName(username);
+                    });
+                    if (callBack != null) {
+                        callBack.onSuccess();
+                    }
+                }
+
+                @Override
+                public void onError(int i, String s) {
+                    if (callBack != null) {
+                        callBack.onError(i, s);
+                    }
+                }
+
+                @Override
+                public void onProgress(int i, String s) {
+                    if (callBack != null) {
+                        callBack.onProgress(i, s);
+                    }
+                }
+            });
+        }
+    }
+
+    private void getGroupsDisturb() {
+        EMAPIManager.getInstance().getGroupsDisturb(0, 100, new EMDataCallBack<String>() {
+            @Override
+            public void onSuccess(String value) {
+                try {
+                    JSONObject result = new JSONObject(value);
+                    JSONArray entities = result.getJSONArray("entities");
+                    for (int i = 0; i < entities.length(); i++) {
+                        JSONObject entity = entities.getJSONObject(i);
+                        int chatGroupId = entity.optInt("chatGroupId");
+                        boolean disturb = entity.optBoolean("disturb");
+                        GroupBean groupBean = AppHelper.getInstance().getModel().getGroupInfoById(chatGroupId);
+                        if (groupBean == null || !disturb) {
+                            continue;
+                        }
+                        NoDisturbEntity disturbEntity = new NoDisturbEntity();
+                        disturbEntity.setId(groupBean.getImGroupId());
+                        disturbEntity.setLastUpdateTime(System.currentTimeMillis());
+                        disturbEntity.setGroup(true);
+                        disturbEntity.setName(groupBean.getNick());
+                        NoDisturbManager.getInstance().saveNoDisturb(disturbEntity);
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(int error, String errorMsg) {
+                Log.i("info", "error:" + errorMsg);
+            }
+        });
+    }
+
+    private void fetchServiceConfig(){
+        EMAPIManager.getInstance().getServiceConfig(new EMDataCallBack<String>() {
+            @Override
+            public void onSuccess(String value) {
+                try{
+                    JSONObject jsonObject = new JSONObject(value);
+                    String status = jsonObject.optString("status");
+                    if("OK".equalsIgnoreCase(status)){
+                        JSONArray entities = jsonObject.getJSONArray("entities");
+                        for(int i = 0; i < entities.length(); i ++){
+                            JSONObject data = entities.getJSONObject(i);
+                            if (data != null){
+                                String code = data.optString("code");
+                                String configValue = data.optString("configValue");
+                                if(TextUtils.equals(code, "msg_recall")){
+                                    PreferenceUtils.getInstance().setRecallDuration(Long.parseLong(configValue));
+                                } else if (TextUtils.equals(code, "read_ack")){
+                                    PreferenceUtils.getInstance().setShowRead(Boolean.parseBoolean(configValue));
+                                }  else if (TextUtils.equals(code, "voice_duration")){
+                                    PreferenceUtils.getInstance().setVoiceDuration(Long.parseLong(configValue));
+                                }
+                            }
+                        }
+                    }
+                }catch(JSONException e){
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(int error, String errorMsg) {
+
+            }
+        });
     }
 
     /**

@@ -39,8 +39,6 @@ public class LoginActivity extends AppCompatActivity {
                     @Override
                     public void onSuccess() {
                         runOnUiThread(() ->{
-                            PreferenceUtils.getInstance().setCryptedPwd(CommonUtils.getMd5Hash("123456"));
-                            AppHelper.getInstance().setCurrentUserName("123456");
                             startActivity(new Intent(LoginActivity.this, MainActivity.class));
                         });
 

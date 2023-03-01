@@ -37,13 +37,10 @@ import com.hyphenate.easemob.im.officeautomation.utils.PreferenceManager;
 import com.hyphenate.easemob.imlibs.mp.ConnectionListener;
 import com.hyphenate.easemob.imlibs.mp.EMDataCallBack;
 import com.hyphenate.easemob.imlibs.mp.MPClient;
-import com.hyphenate.easemob.imlibs.mp.events.EventConfCancel;
 import com.hyphenate.easemob.imlibs.mp.events.EventEMMessageReceived;
-import com.hyphenate.easemob.imlibs.mp.events.EventFinishWB;
 import com.hyphenate.easemob.imlibs.mp.events.EventFriendNotify;
 import com.hyphenate.easemob.imlibs.mp.events.EventUsersRefresh;
 import com.hyphenate.easemob.imlibs.mp.events.EventUsersRemoved;
-import com.hyphenate.easemob.imlibs.mp.events.EventWhiteBoard;
 import com.hyphenate.easemob.im.mp.manager.NoDisturbManager;
 import com.hyphenate.easemob.im.mp.rest.EMMyOrgUsersRequest;
 import com.hyphenate.easemob.im.officeautomation.db.TenantOptionsDao;
@@ -502,22 +499,6 @@ class InternalAppHelper {
             return;
         }
 
-        if (Constant.CMD_ACTION_CLIENT_WHITE_BOARD.equals(action)) {
-            JSONObject jsonObject = message.getJSONObjectAttribute(Constant.CMD_ACTION_CLIENT_WHITE_BOARD);
-
-            MPEventBus.getDefault().post(new EventWhiteBoard(jsonObject.optString("roomName")));
-            return;
-        }
-        if (Constant.CMD_ACTION_CLIENT_WHITE_BOARD_CLOSE.equals(action)) {
-            MPEventBus.getDefault().post(new EventFinishWB());
-            return;
-        }
-
-        if (Constant.CMD_ACTION_CONF_CANCEL.equals(action)) {
-            MPLog.e(TAG, "recieved CMD_ACTION_CONF_CANCEL, nothing operater");
-//            MPEventBus.getDefault().post(new EventConfCancel(message));
-            return;
-        }
 
         if (Constant.CMD_ACTION_GROUPS_CHANGED.equals(action)) {
             JSONArray jsonArray = message.getJSONArrayAttribute(Constant.CMD_EXT_GROUPS);

@@ -32,7 +32,6 @@ import com.hyphenate.easemob.R;
 import com.hyphenate.easemob.easeui.EaseConstant;
 import com.hyphenate.easemob.easeui.EaseMessageUtils;
 import com.hyphenate.easemob.easeui.EaseUI;
-import com.hyphenate.easemob.easeui.widget.sticker.businesslogic.StickerPackageStorageTask;
 import com.hyphenate.easemob.im.mp.AppHelper;
 import com.hyphenate.easemob.im.mp.manager.NoDisturbManager;
 import com.hyphenate.easemob.im.officeautomation.db.InviteMessageDao;
@@ -46,7 +45,6 @@ import com.hyphenate.easemob.imlibs.interfaces.MultiClickListener;
 import com.hyphenate.easemob.imlibs.message.MessageUtils;
 import com.hyphenate.easemob.imlibs.mp.MPClient;
 import com.hyphenate.easemob.imlibs.mp.events.EventGroupsChanged;
-import com.hyphenate.easemob.imlibs.mp.events.EventScheduleSelected;
 import com.hyphenate.easemob.imlibs.mp.events.EventTabReceived;
 import com.hyphenate.easemob.imlibs.mp.events.EventUsersRefresh;
 import com.hyphenate.easemob.imlibs.mp.prefs.PrefsUtil;
@@ -158,10 +156,6 @@ public class MainActivity extends BaseActivity {
         EMClient.getInstance().addMultiDeviceListener(mMyMultiDeviceListener);
 
         AppHelper.getInstance().onMainActivityCreate();
-
-        StickerPackageStorageTask.init(getApplicationContext(), BaseRequest.getAppKey(), EMClient.getInstance().getCurrentUser());
-
-        fetchServiceConfig();
     }
     private int getLayout() {
         return R.layout.activity_main;
@@ -383,12 +377,12 @@ public class MainActivity extends BaseActivity {
             public void run() {
                 // refresh unread count
                 updateUnreadLabel();
-                if (currentTabIndex == 0) {
-                    // refresh conversation list
-                    if (conversationListFragment != null) {
-                        conversationListFragment.refresh();
-                    }
-                }
+//                if (currentTabIndex == 0) {
+//                    // refresh conversation list
+//                    if (conversationListFragment != null) {
+//                        conversationListFragment.refresh();
+//                    }
+//                }
             }
         });
     }
@@ -601,20 +595,6 @@ public class MainActivity extends BaseActivity {
                 finish();
                 Intent i = new Intent(this, MainActivity.class);
                 startActivity(i);// overridePendingTransition(0, 0);
-            }
-            String event = intent.getStringExtra(EaseConstant.EXT_WITH_BUTTON_EVENT);
-            if (!TextUtils.isEmpty(event)) {
-                if (event.equals(EaseConstant.EXT_WITH_BUTTON_EVENT_MEETING)) {
-                    mJPTabBar.setSelectTab(2);
-                    mJPTabBar.hideBadge(2);
-                } else if (event.equals(EaseConstant.EXT_WITH_BUTTON_EVENT_SCHEDULE)) {
-                    mJPTabBar.setSelectTab(3);
-                    mJPTabBar.hideBadge(3);
-                    long startTime = intent.getLongExtra(EaseConstant.EXT_WITH_BUTTON_EVENT_EXTRA, 0);
-                    if (startTime > 0) {
-                        MPEventBus.getDefault().post(new EventScheduleSelected(startTime));
-                    }
-                }
             }
         }
     }

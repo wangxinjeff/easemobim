@@ -173,9 +173,6 @@
             android:name=".im.officeautomation.ui.ChatDetailsActivity"
             android:theme="@style/horizontal_slide" />
         <activity
-            android:name=".im.officeautomation.ui.GeneralActivity"
-            android:theme="@style/SwipeBackTheme" />
-        <activity
             android:name=".im.officeautomation.ui.SetTextSizeActivity"
             android:theme="@style/SwipeBackTheme" />
         <activity

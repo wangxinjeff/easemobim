@@ -53,14 +53,12 @@ import com.hyphenate.easemob.im.mp.cache.TenantOptionCache;
 import com.hyphenate.easemob.im.mp.entity.LoginUser;
 import com.hyphenate.easemob.imlibs.mp.events.EventReLoginStart;
 import com.hyphenate.easemob.imlibs.mp.events.EventReloginSuccess;
-import com.hyphenate.easemob.imlibs.mp.events.EventRemind;
 import com.hyphenate.easemob.imlibs.mp.utils.MPLog;
 import com.hyphenate.easemob.im.mp.utils.UserProvider;
 import com.hyphenate.easemob.R;
 import com.hyphenate.easemob.im.officeautomation.domain.ExtUserType;
 import com.hyphenate.easemob.imlibs.officeautomation.emrequest.EMAPIManager;
 import com.hyphenate.easemob.im.officeautomation.utils.Constant;
-import com.hyphenate.easemob.im.officeautomation.utils.LanguageUtils;
 import com.hyphenate.easemob.im.officeautomation.utils.MyToast;
 import com.jude.swipbackhelper.SwipeBackHelper;
 import com.jude.swipbackhelper.SwipeListener;
@@ -154,27 +152,6 @@ public abstract class BaseActivity extends EaseBaseActivity {
                 } catch (HyphenateException | JSONException e) {
                     e.printStackTrace();
                 }
-                if (action.equals("schedule_created")) {
-                    MPEventBus.getDefault().post(new EventRemind(0, id));
-                } else if (action.equals("schedule_deleted")) {
-                    MPEventBus.getDefault().post(new EventRemind(1, id));
-                } else if (action.equals("task_created")) {
-                    MPEventBus.getDefault().post(new EventRemind(2, id));
-                } else if (action.equals("task_deleted")) {
-                    MPEventBus.getDefault().post(new EventRemind(3, id));
-                }
-                if (action.equals("schedule_created") ||
-                        action.equals("schedule_modified") ||
-                        action.equals("schedule_deleted") ||
-                        action.equals("schedule_remind") ||
-                        action.equals("task_created") ||
-                        action.equals("task_modified") ||
-                        action.equals("task_remind") ||
-                        action.equals("task_closed") ||
-                        action.equals("task_opened") ||
-                        action.equals("task_deleted")) {
-                    popupRemind(activity, content, action);
-                }
             }
         }
 
@@ -238,12 +215,6 @@ public abstract class BaseActivity extends EaseBaseActivity {
 //            Log.e(TAG, "error:" + e.getLocalizedMessage());
 //        }
 //    }
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-//        super.attachBaseContext(MultiLanguageUtil.attachBaseContext(newBase));
-        super.attachBaseContext(LanguageUtils.attachBaseContext(newBase));
-    }
 
     /**
      * 通过xml查找相应的ID，通用方法

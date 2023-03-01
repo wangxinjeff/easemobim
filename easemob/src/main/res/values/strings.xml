@@ -170,14 +170,7 @@
 
     <!-- settings -->
     <string name="settings_newmsg_notification">新消息提醒</string>
-    <string name="general">通用</string>
-    <string name="general_multi_language">多语言</string>
-    <string name="general_multi_language_auto">跟随系统</string>
-    <string name="general_multi_language_chinese">简体中文</string>
-    <string name="general_multi_language_english">English</string>
     <string name="general_font_size">字体大小</string>
-    <string name="general_enter_send_msg">回车发送消息</string>
-    <string name="general_close_speaker_voice">使用听筒播放语音</string>
     <string name="set_text_size_normal">标准</string>
     <string name="set_text_size_tip1">预览字体大小</string>
     <string name="set_text_size_tip2">拖动下面滑块，可以设置字体大小</string>
@@ -452,11 +445,6 @@
     <string name="tip_collect_failed">收藏失败！</string>
 
 
-    <string name="UMNewVersion">最新版本: </string>
-    <string name="UMUpdateContent">更新内容</string>
-    <string name="UMUpdateSize">仅需要下载:</string>
-    <string name="UMTargetSize">新版本大小:</string>
-    <string name="UMDialog_InstallAPK">最新版本已下载，是否安装？</string>
     <string name="download_failed">文件下载失败，是否重试？</string>
 
 
@@ -513,7 +501,6 @@
     <string name="select_picture_photograph">拍照</string>
     <string name="select_picture_select_from_album">从相册选择</string>
     <string name="select_picture_cancel">取消</string>
-    <string name="download_sticker">下载</string>
     <string name="Welcome_join_a_group_chat">欢迎 %s 加入群组</string>
 
     <string name="title_session">聊天</string>
