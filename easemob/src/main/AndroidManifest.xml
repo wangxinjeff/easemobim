@@ -365,16 +365,6 @@
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
 
         <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.fileProvider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/em_provider_paths"/>
-        </provider>
-
-        <provider
             android:name="com.hyphenate.easemob.im.mp.utils.MPProvider"
             android:authorities="${applicationId}.easemob"
             android:exported="false"
