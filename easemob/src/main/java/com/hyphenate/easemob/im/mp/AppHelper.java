@@ -101,12 +101,15 @@ public class AppHelper {
      *
      * @param context application context
      */
-    public void init(Context context) {
+    public void init(Context context, EnvHelper.BaseEnv baseEnv) {
         this.context = context;
         InternalAppHelper.getInstance().init(context);
         PrefsUtil.getInstance().init(context);
         EMOptions options = initChatOptions();
-        EnvHelper.BaseEnv baseEnv = EnvHelper.getEnv();
+        if(baseEnv == null){
+            Log.e(TAG, "baseEnv is null");
+            return;
+        }
         options.enableDNSConfig(baseEnv.enableDnsConfig());
         if (!baseEnv.enableDnsConfig()) {
             options.setRestServer(baseEnv.restServer());
