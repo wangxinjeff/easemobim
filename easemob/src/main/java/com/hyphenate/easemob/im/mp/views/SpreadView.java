@@ -41,8 +41,8 @@ public class SpreadView extends View {
         super(context, attrs, defStyleAttr);
         TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.SpreadView, defStyleAttr, 0);
         radius = a.getDimension(R.styleable.SpreadView_spread_radius, DensityUtil.dip2px(getContext(), radius));
-        int centerColor = a.getColor(R.styleable.SpreadView_spread_center_color, ContextCompat.getColor(context, R.color.colorAccent));
-        int spreadColor = a.getColor(R.styleable.SpreadView_spread_spread_color, ContextCompat.getColor(context, R.color.colorAccent));
+        int centerColor = a.getColor(R.styleable.SpreadView_spread_center_color, ContextCompat.getColor(context, R.color.easeColorAccent));
+        int spreadColor = a.getColor(R.styleable.SpreadView_spread_spread_color, ContextCompat.getColor(context, R.color.easeColorAccent));
         distance = a.getDimension(R.styleable.SpreadView_spread_distance, DensityUtil.dip2px(getContext(), distance));
         delayMilliseconds = a.getInt(R.styleable.SpreadView_spread_delay_milliseconds, delayMilliseconds);
         a.recycle();

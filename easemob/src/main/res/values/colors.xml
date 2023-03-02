@@ -6,7 +6,7 @@
     <!--<color name="colorPrimaryDark">#009CFF</color>-->
     <!--<color name="colorAccent">#1497DB</color>-->
 
-    <color name="colorAccent">#0280FC</color>
+    <color name="easeColorAccent">#0280FC</color>
 
     <color name="color_white">#FFFFFF</color>
     <color name="color_black">#000000</color>
@@ -24,7 +24,7 @@
 
 
     <color name="nav_text_normal">#ff666666</color>
-    <color name="nav_text_selected">@color/colorAccent</color>
+    <color name="nav_text_selected">@color/easeColorAccent</color>
     <color name="lfile_colorPrimary">@color/top_bar_normal_bg</color>
     <color name="lfile_colorPrimaryDark">@color/top_bar_normal_bg</color>
     <color name="lfile_colorAccent">@color/top_bar_normal_bg</color>
@@ -77,21 +77,21 @@
     <color name="bg_top_bar_2">#F4F5F7
     </color> <!-- @android:color/white --> <!--#405E7A--> <!--#3891c1--> <!--#6C8AB6 --> <!-- #FBFBFB -->
     <color name="topbar_title_color">@color/content_text_color</color>
-    <color name="topbar_btn_textcolor">@color/colorAccent</color>
+    <color name="topbar_btn_textcolor">@color/easeColorAccent</color>
     <color name="destory_red_color">#fc6869</color> <!--fc6869-->
     <color name="top_bar_normal_bg">@android:color/white</color>
-    <color name="theme_color">@color/colorAccent</color> <!-- #6C8AB6 -->
+    <color name="theme_color">@color/easeColorAccent</color> <!-- #6C8AB6 -->
     <color name="refused_red">#FF3A36</color>
     <color name="badge_color">@color/refused_red</color> <!-- #6C8AB6 -->
 
     <color name="label_text_color">#9B9FA8</color>
     <color name="content_text_color">#2F2E41</color>
-    <color name="button_color">@color/colorAccent</color>
+    <color name="button_color">@color/easeColorAccent</color>
     <color name="sub_content_text_color">#626B7C</color>
     <color name="bg_label_color">@color/color_grey_light</color>
     <color name="divider_color">#E8EAEB</color>
     <color name="bubble_left_color">@android:color/white</color>
-    <color name="buble_right_color">@color/colorAccent</color>
+    <color name="buble_right_color">@color/easeColorAccent</color>
     <color name="main_background">@color/bg_top_bar_2</color>
     <color name="bg_chat_ui">#EEEEEF</color>
     <color name="bg_chat_input">#F4F5F7</color>
