@@ -76,9 +76,12 @@
 
     <com.hyphenate.easemob.easeui.widget.EaseConversationList
         android:id="@+id/list"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_weight="1"
+        hyphenate:layout_constraintTop_toBottomOf="@+id/rl_search"
+        hyphenate:layout_constraintBottom_toBottomOf="parent"
+        hyphenate:layout_constraintStart_toStartOf="parent"
+        hyphenate:layout_constraintEnd_toEndOf="parent"
         android:cacheColorHint="#00000000"
         android:divider="@android:color/transparent"
         android:dividerHeight="0dp"
@@ -89,7 +92,6 @@
         hyphenate:cvsListSecondaryTextSize="@dimen/sp_13"
         hyphenate:cvsListTimeTextColor="#999999"
         hyphenate:cvsListTimeTextSize="@dimen/sp_12"
-        hyphenate:layout_constraintTop_toBottomOf="@+id/divider"
         />
 
     <ImageView
@@ -97,7 +99,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/mp_ic_empty_conversations"
-        hyphenate:layout_constraintTop_toTopOf="parent"
+        hyphenate:layout_constraintTop_toBottomOf="@+id/rl_search"
         hyphenate:layout_constraintBottom_toBottomOf="parent"
         hyphenate:layout_constraintStart_toStartOf="parent"
         hyphenate:layout_constraintEnd_toEndOf="parent"

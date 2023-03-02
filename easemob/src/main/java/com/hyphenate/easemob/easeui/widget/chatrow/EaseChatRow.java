@@ -164,7 +164,6 @@ public abstract class EaseChatRow extends LinearLayout {
         if (userAvatarView != null) {
             //set nickname and avatar
             if (message.direct() == Direct.SEND) {
-                AvatarUtils.setAvatarContent(context, EMClient.getInstance().getCurrentUser(), userAvatarView);
                 MPUserEntity entityBean = AppHelper.getInstance().getModel().getUserInfo(EMClient.getInstance().getCurrentUser());
                 AvatarUtils.setAvatarContent(context, entityBean.getRealName(), entityBean.getAvatar(), userAvatarView);
             } else {
