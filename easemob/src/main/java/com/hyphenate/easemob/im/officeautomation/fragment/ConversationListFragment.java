@@ -219,12 +219,32 @@ public class ConversationListFragment extends EaseConversationListFragment {
     }
 
     private void refreshWaterMark() {
-        if (getView() == null) return;
-        if (TenantOptionCache.getInstance().isShowWaterMark()) {
-            getView().findViewById(R.id.ll_layout).setBackground(WaterMarkBg.create(getContext()));
-        } else {
-            getView().findViewById(R.id.ll_layout).setBackgroundColor(Color.WHITE);
-        }
+//        if (getView() == null) return;
+//        if (TenantOptionCache.getInstance().isShowWaterMark()) {
+//            getView().findViewById(R.id.ll_layout).setBackground(WaterMarkBg.create(getContext()));
+//        } else {
+//            getView().findViewById(R.id.ll_layout).setBackgroundColor(Color.WHITE);
+//        }
+
+//        LoginUser loginUser = UserProvider.getInstance().getLoginUser();
+//        if (loginUser == null) {
+//            return;
+//        }
+//        String text = "";
+//        if (!TextUtils.isEmpty(loginUser.getAlias())) {
+//            text = loginUser.getAlias();
+//        } else if (!TextUtils.isEmpty(loginUser.getNickname())) {
+//            text = loginUser.getNickname();
+//        } else if (!TextUtils.isEmpty(loginUser.getEntityBean().getAlias())) {
+//            text = loginUser.getEntityBean().getAlias();
+//        } else if (!TextUtils.isEmpty(loginUser.getEntityBean().getRealName())) {
+//            text = loginUser.getEntityBean().getRealName();
+//        }
+//        if (TenantOptionCache.getInstance().isShowWaterMark()) {
+//            WaterMarkBgView.getInstance().setTextColor(0x33AEAEAE).show(getActivity(), text);
+//        } else {
+//            WaterMarkBgView.getInstance().setTextColor(0x00000000).show(getActivity(), text);
+//        }
     }
 
 
