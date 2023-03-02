@@ -165,11 +165,19 @@ public abstract class EaseChatRow extends LinearLayout {
             //set nickname and avatar
             if (message.direct() == Direct.SEND) {
                 MPUserEntity entityBean = AppHelper.getInstance().getModel().getUserInfo(EMClient.getInstance().getCurrentUser());
-                AvatarUtils.setAvatarContent(context, entityBean.getRealName(), entityBean.getAvatar(), userAvatarView);
+                if(entityBean != null){
+                    AvatarUtils.setAvatarContent(context, entityBean.getRealName(), entityBean.getAvatar(), userAvatarView);
+                } else {
+                    AvatarUtils.setAvatarContent(context, message.getFrom(), userAvatarView);
+                }
             } else {
                 EaseUserUtils.setUserNick(message.getFrom(), usernickView, context);
                 MPUserEntity entityBean = AppHelper.getInstance().getModel().getUserInfo(message.getFrom());
-                AvatarUtils.setAvatarContent(context, entityBean.getRealName(), entityBean.getAvatar(), userAvatarView);
+                if(entityBean != null){
+                    AvatarUtils.setAvatarContent(context, entityBean.getRealName(), entityBean.getAvatar(), userAvatarView);
+                } else {
+                    AvatarUtils.setAvatarContent(context, message.getFrom(), userAvatarView);
+                }
             }
         }
         if (EMClient.getInstance().getOptions().getRequireDeliveryAck() && message.getChatType() == EMMessage.ChatType.Chat) {

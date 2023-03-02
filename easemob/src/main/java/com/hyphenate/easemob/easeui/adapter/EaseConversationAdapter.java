@@ -193,12 +193,11 @@ public class EaseConversationAdapter extends ArrayAdapter<EMConversation> {
                 AvatarUtils.setAvatarContent(getContext(), holder.ivAvatar);
             } else {
                 EaseUserUtils.setUserNick(username, holder.name, getContext());
-                EaseUser user = EaseUserUtils.getUserInfo(username);
-                if(user != null && !TextUtils.isEmpty(user.getAvatar())){
-                    AvatarUtils.setAvatarContent(getContext(), username, holder.ivAvatar);
-                } else {
-                    MPUserEntity entity = AppHelper.getInstance().getModel().getUserInfo(username);
+                MPUserEntity entity = AppHelper.getInstance().getModel().getUserInfo(username);
+                if(entity != null){
                     AvatarUtils.setAvatarContent(getContext(), entity.getRealName(), entity.getAvatar(), holder.ivAvatar);
+                } else {
+                    AvatarUtils.setAvatarContent(getContext(), username, holder.ivAvatar);
                 }
             }
             holder.motioned.setVisibility(View.GONE);
