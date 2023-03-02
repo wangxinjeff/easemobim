@@ -252,8 +252,8 @@ public class GroupDetailInfoActivity extends BaseActivity implements View.OnClic
 
         selfIsOwner = checkOwner(groupEntity);
         if (selfIsOwner) {
-            rlGroupNotify.setVisibility(View.VISIBLE);
-            rlGroupNotifyDevider.setVisibility(View.VISIBLE);
+            rlGroupNotify.setVisibility(View.GONE);
+            rlGroupNotifyDevider.setVisibility(View.GONE);
             chevronGroupOwner.setVisibility(View.VISIBLE);
             chevronGroupName.setVisibility(View.VISIBLE);
             chevronGroupAvatar.setVisibility(View.VISIBLE);
