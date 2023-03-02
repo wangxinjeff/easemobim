@@ -79,7 +79,7 @@
     <color name="topbar_title_color">@color/content_text_color</color>
     <color name="topbar_btn_textcolor">@color/easeColorAccent</color>
     <color name="destory_red_color">#fc6869</color> <!--fc6869-->
-    <color name="top_bar_normal_bg">@android:color/white</color>
+    <color name="top_bar_normal_bg">@color/white</color>
     <color name="theme_color">@color/easeColorAccent</color> <!-- #6C8AB6 -->
     <color name="refused_red">#FF3A36</color>
     <color name="badge_color">@color/refused_red</color> <!-- #6C8AB6 -->
@@ -90,7 +90,7 @@
     <color name="sub_content_text_color">#626B7C</color>
     <color name="bg_label_color">@color/color_grey_light</color>
     <color name="divider_color">#E8EAEB</color>
-    <color name="bubble_left_color">@android:color/white</color>
+    <color name="bubble_left_color">@color/white</color>
     <color name="buble_right_color">@color/easeColorAccent</color>
     <color name="main_background">@color/bg_top_bar_2</color>
     <color name="bg_chat_ui">#EEEEEF</color>
