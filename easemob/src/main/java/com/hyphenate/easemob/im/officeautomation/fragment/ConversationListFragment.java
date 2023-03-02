@@ -270,7 +270,7 @@ public class ConversationListFragment extends EaseConversationListFragment {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onTenantOptionsChanged(EventTenantOptionChanged event) {
         if (TenantOptionCache.OPTION_NAME_WATERMARK.equals(event.getOptionName())) {
-            refreshWaterMark(getActivity());
+//            refreshWaterMark(getActivity());
         }
     }
 
