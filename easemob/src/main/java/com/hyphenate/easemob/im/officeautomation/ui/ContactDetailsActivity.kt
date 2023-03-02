@@ -242,7 +242,7 @@ class ContactDetailsActivity : BaseActivity(), View.OnClickListener {
 
         ivAvatar!!.setOnClickListener(this)
 
-//        refreshWaterMark(this)
+        refreshWaterMark(this)
     }
 
     private fun initDatas() {
@@ -296,7 +296,7 @@ class ContactDetailsActivity : BaseActivity(), View.OnClickListener {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun onRefreshTenantOption(event: EventTenantOptionChanged) {
         if (TenantOptionCache.OPTION_NAME_WATERMARK == event.optionName) {
-//            refreshWaterMark(this@ContactDetailsActivity)
+            refreshWaterMark(this@ContactDetailsActivity)
         }
     }
 

@@ -441,7 +441,7 @@ public class PersonalCardActivity extends BaseActivity {
         }
         getUserPersonalInfo();
         friendRelationStatus(userId);
-//        refreshWaterMark(PersonalCardActivity.this);
+        refreshWaterMark(PersonalCardActivity.this);
     }
 
 //    private void refreshWaterMark() {
@@ -455,7 +455,7 @@ public class PersonalCardActivity extends BaseActivity {
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onTenantOptionsChanged(EventTenantOptionChanged event) {
         if (TenantOptionCache.OPTION_NAME_WATERMARK.equals(event.getOptionName())) {
-//            refreshWaterMark(PersonalCardActivity.this);
+            refreshWaterMark(PersonalCardActivity.this);
         }
     }
 

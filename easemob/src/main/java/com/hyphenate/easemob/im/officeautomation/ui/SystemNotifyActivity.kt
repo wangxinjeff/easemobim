@@ -47,7 +47,7 @@ class SystemNotifyActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_chat_history)
 
-//        refreshWaterMark(this)
+        refreshWaterMark(this)
 
         titleBar = findViewById(R.id.title_bar)
         titleBar.setLeftLayoutClickListener {

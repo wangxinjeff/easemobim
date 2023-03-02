@@ -332,7 +332,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onTenantOptionsChanged(EventTenantOptionChanged event) {
         if (TenantOptionCache.OPTION_NAME_WATERMARK.equals(event.getOptionName())) {
-//            refreshWaterMark(getActivity());
+            refreshWaterMark(getActivity());
         }
     }
 
@@ -368,7 +368,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         setChatFragmentHelper(this);
         super.setUpView();
 //        setWaterMarkBg();
-//        refreshWaterMark(getActivity());
+        refreshWaterMark(getActivity());
 
         /** 触摸事件的注册 */
         if (getActivity() != null) {
