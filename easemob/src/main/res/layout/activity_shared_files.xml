@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    android:background="@color/bg"
+    android:background="@color/easemob_bg"
     android:orientation="vertical"
     tools:context="com.hyphenate.officeautomation.ui.SharedFilesActivity">
 

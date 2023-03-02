@@ -328,6 +328,8 @@
             android:theme="@style/SwipeBackTheme" />
         <activity android:name=".easeui.ui.EaseFilePreviewActivity" android:screenOrientation="portrait"/>
         <activity android:name=".easeui.ui.EaseTBSActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".im.officeautomation.ui.group.GroupSearchMemberActivity"
+            android:theme="@style/SwipeBackTheme" />
 
         <!-- 声明SDK所需的service SDK核心功能-->
         <service

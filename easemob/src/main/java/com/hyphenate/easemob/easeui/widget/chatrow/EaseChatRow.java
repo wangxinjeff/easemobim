@@ -24,9 +24,11 @@ import com.hyphenate.easemob.easeui.utils.EaseUserUtils;
 import com.hyphenate.easemob.easeui.widget.AvatarImageView;
 import com.hyphenate.easemob.easeui.widget.EaseChatMessageList.MessageListItemClickListener;
 import com.hyphenate.easemob.easeui.widget.EaseImageView;
+import com.hyphenate.easemob.im.mp.AppHelper;
 import com.hyphenate.easemob.imlibs.easeui.prefs.PreferenceUtils;
 import com.hyphenate.easemob.imlibs.message.MessageUtils;
 import com.hyphenate.easemob.imlibs.mp.utils.DateTimeUtil;
+import com.hyphenate.easemob.imlibs.officeautomation.domain.MPUserEntity;
 import com.hyphenate.util.DateUtils;
 
 import java.util.Date;
@@ -51,7 +53,7 @@ public abstract class EaseChatRow extends LinearLayout {
     protected int position;
 
     protected TextView timeStampView;
-    protected ImageView userAvatarView;
+    protected AvatarImageView userAvatarView;
     public View bubbleLayout;
     protected TextView usernickView;
 
@@ -100,7 +102,7 @@ public abstract class EaseChatRow extends LinearLayout {
     private void initView() {
         onInflateView();
         timeStampView = (TextView) findViewById(R.id.timestamp);
-        userAvatarView = (ImageView) findViewById(R.id.iv_userhead);
+        userAvatarView = findViewById(R.id.iv_userhead);
         bubbleLayout = findViewById(R.id.bubble);
         usernickView = (TextView) findViewById(R.id.tv_userid);
 
@@ -162,15 +164,13 @@ public abstract class EaseChatRow extends LinearLayout {
         if (userAvatarView != null) {
             //set nickname and avatar
             if (message.direct() == Direct.SEND) {
-                EaseUserUtils.setUserAvatar(context, EMClient.getInstance().getCurrentUser(), userAvatarView);
+                AvatarUtils.setAvatarContent(context, EMClient.getInstance().getCurrentUser(), userAvatarView);
+                MPUserEntity entityBean = AppHelper.getInstance().getModel().getUserInfo(EMClient.getInstance().getCurrentUser());
+                AvatarUtils.setAvatarContent(context, entityBean.getRealName(), entityBean.getAvatar(), userAvatarView);
             } else {
                 EaseUserUtils.setUserNick(message.getFrom(), usernickView, context);
-                if (userAvatarView instanceof AvatarImageView) {
-                    AvatarImageView avatarImageView = (AvatarImageView) userAvatarView;
-                    AvatarUtils.setAvatarContent(context, message.getFrom(), avatarImageView);
-                } else {
-                    EaseUserUtils.setUserAvatar(context, message.getFrom(), userAvatarView);
-                }
+                MPUserEntity entityBean = AppHelper.getInstance().getModel().getUserInfo(message.getFrom());
+                AvatarUtils.setAvatarContent(context, entityBean.getRealName(), entityBean.getAvatar(), userAvatarView);
             }
         }
         if (EMClient.getInstance().getOptions().getRequireDeliveryAck() && message.getChatType() == EMMessage.ChatType.Chat) {
@@ -205,18 +205,6 @@ public abstract class EaseChatRow extends LinearLayout {
             if (userAvatarView != null) {
                 if (itemStyle.isShowAvatar()) {
                     userAvatarView.setVisibility(View.VISIBLE);
-                    EaseAvatarOptions avatarOptions = EaseUI.getInstance().getAvatarOptions();
-                    if (avatarOptions != null && userAvatarView instanceof EaseImageView) {
-                        EaseImageView avatarView = ((EaseImageView) userAvatarView);
-                        if (avatarOptions.getAvatarShape() != 0)
-                            avatarView.setShapeType(avatarOptions.getAvatarShape());
-                        if (avatarOptions.getAvatarBorderWidth() != 0)
-                            avatarView.setBorderWidth(avatarOptions.getAvatarBorderWidth());
-                        if (avatarOptions.getAvatarBorderColor() != 0)
-                            avatarView.setBorderColor(avatarOptions.getAvatarBorderColor());
-                        if (avatarOptions.getAvatarRadius() != 0)
-                            avatarView.setRadius(avatarOptions.getAvatarRadius());
-                    }
                 } else {
                     userAvatarView.setVisibility(View.GONE);
                 }

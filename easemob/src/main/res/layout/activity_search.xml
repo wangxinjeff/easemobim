@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="@color/easemob_bg"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/height_top_bar"
-        android:background="@color/color_grey_light"
+        android:background="@color/bg_top_bar_2"
         android:gravity="center_vertical"
         android:paddingLeft="@dimen/dp_5"
         android:paddingRight="@dimen/dp_5">
@@ -25,7 +25,7 @@
             android:id="@+id/tv_cancel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
+            android:background="@color/bg_top_bar_2"
             android:padding="@dimen/dp_5"
             android:text="@string/cancel"
             android:textColor="@color/colorAccent"
@@ -55,6 +55,7 @@
         android:id="@+id/search_view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/easemob_bg"
         android:layout_marginTop="@dimen/dp_7" />
 
 </LinearLayout>

@@ -1,22 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:hyphenate="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ll_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
-    android:orientation="vertical">
+    android:background="@color/white">
 
     <com.hyphenate.easemob.easeui.widget.EaseTitleBar
         android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        hyphenate:titleBarTitle="@string/title_session" />
+        hyphenate:layout_constraintTop_toTopOf="parent"
+        hyphenate:layout_constraintStart_toStartOf="parent"
+        hyphenate:layout_constraintEnd_toEndOf="parent"
+        hyphenate:titleBarTitle="@string/title_session"
+        android:visibility="gone"
+        />
 
     <include
         android:id="@+id/rl_search"
-        layout="@layout/ease_layout_search" />
+        layout="@layout/ease_layout_search"
+        hyphenate:layout_constraintTop_toBottomOf="@+id/title_bar"
+        hyphenate:layout_constraintStart_toStartOf="parent"
+        hyphenate:layout_constraintEnd_toEndOf="parent"
+        />
 
     <LinearLayout
         android:id="@+id/ll_pc_status"
@@ -25,7 +33,11 @@
         android:background="@color/bg_label_color"
         android:gravity="center_vertical"
         android:visibility="gone"
-        tools:ignore="UseCompoundDrawables">
+        tools:ignore="UseCompoundDrawables"
+        hyphenate:layout_constraintTop_toBottomOf="@+id/rl_search"
+        hyphenate:layout_constraintStart_toEndOf="parent"
+        hyphenate:layout_constraintEnd_toEndOf="parent"
+        >
 
 
         <ImageView
@@ -48,13 +60,18 @@
     <FrameLayout
         android:id="@+id/fl_error_item"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        hyphenate:layout_constraintTop_toBottomOf="@+id/ll_pc_status"
+        />
 
     <View
+        android:id="@+id/divider"
         android:layout_width="match_parent"
         android:layout_height="0.5dp"
         android:visibility="gone"
-        android:background="@color/divider_list" />
+        android:background="@color/divider_list"
+        hyphenate:layout_constraintTop_toBottomOf="@+id/fl_error_item"
+        />
 
 
     <com.hyphenate.easemob.easeui.widget.EaseConversationList
@@ -71,14 +88,19 @@
         hyphenate:cvsListSecondaryTextColor="#999999"
         hyphenate:cvsListSecondaryTextSize="@dimen/sp_13"
         hyphenate:cvsListTimeTextColor="#999999"
-        hyphenate:cvsListTimeTextSize="@dimen/sp_12" />
+        hyphenate:cvsListTimeTextSize="@dimen/sp_12"
+        hyphenate:layout_constraintTop_toBottomOf="@+id/divider"
+        />
 
     <ImageView
         android:id="@+id/empty_view"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:scaleType="centerInside"
-        android:src="@drawable/mp_ic_empty_conversations" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/mp_ic_empty_conversations"
+        hyphenate:layout_constraintTop_toTopOf="parent"
+        hyphenate:layout_constraintBottom_toBottomOf="parent"
+        hyphenate:layout_constraintStart_toStartOf="parent"
+        hyphenate:layout_constraintEnd_toEndOf="parent"
+        />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

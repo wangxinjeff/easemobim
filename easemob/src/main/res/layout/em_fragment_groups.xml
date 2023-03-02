@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="@color/easemob_bg"
     android:fitsSystemWindows="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
@@ -35,15 +35,28 @@
             android:paddingRight="@dimen/dp_10"
             android:scaleType="fitCenter"
             android:background="?attr/selectableItemBackground"
-            android:src="@drawable/oa_icon_add"
+            android:src="@drawable/ease_add"
             app:tint="@color/topbar_title_color" />
     </RelativeLayout>
 
     <View style="@style/devide_line_eee" />
 
-    <com.hyphenate.easemob.im.mp.widget.ClearEditText
-        android:id="@+id/filter_edit"
-        style="@style/style_clear_edit" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/easemob_bg"
+        android:paddingTop="@dimen/dp_6"
+        android:paddingBottom="@dimen/dp_6"
+        android:paddingStart="@dimen/dp_16"
+        android:paddingEnd="@dimen/dp_16"
+        >
+        <com.hyphenate.easemob.im.mp.widget.ClearEditText
+            android:id="@+id/filter_edit"
+            style="@style/style_clear_edit"
+            />
+    </LinearLayout>
+
+
 
     <View style="@style/devide_line_eee" />
 

@@ -761,7 +761,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         inputMenu.registerExtendMenuItem(R.string.attach_file, R.drawable.mp_ic_ext_file, ITEM_FILE, extendMenuItemClickListener);
         if (!isFileHelper) {
             inputMenu.registerExtendMenuItem(R.string.name_card, R.drawable.mp_ic_ext_card, ITEM_NAME_CARD, extendMenuItemClickListener);
-            inputMenu.registerExtendMenuItem(R.string.attach_location, R.drawable.mp_ic_ext_loc, ITEM_LOCATION, extendMenuItemClickListener);
+//            inputMenu.registerExtendMenuItem(R.string.attach_location, R.drawable.mp_ic_ext_loc, ITEM_LOCATION, extendMenuItemClickListener);
         }
 //        inputMenu.registerExtendMenuItem(R.string.attach_schedule, R.drawable.mp_ic_ext_schedule, ITEM_NAME_SCHEDULE, extendMenuItemClickListener);
 //        inputMenu.registerExtendMenuItem(R.string.attach_task, R.drawable.mp_ic_ext_task, ITEM_NAME_TASK, extendMenuItemClickListener);

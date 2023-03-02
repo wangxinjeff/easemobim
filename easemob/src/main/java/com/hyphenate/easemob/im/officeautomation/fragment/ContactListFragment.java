@@ -93,6 +93,7 @@ public class ContactListFragment extends EaseBaseFragment {
         mRlGroups = getView().findViewById(R.id.rl_groups);
         mRlNotify = getView().findViewById(R.id.rl_notify);
         mRlGroupNotify = getView().findViewById(R.id.rl_group_notify);
+        mRlGroupNotify.setVisibility(View.GONE);
         groupNotifyprompt = getView().findViewById(R.id.iv_group_notify_prompt);
         mRlMyFriends = getView().findViewById(R.id.rl_my_friends);
         llCompanyListView = getView().findViewById(R.id.ll_company_list);

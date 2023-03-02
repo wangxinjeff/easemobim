@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="@color/easemob_bg"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
@@ -119,6 +119,8 @@
     <View style="@style/devide_line_eee" />
 
     <ScrollView
+        android:background="@color/easemob_bg"
+        android:backgroundTint="@color/easemob_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 

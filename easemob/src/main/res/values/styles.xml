@@ -50,10 +50,6 @@
         <item name="android:textSize">@dimen/sp_13</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/dp_29</item>
-        <item name="android:layout_marginLeft">@dimen/dp_17</item>
-        <item name="android:layout_marginTop">@dimen/dp_6</item>
-        <item name="android:layout_marginRight">@dimen/dp_17</item>
-        <item name="android:layout_marginBottom">@dimen/dp_6</item>
         <item name="android:imeOptions">actionSearch</item>
         <item name="android:paddingLeft">@dimen/dp_10</item>
         <item name="android:paddingRight">@dimen/dp_10</item>

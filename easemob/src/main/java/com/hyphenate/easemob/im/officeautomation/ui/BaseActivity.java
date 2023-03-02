@@ -366,7 +366,7 @@ public abstract class BaseActivity extends EaseBaseActivity {
                     public void run() {
                         progressDialog.dismiss();
                         if(groupEntity.getOwnerId() != MPClient.get().getCurrentUser().getId()) {
-                            MyToast.showInfoToast("已添加群成员，等待群主审批");
+//                            MyToast.showInfoToast("已添加群成员，等待群主审批");
                         }
                         Intent intent = new Intent();
                         intent.putExtra("pickList", newMembers);

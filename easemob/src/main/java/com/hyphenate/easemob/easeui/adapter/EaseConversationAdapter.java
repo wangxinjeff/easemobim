@@ -34,9 +34,11 @@ import com.hyphenate.easemob.easeui.utils.EaseSmileUtils;
 import com.hyphenate.easemob.easeui.utils.EaseUserUtils;
 import com.hyphenate.easemob.easeui.widget.AvatarImageView;
 import com.hyphenate.easemob.easeui.widget.EaseConversationList.EaseConversationListHelper;
+import com.hyphenate.easemob.im.mp.AppHelper;
 import com.hyphenate.easemob.imlibs.badge.QBadgeView;
 import com.hyphenate.easemob.imlibs.mp.MPClient;
 import com.hyphenate.easemob.imlibs.mp.utils.DateTimeUtil;
+import com.hyphenate.easemob.imlibs.officeautomation.domain.MPUserEntity;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -191,7 +193,13 @@ public class EaseConversationAdapter extends ArrayAdapter<EMConversation> {
                 AvatarUtils.setAvatarContent(getContext(), holder.ivAvatar);
             } else {
                 EaseUserUtils.setUserNick(username, holder.name, getContext());
-                AvatarUtils.setAvatarContent(getContext(), username, holder.ivAvatar);
+                EaseUser user = EaseUserUtils.getUserInfo(username);
+                if(user != null && !TextUtils.isEmpty(user.getAvatar())){
+                    AvatarUtils.setAvatarContent(getContext(), username, holder.ivAvatar);
+                } else {
+                    MPUserEntity entity = AppHelper.getInstance().getModel().getUserInfo(username);
+                    AvatarUtils.setAvatarContent(getContext(), entity.getRealName(), entity.getAvatar(), holder.ivAvatar);
+                }
             }
             holder.motioned.setVisibility(View.GONE);
         }

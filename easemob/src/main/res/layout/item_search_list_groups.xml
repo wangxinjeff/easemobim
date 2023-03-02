@@ -9,7 +9,7 @@
         android:id="@+id/title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/bg"
+        android:background="@color/easemob_bg"
         android:paddingBottom="@dimen/dp_10"
         android:paddingLeft="@dimen/dp_15"
         android:paddingTop="@dimen/dp_10"

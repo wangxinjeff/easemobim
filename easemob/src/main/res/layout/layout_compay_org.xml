@@ -2,8 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="@dimen/dp_10"
-    android:orientation="vertical">
+    android:paddingTop="@dimen/dp_10"
+    android:orientation="vertical"
+    android:background="@color/easemob_bg"
+    >
 
     <View style="@style/devide_line_eee" />
 

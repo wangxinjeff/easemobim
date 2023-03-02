@@ -30,7 +30,7 @@
             android:layout_gravity="center_vertical"
             android:focusable="false" />
 
-        <com.hyphenate.easemob.easeui.widget.EaseImageView
+        <com.hyphenate.easemob.easeui.widget.AvatarImageView
             android:id="@+id/avatar"
             android:layout_width="@dimen/dp_45"
             android:layout_height="@dimen/dp_45"

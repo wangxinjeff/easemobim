@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:hyphenate="http://schemas.android.com/tools"
-    android:background="@color/bg"
+    android:background="@color/easemob_bg"
     android:fitsSystemWindows="true"
     android:orientation="vertical">
 
@@ -32,6 +32,7 @@
         android:layout_height="wrap_content">
 
         <ScrollView
+            android:background="@color/easemob_bg"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

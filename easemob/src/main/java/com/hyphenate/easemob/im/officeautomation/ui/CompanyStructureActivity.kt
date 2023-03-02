@@ -63,7 +63,7 @@ class CompanyStructureActivity : BaseActivity() {
     //<部门id,部门下用户id集合>
     private var allSubsUserMap = mutableMapOf<Int, MutableList<Int>>()
 
-    private var isRefresh = false
+    private var isRefresh = true
 
     private var isCreate = false
 
