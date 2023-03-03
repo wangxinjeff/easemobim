@@ -20,8 +20,10 @@ import com.hyphenate.chat.EMConversation;
 import com.hyphenate.chat.EMConversation.EMConversationType;
 import com.hyphenate.chat.EMGroup;
 import com.hyphenate.chat.EMMessage;
+import com.hyphenate.chat.EMTextMessageBody;
 import com.hyphenate.easemob.R;
 import com.hyphenate.easemob.easeui.EaseConstant;
+import com.hyphenate.easemob.easeui.EaseMessageUtils;
 import com.hyphenate.easemob.easeui.EaseUI;
 import com.hyphenate.easemob.easeui.delegates.DraftDelegate;
 import com.hyphenate.easemob.easeui.domain.EaseUser;
@@ -270,13 +272,18 @@ public class EaseConversationAdapter extends ArrayAdapter<EMConversation> {
                 holder.message.setText(EaseSmileUtils.getSmiledText(getContext(), EaseCommonUtils.getMessageDigest(lastMessage, (this.getContext()), false)),
                         BufferType.SPANNABLE);
             } else {
-                EaseUser user = EaseUserUtils.getUserInfo(lastMessage.getFrom());
-                if(user != null){
-                    holder.message.setText(EaseSmileUtils.getSmiledText(getContext(), user.getNickname() + ":" + EaseCommonUtils.getMessageDigest(lastMessage, (this.getContext()), false)),
-                            BufferType.SPANNABLE);
-                } else {
+                if(EaseMessageUtils.isNoticeMessage(lastMessage) || EaseMessageUtils.isInviteMessage(lastMessage) || EaseMessageUtils.isRecallMessage(lastMessage)){
                     holder.message.setText(EaseSmileUtils.getSmiledText(getContext(), EaseCommonUtils.getMessageDigest(lastMessage, (this.getContext()), false)),
                             BufferType.SPANNABLE);
+                } else {
+                    EaseUser user = EaseUserUtils.getUserInfo(lastMessage.getFrom());
+                    if(user != null){
+                        holder.message.setText(EaseSmileUtils.getSmiledText(getContext(), user.getNickname() + ":" + EaseCommonUtils.getMessageDigest(lastMessage, (this.getContext()), false)),
+                                BufferType.SPANNABLE);
+                    } else {
+                        holder.message.setText(EaseSmileUtils.getSmiledText(getContext(), EaseCommonUtils.getMessageDigest(lastMessage, (this.getContext()), false)),
+                                BufferType.SPANNABLE);
+                    }
                 }
             }
 
