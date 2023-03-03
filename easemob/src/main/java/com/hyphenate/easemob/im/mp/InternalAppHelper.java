@@ -39,6 +39,7 @@ import com.hyphenate.easemob.imlibs.mp.EMDataCallBack;
 import com.hyphenate.easemob.imlibs.mp.MPClient;
 import com.hyphenate.easemob.imlibs.mp.events.EventEMMessageReceived;
 import com.hyphenate.easemob.imlibs.mp.events.EventFriendNotify;
+import com.hyphenate.easemob.imlibs.mp.events.EventUserInfoRefresh;
 import com.hyphenate.easemob.imlibs.mp.events.EventUsersRefresh;
 import com.hyphenate.easemob.imlibs.mp.events.EventUsersRemoved;
 import com.hyphenate.easemob.im.mp.manager.NoDisturbManager;
@@ -250,6 +251,7 @@ class InternalAppHelper {
                     MPUserEntity userEntity = MPUserEntity.create(jsonEntity);
                     if (userEntity != null) {
                         appModel.saveUserInfo(userEntity);
+                        MPEventBus.getDefault().post(new EventUserInfoRefresh());
                     }
                 } catch (Exception e) {
                     MPLog.e(TAG, "getUserByImUser error :" + MPLog.getStackTraceString(e));

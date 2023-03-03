@@ -36,6 +36,7 @@ import com.hyphenate.easemob.easeui.widget.WaterMarkBg;
 import com.hyphenate.easemob.easeui.widget.WaterMarkBgView;
 import com.hyphenate.easemob.im.officeautomation.runtimepermissions.PermissionsManager;
 import com.hyphenate.easemob.im.officeautomation.runtimepermissions.PermissionsResultAction;
+import com.hyphenate.easemob.imlibs.mp.events.EventUserInfoRefresh;
 import com.hyphenate.eventbus.Subscribe;
 import com.hyphenate.eventbus.ThreadMode;
 import com.hyphenate.easemob.im.mp.AppHelper;
@@ -99,6 +100,11 @@ public class ConversationListFragment extends EaseConversationListFragment {
     public void onDestroy() {
         super.onDestroy();
 //        MPEventBus.getDefault().unregister(this);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onUserInfoRefresh(EventUserInfoRefresh event){
+        refresh();
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)

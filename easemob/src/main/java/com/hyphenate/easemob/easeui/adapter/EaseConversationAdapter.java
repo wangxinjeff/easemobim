@@ -266,8 +266,20 @@ public class EaseConversationAdapter extends ArrayAdapter<EMConversation> {
 //                }
 //            }
 
-            holder.message.setText(EaseSmileUtils.getSmiledText(getContext(), EaseCommonUtils.getMessageDigest(lastMessage, (this.getContext()), false)),
-                    BufferType.SPANNABLE);
+            if (conversation.getType() == EMConversationType.Chat){
+                holder.message.setText(EaseSmileUtils.getSmiledText(getContext(), EaseCommonUtils.getMessageDigest(lastMessage, (this.getContext()), false)),
+                        BufferType.SPANNABLE);
+            } else {
+                EaseUser user = EaseUserUtils.getUserInfo(lastMessage.getFrom());
+                if(user != null){
+                    holder.message.setText(EaseSmileUtils.getSmiledText(getContext(), user.getNickname() + ":" + EaseCommonUtils.getMessageDigest(lastMessage, (this.getContext()), false)),
+                            BufferType.SPANNABLE);
+                } else {
+                    holder.message.setText(EaseSmileUtils.getSmiledText(getContext(), EaseCommonUtils.getMessageDigest(lastMessage, (this.getContext()), false)),
+                            BufferType.SPANNABLE);
+                }
+            }
+
             holder.time.setText(DateTimeUtil.getTimestampString(new Date(lastMessage.getMsgTime())));
             if (lastMessage.direct() == EMMessage.Direct.SEND && lastMessage.status() == EMMessage.Status.FAIL) {
                 holder.msgState.setVisibility(View.VISIBLE);
