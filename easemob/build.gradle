@@ -78,7 +78,7 @@ dependencies {
 
     implementation 'com.github.liyuzhao:swipebackhelper:v1.0.1'
     implementation 'com.jpeng:JPTabBar:1.4.0'
-    implementation 'com.github.li-xiaojun:XPopup:2.9.15'
+    implementation 'com.github.li-xiaojun:XPopup:2.9.19'
 
     implementation 'org.jsoup:jsoup:1.9.2'
 
