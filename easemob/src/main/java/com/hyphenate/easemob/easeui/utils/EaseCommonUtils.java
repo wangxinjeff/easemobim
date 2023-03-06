@@ -28,6 +28,7 @@ import android.text.Spanned;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -624,6 +625,16 @@ public class EaseCommonUtils {
             return R.drawable.unknow_icon; // other file
         }
 
+    }
+
+    /**
+     * dip to px
+     * @param context
+     * @param value
+     * @return
+     */
+    public static float dip2px(Context context, float value) {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value, context.getResources().getDisplayMetrics());
     }
 
 }

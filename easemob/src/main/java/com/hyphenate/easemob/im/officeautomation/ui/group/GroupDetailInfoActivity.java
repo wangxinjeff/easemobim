@@ -37,6 +37,8 @@ import com.hyphenate.easemob.easeui.utils.AvatarUtils;
 import com.hyphenate.easemob.easeui.utils.EaseUserUtils;
 import com.hyphenate.easemob.easeui.widget.AvatarImageView;
 import com.hyphenate.easemob.easeui.widget.EaseExpandGridView;
+import com.hyphenate.easemob.im.officeautomation.fragment.EditDialogFragment;
+import com.hyphenate.easemob.imlibs.mp.events.EventUserInfoRefresh;
 import com.hyphenate.eventbus.MPEventBus;
 import com.hyphenate.eventbus.Subscribe;
 import com.hyphenate.eventbus.ThreadMode;
@@ -446,6 +448,10 @@ public class GroupDetailInfoActivity extends BaseActivity implements View.OnClic
         }
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onUserInfoRefresh(EventUserInfoRefresh event){
+        memberAdapter.notifyDataSetChanged();
+    }
 
     @Override
     public void onClick(View v) {
@@ -464,15 +470,25 @@ public class GroupDetailInfoActivity extends BaseActivity implements View.OnClic
             if (!selfIsOwner) {
                 return;
             }
-            new XPopup.Builder(activity).asInputConfirm("群名称", null, groupEntity.getName(),
-                    "请输入群名称", new OnInputConfirmListener() {
-                        @Override
-                        public void onConfirm(String text) {
-                            changeGroupName(text);
-                        }
-                    }, () -> {
+//            new XPopup.Builder(activity).asInputConfirm("群名称", null, groupEntity.getName(),
+//                    "请输入群名称", new OnInputConfirmListener() {
+//                        @Override
+//                        public void onConfirm(String text) {
+//                            changeGroupName(text);
+//                        }
+//                    }, () -> {
+//
+//                    }, R.layout.dialog_group_detail_edit_name).show();
 
-                    }, R.layout.dialog_group_detail_edit_name).show();
+            new EditDialogFragment.Builder(activity).setTitle("群名称").setHint("请输入群名称")
+                    .setContent(groupEntity.getName())
+                    .setOnConfirmClickListener(new EditDialogFragment.OnConfirmClickListener() {
+                        @Override
+                        public void onConfirmClick(String content) {
+                            changeGroupName(content);
+                        }
+                    }).show();
+
         } else if (id == R.id.rl_group_owner) {
             if (groupEntity == null) {
                 return;

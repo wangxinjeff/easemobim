@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="@dimen/dp_277"
-    android:layout_height="@dimen/dp_167"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/dialog_group_detail_edit_name_bg"
     app:layout_constraintCircleRadius="@dimen/dp_4">
@@ -39,9 +39,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginRight="@dimen/dp_20"
         android:layout_marginBottom="@dimen/dp_29"
+        android:layout_alignTop="@+id/tv_cancel"
         android:text="确定"
         android:textSize="@dimen/sp_13"
         android:textColor="#6C8AB6"/>
@@ -51,9 +51,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
         android:layout_marginRight="@dimen/dp_76"
         android:layout_marginBottom="@dimen/dp_29"
+        android:layout_below="@+id/et_input"
+        android:layout_marginTop="10dp"
         android:text="取消"
         android:textSize="@dimen/sp_13"
         android:textColor="#6C8AB6"/>
