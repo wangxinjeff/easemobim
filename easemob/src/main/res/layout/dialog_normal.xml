@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/dialog_group_detail_edit_name_bg"
+    app:layout_constraintCircleRadius="@dimen/dp_4">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_29"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:text="确认要解散群组吗？"
+        android:textSize="@dimen/sp_15"
+        android:textColor="@color/color_333333"/>
+
+    <View
+        android:id="@+id/divider1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_05"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        android:layout_marginTop="@dimen/dp_29"
+        android:background="@color/divider_color"
+        />
+
+    <View
+        android:id="@+id/divider2"
+        android:layout_width="@dimen/dp_05"
+        android:layout_height="@dimen/dp_50"
+        app:layout_constraintTop_toBottomOf="@+id/divider1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@color/divider_color"
+        />
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@+id/divider2"
+        app:layout_constraintBottom_toBottomOf="@+id/divider2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/divider2"
+        android:gravity="center"
+        android:text="取消"
+        android:textSize="@dimen/sp_15"
+        android:textColor="@color/color_text9"/>
+
+    <TextView
+        android:id="@+id/tv_confirm"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="@+id/divider2"
+        app:layout_constraintBottom_toBottomOf="@+id/divider2"
+        app:layout_constraintStart_toEndOf="@+id/divider2"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:gravity="center"
+        android:layout_alignTop="@+id/tv_cancel"
+        android:text="确定"
+        android:textSize="@dimen/sp_15"
+        android:textColor="#6C8AB6"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

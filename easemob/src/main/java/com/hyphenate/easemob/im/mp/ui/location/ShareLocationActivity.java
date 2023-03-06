@@ -32,6 +32,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.easemob.easeui.domain.EaseUser;
+import com.hyphenate.easemob.im.officeautomation.fragment.NormalDialogFragment;
 import com.hyphenate.eventbus.MPEventBus;
 import com.hyphenate.eventbus.Subscribe;
 import com.hyphenate.eventbus.ThreadMode;
@@ -93,14 +94,24 @@ public class ShareLocationActivity extends BaseActivity {
         ibtnExit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new XPopup.Builder(activity).asConfirm(null, "是否结束共享位置", "取消", "结束共享", new OnConfirmListener() {
-                    @Override
-                    public void onConfirm() {
-                        LatLngManager.getInstance().removeUser(toChatUsername, EMClient.getInstance().getCurrentUser());
-                        LocServiceManager.getInstance().stopLocation();
-                        finish();
-                    }
-                }, null, false).show();
+//                new XPopup.Builder(activity).asConfirm(null, "是否结束共享位置", "取消", "结束共享", new OnConfirmListener() {
+//                    @Override
+//                    public void onConfirm() {
+//                        LatLngManager.getInstance().removeUser(toChatUsername, EMClient.getInstance().getCurrentUser());
+//                        LocServiceManager.getInstance().stopLocation();
+//                        finish();
+//                    }
+//                }, null, false).show();
+
+                new NormalDialogFragment.Builder(activity).setTitle("是否结束共享位置")
+                        .setOnConfirmClickListener("结束共享", () -> {
+                            LatLngManager.getInstance().removeUser(toChatUsername, EMClient.getInstance().getCurrentUser());
+                            LocServiceManager.getInstance().stopLocation();
+                            finish();
+                        }).show();
+
+
+
             }
         });
         ibtnMinium.setOnClickListener(new View.OnClickListener() {

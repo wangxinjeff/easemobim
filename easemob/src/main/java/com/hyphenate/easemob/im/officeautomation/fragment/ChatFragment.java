@@ -1407,13 +1407,28 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                 if (checkPermission(2)) {
                     inputMenu.hideExtendMenuContainer();
                     final String[] items = {"发送位置", "共享实时位置"};
-                    xPopup = new XPopup.Builder(getContext());
-//                        .maxWidth(600)
+//                    xPopup = new XPopup.Builder(getContext());
+////                        .maxWidth(600)
+//
+//                    xPopupView = xPopup.asCenterList(null, items,
+//                            new OnSelectListener() {
+//                                @Override
+//                                public void onSelect(int position, String text) {
+//                                    if (position == 0) {
+//                                        startActivityForResult(new Intent(getActivity(), EMBaiduMapActivity.class), REQUEST_CODE_MAP);
+//                                    } else if (position == 1) {
+//                                        startActivity(new Intent(getActivity(), ShareLocationActivity.class)
+//                                                .putExtra(Constant.EXTRA_USER_ID, toChatUsername));
+//                                        startRtLocation();
+//                                    }
+//                                }
+//                            })
+//                            .show();
 
-                    xPopupView = xPopup.asCenterList(null, items,
-                            new OnSelectListener() {
+                    new ItemsDialogFragment.Builder((BaseActivity) getActivity()).setItems(items)
+                            .setItemSelectListener(new ItemsDialogFragment.OnItemSelectListener() {
                                 @Override
-                                public void onSelect(int position, String text) {
+                                public void onSelect(int position) {
                                     if (position == 0) {
                                         startActivityForResult(new Intent(getActivity(), EMBaiduMapActivity.class), REQUEST_CODE_MAP);
                                     } else if (position == 1) {
@@ -1422,8 +1437,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                                         startRtLocation();
                                     }
                                 }
-                            })
-                            .show();
+                            }).show();
                 }
 
                 break;

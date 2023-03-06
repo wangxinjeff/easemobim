@@ -38,6 +38,7 @@ import com.hyphenate.easemob.easeui.utils.EaseUserUtils;
 import com.hyphenate.easemob.easeui.widget.AvatarImageView;
 import com.hyphenate.easemob.easeui.widget.EaseExpandGridView;
 import com.hyphenate.easemob.im.officeautomation.fragment.EditDialogFragment;
+import com.hyphenate.easemob.im.officeautomation.fragment.NormalDialogFragment;
 import com.hyphenate.easemob.imlibs.mp.events.EventUserInfoRefresh;
 import com.hyphenate.eventbus.MPEventBus;
 import com.hyphenate.eventbus.Subscribe;
@@ -568,37 +569,52 @@ public class GroupDetailInfoActivity extends BaseActivity implements View.OnClic
             startActivity(avatarIntent);
         } else if (id == R.id.rl_group_exit) {
             if (!selfIsOwner) {
-                basePopupView = new XPopup.Builder(this).asConfirm(null, "确认要退出此群吗？", new OnConfirmListener() {
-                    @Override
-                    public void onConfirm() {
-                        exitGroup();
-                    }
-                }).show();
+//                basePopupView = new XPopup.Builder(this).asConfirm(null, "确认要退出此群吗？", new OnConfirmListener() {
+//                    @Override
+//                    public void onConfirm() {
+//                        exitGroup();
+//                    }
+//                }).show();
+
+                new NormalDialogFragment.Builder(activity).setTitle("确认要退出此群吗？")
+                        .setOnConfirmClickListener(this::exitGroup).show();
             }
         } else if (id == R.id.rl_group_delete) {
             if (selfIsOwner) {
-                basePopupView = new XPopup.Builder(this).asConfirm(null, "确认要解散此群吗？", new OnConfirmListener() {
-                    @Override
-                    public void onConfirm() {
-                        deleteGroup();
-                    }
-                }).show();
+//                basePopupView = new XPopup.Builder(this).asConfirm(null, "确认要解散此群吗？", new OnConfirmListener() {
+//                    @Override
+//                    public void onConfirm() {
+//                        deleteGroup();
+//                    }
+//                }).show();
+
+                new NormalDialogFragment.Builder(activity).setTitle("确认要解散此群吗？")
+                        .setOnConfirmClickListener(this::deleteGroup).show();
             }
         } else if (id == R.id.rl_group_mute) {
             if (selfIsOwner) {
                 startActivity(new Intent(activity, GroupMutesActivity.class).putExtra("groupEntity", groupEntity));
             }
         } else if (id == R.id.rl_group_clear) {
-            basePopupView = new XPopup.Builder(this).asConfirm(null, "确认要清空聊天记录吗？", new OnConfirmListener() {
-                @Override
-                public void onConfirm() {
-                    EMConversation conversation = EMClient.getInstance().chatManager().getConversation(groupEntity.getImChatGroupId(), EMConversation.EMConversationType.GroupChat);
-                    if (conversation != null) {
-                        conversation.clearAllMessages();
-                    }
-                    Toast.makeText(GroupDetailInfoActivity.this, "已清空聊天记录", Toast.LENGTH_SHORT).show();
-                }
-            }).show();
+//            basePopupView = new XPopup.Builder(this).asConfirm(null, "确认要清空聊天记录吗？", new OnConfirmListener() {
+//                @Override
+//                public void onConfirm() {
+//                    EMConversation conversation = EMClient.getInstance().chatManager().getConversation(groupEntity.getImChatGroupId(), EMConversation.EMConversationType.GroupChat);
+//                    if (conversation != null) {
+//                        conversation.clearAllMessages();
+//                    }
+//                    Toast.makeText(GroupDetailInfoActivity.this, "已清空聊天记录", Toast.LENGTH_SHORT).show();
+//                }
+//            }).show();
+
+            new NormalDialogFragment.Builder(activity).setTitle("确认要清空聊天记录吗？")
+                    .setOnConfirmClickListener(() -> {
+                        EMConversation conversation = EMClient.getInstance().chatManager().getConversation(groupEntity.getImChatGroupId(), EMConversation.EMConversationType.GroupChat);
+                        if (conversation != null) {
+                            conversation.clearAllMessages();
+                        }
+                        Toast.makeText(GroupDetailInfoActivity.this, "已清空聊天记录", Toast.LENGTH_SHORT).show();
+                    }).show();
         }
     }
 
