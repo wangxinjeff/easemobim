@@ -18,39 +18,41 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import com.hyphenate.EMCallBack
-import com.hyphenate.easemob.imlibs.cache.OnlineCache
 import com.hyphenate.chat.EMClient
 import com.hyphenate.chat.EMCmdMessageBody
 import com.hyphenate.chat.EMMessage
+import com.hyphenate.easemob.R
 import com.hyphenate.easemob.easeui.EaseUI
 import com.hyphenate.easemob.easeui.ui.EaseShowBigImageActivity
 import com.hyphenate.easemob.easeui.utils.AvatarUtils
 import com.hyphenate.easemob.easeui.widget.AvatarImageView
-import com.hyphenate.eventbus.Subscribe
-import com.hyphenate.eventbus.ThreadMode
-import com.hyphenate.exceptions.HyphenateException
 import com.hyphenate.easemob.im.gray.GrayScaleConfig
-import com.hyphenate.easemob.imlibs.message.MessageUtils
 import com.hyphenate.easemob.im.mp.AppHelper
-import com.hyphenate.easemob.imlibs.mp.EMDataCallBack
 import com.hyphenate.easemob.im.mp.cache.TenantOptionCache
-import com.hyphenate.easemob.imlibs.mp.events.EventFriendNotify
-import com.hyphenate.easemob.imlibs.mp.events.EventOnLineOffLineQuery
-import com.hyphenate.easemob.imlibs.mp.events.EventTenantOptionChanged
-import com.hyphenate.easemob.imlibs.mp.utils.MPLog
 import com.hyphenate.easemob.im.mp.utils.UserProvider
-import com.hyphenate.easemob.R
 import com.hyphenate.easemob.im.officeautomation.db.InviteMessageDao
 import com.hyphenate.easemob.im.officeautomation.domain.InviteMessage
-import com.hyphenate.easemob.imlibs.officeautomation.domain.MPOrgEntity
-import com.hyphenate.easemob.imlibs.officeautomation.domain.MPUserEntity
-import com.hyphenate.easemob.imlibs.officeautomation.emrequest.EMAPIManager
 import com.hyphenate.easemob.im.officeautomation.http.BaseRequest
 import com.hyphenate.easemob.im.officeautomation.runtimepermissions.PermissionsManager
 import com.hyphenate.easemob.im.officeautomation.runtimepermissions.PermissionsResultAction
 import com.hyphenate.easemob.im.officeautomation.utils.AppUtil
 import com.hyphenate.easemob.im.officeautomation.utils.Constant
 import com.hyphenate.easemob.im.officeautomation.utils.MyToast
+import com.hyphenate.easemob.imlibs.cache.OnlineCache
+import com.hyphenate.easemob.imlibs.message.MessageUtils
+import com.hyphenate.easemob.imlibs.mp.EMDataCallBack
+import com.hyphenate.easemob.imlibs.mp.events.EventFriendNotify
+import com.hyphenate.easemob.imlibs.mp.events.EventOnLineOffLineQuery
+import com.hyphenate.easemob.imlibs.mp.events.EventTenantOptionChanged
+import com.hyphenate.easemob.imlibs.mp.events.EventUserInfoRefresh
+import com.hyphenate.easemob.imlibs.mp.utils.MPLog
+import com.hyphenate.easemob.imlibs.officeautomation.domain.MPOrgEntity
+import com.hyphenate.easemob.imlibs.officeautomation.domain.MPUserEntity
+import com.hyphenate.easemob.imlibs.officeautomation.emrequest.EMAPIManager
+import com.hyphenate.eventbus.MPEventBus
+import com.hyphenate.eventbus.Subscribe
+import com.hyphenate.eventbus.ThreadMode
+import com.hyphenate.exceptions.HyphenateException
 import com.hyphenate.util.EMLog
 import com.mylhyl.circledialog.CircleDialog
 import org.json.JSONException
@@ -592,57 +594,89 @@ class ContactDetailsActivity : BaseActivity(), View.OnClickListener {
 
     //获取员工信息
     private fun getUserPersonalInfo() {
-        if (mUserId == 0) {
-            return
-        }
         val progressDialog = ProgressDialog.show(this, "请稍后...", "正在加载...", true, true)
-        EMAPIManager.getInstance().getUserDetails(mUserId, object : EMDataCallBack<String>() {
-            override fun onSuccess(value: String) {
-                if (isFinishing) {
-                    return
-                }
+        if (mUserId != 0) {
+            EMAPIManager.getInstance().getUserDetails(mUserId, object : EMDataCallBack<String>() {
+                override fun onSuccess(value: String) {
+                    if (isFinishing) {
+                        return
+                    }
 
-                runOnUiThread {
-                    progressDialog.dismiss()
-                    try {
-                        val jsonResult = JSONObject(value)
-                        val jsonObj = jsonResult.optJSONObject("entity")
-                        val jsonCompanyList = jsonObj.optJSONArray("companyList")
-                        val jsonOrgList = jsonObj.optJSONArray("organizationList")
-                        val jsonUserCompany = jsonObj.optJSONArray("userCompanyRelationshipList")
-                        val userEntity = MPUserEntity.create(jsonObj.optJSONObject("user"))
-                        val orgEntities = MPOrgEntity.create(jsonOrgList, jsonCompanyList, jsonUserCompany)
+                    runOnUiThread {
+                        progressDialog.dismiss()
+                        try {
+                            val jsonResult = JSONObject(value)
+                            val jsonObj = jsonResult.optJSONObject("entity")
+                            val jsonCompanyList = jsonObj.optJSONArray("companyList")
+                            val jsonOrgList = jsonObj.optJSONArray("organizationList")
+                            val jsonUserCompany = jsonObj.optJSONArray("userCompanyRelationshipList")
+                            val userEntity = MPUserEntity.create(jsonObj.optJSONObject("user"))
+                            val orgEntities = MPOrgEntity.create(jsonOrgList, jsonCompanyList, jsonUserCompany)
 
-                        if (jsonOrgList.length() == 0) {
-                            userEntity!!.orgId = -1
-                        } else {
-                            userEntity!!.orgId = jsonOrgList.getJSONObject(0).getInt("id")
-                        }
+                            if (jsonOrgList.length() == 0) {
+                                userEntity!!.orgId = -1
+                            } else {
+                                userEntity!!.orgId = jsonOrgList.getJSONObject(0).getInt("id")
+                            }
 
-                        AppHelper.getInstance().model.saveUserInfo(userEntity)
-                        if (orgEntities == null) {
-                            return@runOnUiThread
+                            AppHelper.getInstance().model.saveUserInfo(userEntity)
+                            if (orgEntities == null) {
+                                return@runOnUiThread
+                            }
+                            if (imUsername == null) {
+                                imUsername = userEntity.imUserId;
+                            }
+                            setData(userEntity, orgEntities)
+                        } catch (e: Exception) {
+                            e.printStackTrace()
                         }
-                        if (imUsername == null) {
-                            imUsername = userEntity.imUserId;
-                        }
-                        setData(userEntity, orgEntities)
-                    } catch (e: Exception) {
-                        e.printStackTrace()
                     }
                 }
-            }
 
-            override fun onError(error: Int, errorMsg: String) {
-                if (isFinishing) {
-                    return
+                override fun onError(error: Int, errorMsg: String) {
+                    if (isFinishing) {
+                        return
+                    }
+                    runOnUiThread {
+                        progressDialog.dismiss()
+                        Toast.makeText(this@ContactDetailsActivity, "获取用户信息失败！", Toast.LENGTH_SHORT).show()
+                    }
                 }
-                runOnUiThread {
-                    progressDialog.dismiss()
-                    Toast.makeText(this@ContactDetailsActivity, "获取用户信息失败！", Toast.LENGTH_SHORT).show()
-                }
-            }
-        })
+            })
+        } else if(!TextUtils.isEmpty(imUsername)){
+            EMAPIManager.getInstance().getUserByImUser(imUsername, object : EMDataCallBack<String?>() {
+                    override fun onSuccess(value: String?) {
+                        if (isFinishing) {
+                            return
+                        }
+                        runOnUiThread {
+                            progressDialog.dismiss()
+                            try {
+                                val jsonObj = JSONObject(value)
+                                val jsonEntity = jsonObj.optJSONObject("entity")
+                                val userEntity = MPUserEntity.create(jsonEntity)
+                                if (userEntity != null) {
+                                    mUserId = userEntity.id
+                                    getUserPersonalInfo()
+                                }
+                            } catch (e: java.lang.Exception) {
+                                e.printStackTrace()
+                            }
+                        }
+                    }
+
+                    override fun onError(error: Int, errorMsg: String) {
+                        if (isFinishing) {
+                            return
+                        }
+                        runOnUiThread {
+                            progressDialog.dismiss()
+                            Toast.makeText(this@ContactDetailsActivity, "获取用户信息失败！", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                })
+        }
+
     }
 
     private fun addStarredFriend(userId: Int) {
