@@ -107,4 +107,6 @@
     <color name="text_color_normal">#333333</color>
     <color name="text_color_hint">#cccccc</color>
     <color name="black">#000000</color>
+    <color name="switch_thumb_color">#ffffff</color>
+    <color name="switch_back_color">#90949C</color>
 </resources>

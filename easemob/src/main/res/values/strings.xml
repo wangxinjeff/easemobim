@@ -505,4 +505,31 @@
 
     <string name="title_session">聊天</string>
     <string name="address_book">通讯录</string>
+    <string name="vote">投票</string>
+    <string name="input_vote_topic">请输入投票主题</string>
+    <string name="add_options">添加选项</string>
+    <string name="end_date">结束日期</string>
+    <string name="allow_multiple">允许多选</string>
+    <string name="dis_vote_result">公开投票结果</string>
+    <string name="anonymous_vote">匿名投票</string>
+    <string name="create_vote">发起投票</string>
+    <string name="confirm">确认</string>
+    <string name="on_the_ballot">投票中</string>
+    <string name="have_ended">已结束</string>
+    <string name="deleted">已删除</string>
+    <string name="cut_off_time">截止时间: %s</string>
+    <string name="resend_to_group">重发到群</string>
+    <string name="close_vote">结束投票</string>
+    <string name="want_vote">我要投票</string>
+    <string name="result_not_disclosed">投票结果不对参与者公开</string>
+    <string name="vote_has_been_deleted">该投票活动已删除</string>
+    <string name="vote_has_been_closed">该投票活动已结束</string>
+    <string name="remove_vote">删除投票</string>
+    <string name="resend_vote_to_conversation">重新发送投票到当前会话里</string>
+    <string name="whether_close_vote">是否结束该投票</string>
+    <string name="participate_in">参与了</string>
+    <string name="vote_closed">投票已结束</string>
+    <string name="view_result">查看结果</string>
+    <string name="voted_proportion">已投票 · 占比%s</string>
+    <string name="vote_info">%s | %s | %s人已投</string>
 </resources>

@@ -48,6 +48,11 @@ import com.dmcbig.mediapicker.PickerConfig;
 import com.dmcbig.mediapicker.entity.Media;
 import com.google.gson.Gson;
 import com.hyphenate.EMCallBack;
+import com.hyphenate.EMValueCallBack;
+import com.hyphenate.easemob.im.officeautomation.domain.VoteMsgEntity;
+import com.hyphenate.easemob.im.officeautomation.ui.VoteCreateActivity;
+import com.hyphenate.easemob.im.officeautomation.ui.VoteDetailActivity;
+import com.hyphenate.easemob.im.officeautomation.widget.EaseChatVotePresenter;
 import com.hyphenate.easemob.imlibs.cache.OnlineCache;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.chat.EMCmdMessageBody;
@@ -176,6 +181,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
     // constant start from 11 to avoid conflict with constant in base class
     private static final int ITEM_VIDEO = 11;
     private static final int ITEM_FILE = 12;
+    private static final int ITEM_VOTE = 13;
 
     private static final int ITEM_LOCATION = 16;
     private static final int ITEM_BURN_AFTER_READING = 17;
@@ -190,6 +196,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
     private static final int REQUEST_CODE_CHAT_DETAIL = 16;
     private static final int REQUEST_CODE_MAP = 17;
     private static final int REQUEST_CODE_SELECT_FILE_FROM_FRAGMENT = 20;
+    private static final int REQUEST_CODE_VOTE = 21;
 
 
     private static final int MESSAGE_TYPE_SENT_VOICE_CALL = 1;
@@ -757,6 +764,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                 inputMenu.registerExtendMenuItem(R.string.attach_burn_after_read, R.drawable.mp_ic_ext_fire, ITEM_BURN_AFTER_READING, extendMenuItemClickListener);
             }
         } else if (chatType == Constant.CHATTYPE_GROUP) {
+            inputMenu.registerExtendMenuItem(R.string.vote, R.drawable.mp_ic_ext_vote, ITEM_VOTE, extendMenuItemClickListener);
         }
         inputMenu.registerExtendMenuItem(R.string.attach_file, R.drawable.mp_ic_ext_file, ITEM_FILE, extendMenuItemClickListener);
         if (!isFileHelper) {
@@ -934,6 +942,25 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                     doAddSendExtField(emMessage);
                     MessageUtils.sendMessage(emMessage);
                     refreshMessageListSelectLast();
+                    break;
+                case REQUEST_CODE_VOTE:
+                    String json = data.getStringExtra(EaseConstant.MSG_EXT_VOTE);
+                    if(TextUtils.isEmpty(json)){
+                        return;
+                    }
+                    JSONObject voteJson = null;
+                    EMMessage message = EMMessage.createTxtSendMessage("投票消息", toChatUsername);
+                    JSONObject extMsg = new JSONObject();
+                    try {
+                        voteJson = new JSONObject(json);
+                        extMsg.put(EaseConstant.EXT_MSGTYPE, "vote");
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    message.setAttribute(EaseConstant.EXT_EXTMSG, extMsg);
+                    message.setAttribute(EaseConstant.MSG_EXT_VOTE, voteJson);
+                    doAddSendExtField(message);
+                    sendMessage(message);
                     break;
                 default:
                     break;
@@ -1289,6 +1316,60 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
     @Override
     public boolean onMessageBubbleClick(EMMessage message) {
         //聊天记录,消息框点击事件，return true
+        if(EaseMessageUtils.isVoteMessage(message)){
+            try {
+                JSONObject voteJson = message.getJSONObjectAttribute(EaseConstant.MSG_EXT_VOTE);
+                VoteMsgEntity entity = new Gson().fromJson(voteJson.toString(), VoteMsgEntity.class);
+                if(entity.getStatus() == 4){
+                    MyToast.showInfoToast(getString(R.string.vote_has_been_deleted));
+                } else {
+                    startActivityForResult(new Intent(getActivity(), VoteDetailActivity.class).putExtra("voteId", entity.getId()), REQUEST_CODE_VOTE);
+                }
+            } catch (HyphenateException e) {
+                e.printStackTrace();
+            }
+        } else if (EaseMessageUtils.isNoticeMessage(message)) {
+            try {
+                JSONObject extMsgJson = message.getJSONObjectAttribute("extMsg");
+                String type = extMsgJson.getString("type");
+                if(type.equals("vote_notice")){
+                    int voteId = extMsgJson.optInt("voteId");
+                    AppHelper.getInstance().getModel().getMsgIdWithVoteId(String.valueOf(voteId), new EMValueCallBack<List<String>>() {
+                        @Override
+                        public void onSuccess(List<String> msgIds) {
+                            getActivity().runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    if(msgIds.size() > 0){
+                                        EMMessage msg = EMClient.getInstance().chatManager().getMessage(msgIds.get(msgIds.size() - 1));
+                                        try {
+                                            JSONObject ext = msg.getJSONObjectAttribute(EaseConstant.MSG_EXT_VOTE);
+                                            VoteMsgEntity entity = new Gson().fromJson(ext.toString(), VoteMsgEntity.class);
+                                            if(entity.getStatus() == 4){
+                                                MyToast.showInfoToast(getString(R.string.vote_has_been_deleted));
+                                            } else {
+                                                startActivityForResult(new Intent(getActivity(), VoteDetailActivity.class).putExtra("voteId", String.valueOf(voteId)), REQUEST_CODE_VOTE);
+                                            }
+                                        } catch (HyphenateException e) {
+                                            e.printStackTrace();
+                                        }
+                                    } else {
+                                        startActivityForResult(new Intent(getActivity(), VoteDetailActivity.class).putExtra("voteId", String.valueOf(voteId)), REQUEST_CODE_VOTE);
+                                    }
+                                }
+                            });
+                        }
+
+                        @Override
+                        public void onError(int i, String s) {
+
+                        }
+                    });
+                }
+            } catch (HyphenateException | JSONException e) {
+                e.printStackTrace();
+            }
+        }
         return false;
     }
 
@@ -1450,7 +1531,9 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
 
                 startActivityForResult(new Intent(getActivity(), GroupAddMemberActivity.class).putExtra("isCard", true), 1000);
                 break;
-
+            case ITEM_VOTE:
+                startActivityForResult(new Intent(getActivity(), VoteCreateActivity.class).putExtra("groupId", toChatUsername), REQUEST_CODE_VOTE);
+                break;
             default:
                 break;
         }
@@ -2360,6 +2443,16 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         @Override
         public EaseChatRowPresenter getCustomChatRow(EMMessage message, int position, BaseAdapter adapter) {
             if (message.getType() == EMMessage.Type.TXT) {
+                // vote
+                if(EaseMessageUtils.isVoteMessage(message)){
+                    EaseChatRowPresenter presenter = new EaseChatVotePresenter(){
+                        @Override
+                        public void onChecked(EMMessage message, boolean b) {
+
+                        }
+                    };
+                    return presenter;
+                }
 
                 // burn after reading
                 if (EaseMessageUtils.isBurnMessage(message)) {
@@ -2499,6 +2592,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
     @Override
     protected void messageSendAfter(EMMessage message) {
         AppHelper.getInstance().saveReferenceMsg(message);
+        AppHelper.getInstance().saveVoteData(message);
     }
 
     private JSONObject getReferenceMsgJson(EMMessage referenceMsg){

@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/easemob_bg"
+    android:fitsSystemWindows="true"
+    >
+
+    <RelativeLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_top_title_height"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/bg_top_bar_2">
+
+        <include layout="@layout/layout_back_view"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/vote"
+            android:textColor="@color/topbar_title_color"
+            android:textSize="@dimen/activity_top_title_textsize" />
+
+    </RelativeLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/top_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            >
+
+            <EditText
+                android:id="@+id/et_vote_title"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_52"
+                android:textSize="@dimen/sp_16"
+                android:background="@color/color_white"
+                android:hint="@string/input_vote_topic"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/dp_20"
+                android:paddingEnd="@dimen/dp_20"
+                />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dp_8"
+                android:background="@color/color_white"
+                android:nestedScrollingEnabled="false"
+                />
+
+            <LinearLayout
+                android:id="@+id/ll_add_options"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_52"
+                android:gravity="center_vertical"
+                android:background="@color/white"
+                >
+                <ImageView
+                    android:id="@+id/iv_add"
+                    android:layout_width="@dimen/dp_28"
+                    android:layout_height="@dimen/dp_28"
+                    android:src="@drawable/ic_add_options_blue"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:padding="@dimen/dp_4"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_16"
+                    android:text="@string/add_options"
+                    android:layout_marginStart="@dimen/dp_4"
+                    />
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_date"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_52"
+                android:gravity="center_vertical"
+                android:background="@color/color_white"
+                android:layout_marginTop="@dimen/dp_16"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_16"
+                    android:layout_marginStart="@dimen/dp_20"
+                    android:text="@string/end_date"
+                    android:textColor="@android:color/black"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_14"
+                    android:layout_toStartOf="@+id/iv_date"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_date"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="@dimen/dp_14"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    android:src="@drawable/ic_vote_date" />
+
+            </RelativeLayout>
+            <View style="@style/devide_line_group" />
+            <RelativeLayout
+                android:id="@+id/rl_multi_select"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_52"
+                android:background="@android:color/white"
+                >
+
+                <TextView
+                    android:id="@+id/tv_multi_select"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/allow_multiple"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/sp_16"
+                    android:layout_marginStart="@dimen/dp_20"/>
+
+                <com.kyleduo.switchbutton.SwitchButton
+                    android:id="@+id/switch_btn_multi_select"
+                    android:layout_width="@dimen/group_option_switch_width"
+                    android:layout_height="@dimen/group_option_switch_height"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    android:clickable="false"
+                    app:kswThumbColor="@color/switch_thumb_color"
+                    app:kswBackDrawable="@drawable/em_btn_switch_selector"
+                    />
+            </RelativeLayout>
+            <View style="@style/devide_line_group" />
+            <RelativeLayout
+                android:id="@+id/rl_disclosure_result"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_52"
+                android:background="@android:color/white"
+                >
+
+                <TextView
+                    android:id="@+id/tv_disclosure_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/dis_vote_result"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/sp_16"
+                    android:layout_marginStart="@dimen/dp_20"/>
+
+                <com.kyleduo.switchbutton.SwitchButton
+                    android:id="@+id/switch_btn_disclosure_result"
+                    android:layout_width="@dimen/group_option_switch_width"
+                    android:layout_height="@dimen/group_option_switch_height"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="false"
+                    android:checked="true"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    app:kswBackDrawable="@drawable/em_btn_switch_selector"
+                    app:kswThumbColor="@color/switch_thumb_color" />
+            </RelativeLayout>
+            <View style="@style/devide_line_group" />
+            <RelativeLayout
+                android:id="@+id/rl_anonymous"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_52"
+                android:background="@android:color/white"
+                android:visibility="gone"
+                >
+
+                <TextView
+                    android:id="@+id/tv_anonymous"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/anonymous_vote"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/sp_16"
+                    android:layout_marginStart="@dimen/dp_20"/>
+
+                <com.kyleduo.switchbutton.SwitchButton
+                    android:id="@+id/switch_btn_anonymous"
+                    android:layout_width="@dimen/group_option_switch_width"
+                    android:layout_height="@dimen/group_option_switch_height"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:clickable="false"
+                    android:layout_marginEnd="@dimen/dp_20"
+                    app:kswBackDrawable="@drawable/em_btn_switch_selector"
+                    app:kswThumbColor="@color/switch_thumb_color"
+                    />
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/btn_create_vote"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_52"
+                android:text="@string/create_vote"
+                android:textColor="@color/white"
+                android:layout_margin="@dimen/dp_20"
+                android:background="@drawable/create_btn_bg"
+                />
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

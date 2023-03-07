@@ -173,6 +173,13 @@
         <item name="android:paddingBottom">@dimen/dp_5</item>
     </style>
 
-    <!--<style name="MultiCheckBoxStyle" parent="Widget.AppCompat.CompoundButton.CheckBox">-->
-    <!--</style>-->
+    <style name="CustomCheckBoxTheme3" >
+        <item name="android:button">@drawable/check_box_selector</item>
+    </style>
+
+    <style name="SwipeBackThemeVoteDetail" parent="AppThemeCustom">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/SlideRightAnimation</item>
+        <item name="android:navigationBarColor">@color/white</item>
+    </style>
 </resources>

@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.util.Log;
 
 import com.facebook.stetho.Stetho;
+import com.google.gson.Gson;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.EMConferenceListener;
 import com.hyphenate.EMMessageListener;
@@ -32,6 +33,7 @@ import com.hyphenate.easemob.easeui.model.EaseNotifier;
 import com.hyphenate.easemob.easeui.utils.EaseCommonUtils;
 import com.hyphenate.easemob.easeui.utils.EaseUserUtils;
 import com.hyphenate.easemob.im.officeautomation.domain.NoDisturbEntity;
+import com.hyphenate.easemob.im.officeautomation.domain.VoteMsgEntity;
 import com.hyphenate.easemob.im.officeautomation.http.BaseRequest;
 import com.hyphenate.easemob.im.officeautomation.utils.CommonUtils;
 import com.hyphenate.easemob.imlibs.cache.OnlineCache;
@@ -433,6 +435,7 @@ public class AppHelper {
                     PrefsUtil.getInstance().setTimeStamp(message.getMsgTime());
                     MPLog.d(TAG, "onMessageReceived id : " + message.getMsgId());
                     saveReferenceMsg(message);
+                    saveVoteData(message);
                     if (!EaseMessageUtils.isVideoInviteMessage(message)) {
                         // in background, do not refresh UI, notify it in notification bar
                         if (!easeUI.hasForegroundActivies() && !message.getFrom().equals(EMClient.getInstance().getCurrentUser())) {
@@ -478,6 +481,76 @@ public class AppHelper {
                             }
                         } catch (HyphenateException e) {
                             e.printStackTrace();
+                        }
+                    } else if(TextUtils.equals(action, "groupVoteOneVoted")){
+                        // 有人投票
+                        try {
+                            JSONObject jsonObject = new JSONObject();
+                            JSONObject content = message.getJSONObjectAttribute("content");
+                            int userId = content.getInt("userId");
+                            JSONObject vote = content.getJSONObject("vote");
+                            int id = vote.getInt("id");
+                            jsonObject.put("type", "vote_notice");
+                            jsonObject.put("title", context.getString(R.string.participate_in));
+                            jsonObject.put("userId", userId);
+                            jsonObject.put("content", context.getString(R.string.vote));
+                            jsonObject.put("voteId", id);
+                            EMMessage msg = EMMessage.createTxtSendMessage("[系统消息]", message.getTo());
+                            msg.setChatType(message.getChatType());
+                            msg.setMsgTime(message.getMsgTime());
+                            msg.setStatus(EMMessage.Status.SUCCESS);
+                            msg.setAttribute(EaseConstant.EXT_EXTMSG, jsonObject);
+                            EMClient.getInstance().chatManager().saveMessage(msg);
+                            MPEventBus.getDefault().post(new EventEMMessageReceived(message));
+                        } catch (JSONException | HyphenateException e) {
+                            e.printStackTrace();
+                        }
+                    } else if(TextUtils.equals(action, "groupVoteEndByCreator") || TextUtils.equals(action, "groupVoteExpireEnd") || TextUtils.equals(action, "groupVoteDeleteByCreator")){
+                        // 投票结束 & 投票被删除
+                        try {
+                            JSONObject content = message.getJSONObjectAttribute("content");
+                            int id = content.optInt("id");
+                            if(TextUtils.equals(action, "groupVoteEndByCreator") || TextUtils.equals(action, "groupVoteExpireEnd")){
+                                JSONObject jsonObject = new JSONObject();
+                                jsonObject.put("type", "vote_notice");
+                                jsonObject.put("title", context.getString(R.string.vote_closed));
+                                jsonObject.put("userId", 0);
+                                jsonObject.put("content", context.getString(R.string.view_result));
+                                jsonObject.put("voteId", id);
+                                EMMessage msg = EMMessage.createTxtSendMessage("[系统消息]", message.getTo());
+                                msg.setChatType(message.getChatType());
+                                msg.setMsgTime(message.getMsgTime());
+                                msg.setStatus(EMMessage.Status.SUCCESS);
+                                msg.setAttribute(EaseConstant.EXT_EXTMSG, jsonObject);
+                                EMClient.getInstance().chatManager().saveMessage(msg);
+                            }
+
+                            AppHelper.getInstance().getModel().getMsgIdWithVoteId(String.valueOf(id), new EMValueCallBack<List<String>>(){
+
+                                @Override
+                                public void onSuccess(List<String> strings) {
+                                    for(String msgId : strings){
+                                        EMMessage msg = EMClient.getInstance().chatManager().getMessage(msgId);
+                                        try {
+                                            JSONObject ext = msg.getJSONObjectAttribute(EaseConstant.MSG_EXT_VOTE);
+                                            VoteMsgEntity entity = new Gson().fromJson(ext.toString(), VoteMsgEntity.class);
+                                            entity.setStatus(content.optInt("voteStatus"));
+                                            msg.setAttribute(EaseConstant.MSG_EXT_VOTE, new Gson().toJson(entity));
+                                            EMClient.getInstance().chatManager().updateMessage(msg);
+                                            MPEventBus.getDefault().post(new EventEMMessageReceived(message));
+                                        } catch (HyphenateException e) {
+                                            e.printStackTrace();
+                                        }
+                                    }
+                                }
+
+                                @Override
+                                public void onError(int i, String s) {
+
+                                }
+                            });
+                        }catch (JSONException | HyphenateException e) {
+
                         }
                     }
                 }
@@ -831,6 +904,18 @@ public class AppHelper {
                 }
             } catch (HyphenateException e) {
 
+            }
+        }
+    }
+
+    public void saveVoteData(EMMessage message){
+        if(EaseMessageUtils.isVoteMessage(message)){
+            try {
+                JSONObject json = message.getJSONObjectAttribute(EaseConstant.MSG_EXT_VOTE);
+                VoteMsgEntity entity = new Gson().fromJson(json.toString(), VoteMsgEntity.class);
+                getModel().saveVoteAndMsgId(entity.getId(), message.getMsgId());
+            } catch (HyphenateException e) {
+                e.printStackTrace();
             }
         }
     }

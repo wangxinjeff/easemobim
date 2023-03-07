@@ -331,6 +331,19 @@
         <activity android:name=".im.officeautomation.ui.group.GroupSearchMemberActivity"
             android:theme="@style/SwipeBackTheme" />
 
+        <activity android:name=".im.officeautomation.ui.VoteCreateActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SwipeBackTheme"
+            />
+        <activity android:name=".im.officeautomation.ui.VoteDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SwipeBackThemeVoteDetail"
+            />
+        <activity android:name=".im.officeautomation.ui.VoteOptionDetailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/SwipeBackThemeVoteDetail"
+            />
+
         <!-- 声明SDK所需的service SDK核心功能-->
         <service
             android:name="com.hyphenate.chat.EMChatService"

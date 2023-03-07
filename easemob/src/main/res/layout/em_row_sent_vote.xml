@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    style="@style/style_bubble_padding">
+
+    <TextView
+        android:id="@+id/timestamp"
+        style="@style/chat_text_date_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_chat_top">
+
+        <LinearLayout
+            android:id="@+id/ll_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true">
+
+            <com.hyphenate.easemob.easeui.widget.AvatarImageView
+                android:id="@+id/iv_userhead"
+                android:layout_width="@dimen/size_message_avatar"
+                android:layout_height="@dimen/size_message_avatar"
+                android:layout_alignParentTop="true"
+                android:layout_marginRight="@dimen/margin_chat_activity"
+                android:scaleType="fitXY"
+                android:src="@drawable/ease_default_avatar" />
+
+<!--            <CheckBox-->
+<!--                android:id="@+id/cb"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:layout_marginRight="@dimen/dp_20"-->
+<!--                android:theme="@style/CustomCheckBoxTheme2"-->
+<!--                android:visibility="gone" />-->
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/bubble"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/margin_chat_activity"
+            android:layout_toLeftOf="@id/ll_right"
+            android:background="@drawable/shape_white_radius_5"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dp_12">
+
+                <com.hyphenate.easemob.easeui.widget.textview.AlignTextView
+                    android:id="@+id/vote_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_16"
+                    android:maxWidth="@dimen/dp_198"
+                    tools:text="这里测试最多20个字"
+                    android:textColor="@color/black"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:maxLines="2"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/vote_options_layout"
+                    android:layout_width="@dimen/dp_198"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@+id/vote_title"
+                    android:layout_marginTop="@dimen/dp_12"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@color/easemob_bg"
+                    android:orientation="vertical"
+                    >
+
+
+                </LinearLayout>
+                <View android:layout_width="@dimen/dp_198"
+                    android:layout_height="@dimen/dp_1"
+                    android:layout_marginTop="@dimen/dp_10"
+                    app:layout_constraintTop_toBottomOf="@+id/vote_options_layout"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:background="@color/easemob_bg"
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_icon_vote_status"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:src="@drawable/ic_vote_taking"
+                    app:layout_constraintTop_toBottomOf="@+id/vote_options_layout"
+                    app:layout_constraintStart_toStartOf="@+id/vote_options_layout"
+                    android:layout_marginTop="@dimen/dp_20"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_vote_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_12"
+                    app:layout_constraintTop_toTopOf="@+id/iv_icon_vote_status"
+                    app:layout_constraintStart_toEndOf="@+id/iv_icon_vote_status"
+                    app:layout_constraintBottom_toBottomOf="@+id/iv_icon_vote_status"
+                    android:layout_marginStart="@dimen/dp_4"
+                    tools:text="投票中"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_vote_end_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/sp_12"
+                    tools:text="截止时间: 12-30 14:00"
+                    app:layout_constraintTop_toTopOf="@+id/tv_vote_status"
+                    app:layout_constraintBottom_toBottomOf="@+id/tv_vote_status"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/msg_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/bubble"
+            android:clickable="true"
+            android:src="@drawable/ease_msg_state_failed_resend"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_ack"
+            style="@style/chat_text_name_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/bubble"
+            android:text="@string/text_ack_msg"
+            android:textSize="@dimen/sp_12"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/tv_delivered"
+            style="@style/chat_text_name_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/bubble"
+            android:text="@string/text_delivered_msg"
+            android:textSize="@dimen/sp_12"
+            android:visibility="gone" />
+
+        <ProgressBar
+            android:id="@+id/progress_bar"
+            android:layout_width="@dimen/dp_25"
+            android:layout_height="@dimen/dp_25"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@id/bubble"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+</LinearLayout>

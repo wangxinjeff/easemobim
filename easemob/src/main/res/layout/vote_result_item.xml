@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:paddingBottom="@dimen/dp_20"
+    >
+
+    <TextView
+        android:id="@+id/option_content"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/dp_110"
+        android:maxLines="2"
+        tools:text="这里的文字最多20个字符如果一行放不下就放二行"
+        android:textSize="@dimen/sp_16"
+        />
+
+    <LinearLayout
+        android:id="@+id/vote_count_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/option_content"
+        android:gravity="center_vertical"
+        >
+
+        <TextView
+            android:id="@+id/tv_vote_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="0票"
+            android:textSize="@dimen/sp_14"
+            />
+
+        <TextView
+            android:id="@+id/tv_vote_percentage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="0%"
+            android:layout_marginStart="@dimen/dp_8"
+            android:textSize="@dimen/sp_14"
+            />
+
+        <ImageView
+            android:id="@+id/iv_right_arrow"
+            android:layout_width="@dimen/dp_16"
+            android:layout_height="@dimen/dp_16"
+            android:src="@drawable/ic_vote_result_item_right"
+            />
+    </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/vote_progress"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_4"
+        app:layout_constraintTop_toBottomOf="@+id/option_content"
+        android:layout_marginTop="@dimen/dp_8"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:progressDrawable="@drawable/vote_progress_par"
+        android:max="100"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
