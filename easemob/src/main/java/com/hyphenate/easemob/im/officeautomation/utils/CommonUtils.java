@@ -3,10 +3,14 @@ package com.hyphenate.easemob.im.officeautomation.utils;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.media.AudioManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.WindowManager;
 
+import com.hyphenate.easemob.im.officeautomation.ui.BaseActivity;
 import com.hyphenate.easemob.imlibs.mp.utils.MPLog;
 
 import java.io.FileReader;
@@ -138,5 +142,31 @@ public class CommonUtils {
 		Resources resources = context.getResources();
 		int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
 		return resources.getDimensionPixelSize(resourceId);
+	}
+
+	public static float[] getScreenInfo(Context context) {
+		WindowManager manager = (WindowManager) context.getSystemService(Context.WINDOW_SERVICE);
+		float[] info = new float[5];
+		if(manager != null) {
+			DisplayMetrics dm = new DisplayMetrics();
+			manager.getDefaultDisplay().getMetrics(dm);
+			info[0] = dm.widthPixels;
+			info[1] = dm.heightPixels;
+			info[2] = dm.densityDpi;
+			info[3] = dm.density;
+			info[4] = dm.scaledDensity;
+		}
+		return info;
+	}
+
+	/**
+	 * 判断是否是折叠屏打开状态
+	 * @param activity
+	 * @return
+	 */
+	public static boolean isTablet(BaseActivity activity){
+		Configuration configuration = activity.getResources().getConfiguration();
+		return (configuration.screenLayout & Configuration.SCREENLAYOUT_SIZE_MASK)
+				>= Configuration.SCREENLAYOUT_SIZE_LARGE;
 	}
 }

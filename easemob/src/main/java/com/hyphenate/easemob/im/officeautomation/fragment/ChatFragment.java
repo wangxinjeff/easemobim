@@ -49,6 +49,7 @@ import com.dmcbig.mediapicker.entity.Media;
 import com.google.gson.Gson;
 import com.hyphenate.EMCallBack;
 import com.hyphenate.EMValueCallBack;
+import com.hyphenate.easemob.easeui.utils.EaseCommonUtils;
 import com.hyphenate.easemob.im.officeautomation.domain.VoteMsgEntity;
 import com.hyphenate.easemob.im.officeautomation.ui.VoteCreateActivity;
 import com.hyphenate.easemob.im.officeautomation.ui.VoteDetailActivity;
@@ -438,6 +439,13 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                     inputMenu.showReference(EMClient.getInstance().chatManager().getMessage(referenceMsg));
                 }
             }
+        }
+
+        boolean isTablet = CommonUtils.isTablet((BaseActivity) getActivity());
+        if(isTablet){
+            ((EaseEmojiconMenu)inputMenu.getEmojiconMenu()).setEmojiconViewHeight((int)EaseCommonUtils.dip2px(getActivity(), 250f));
+        } else {
+            ((EaseEmojiconMenu)inputMenu.getEmojiconMenu()).setEmojiconViewHeight((int)EaseCommonUtils.dip2px(getActivity(), 150f));
         }
     }
 
