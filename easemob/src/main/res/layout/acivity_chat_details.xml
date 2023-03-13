@@ -61,7 +61,6 @@
             android:background="@color/divider_color" />
 
         <RelativeLayout
-            android:visibility="gone"
             android:id="@+id/rl_add_member"
             android:layout_width="match_parent"
             android:layout_height="@dimen/dp_51"
