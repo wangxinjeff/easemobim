@@ -263,7 +263,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
 //        return super.onCreateView(inflater, container, savedInstanceState,
 //                (chatType != EaseConstant.CHATTYPE_CHATROOM));
         return super.onCreateView(inflater, container, savedInstanceState,
-                false);
+                true);
     }
 
     @Override
