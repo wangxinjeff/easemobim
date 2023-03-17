@@ -31,6 +31,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -77,6 +78,9 @@ import com.hyphenate.easemob.easeui.widget.EaseChatMessageList;
 import com.hyphenate.easemob.easeui.widget.EaseVoiceRecorderView;
 import com.hyphenate.easemob.easeui.widget.EaseVoiceRecorderView.EaseVoiceRecorderCallback;
 import com.hyphenate.easemob.easeui.widget.chatrow.EaseCustomChatRowProvider;
+import com.hyphenate.easemob.im.officeautomation.runtimepermissions.PermissionsManager;
+import com.hyphenate.easemob.im.officeautomation.runtimepermissions.PermissionsResultAction;
+import com.hyphenate.easemob.im.officeautomation.utils.MyToast;
 import com.hyphenate.easemob.imlibs.message.MessageUtils;
 import com.hyphenate.easemob.imlibs.mp.EMDataCallBack;
 import com.hyphenate.easemob.imlibs.mp.MPClient;
@@ -152,8 +156,8 @@ public abstract class EaseChatFragment extends EaseBaseFragment implements EMMes
     protected ChatRoomListener chatRoomListener;
     protected EMMessage contextMenuMessage;
 
-    static final int ITEM_TAKE_PICTURE = 1;
-    static final int ITEM_PICTURE = 2;
+    protected static final int ITEM_TAKE_PICTURE = 1;
+    protected static final int ITEM_PICTURE = 2;
     protected int[] itemStrings = { R.string.attach_picture, R.string.attach_take_pic };
     protected int[] itemdrawables = { R.drawable.ease_chat_image_selector, R.drawable.ease_chat_takepic_selector };
     protected int[] itemIds = {ITEM_PICTURE, ITEM_TAKE_PICTURE };
@@ -220,21 +224,26 @@ public abstract class EaseChatFragment extends EaseBaseFragment implements EMMes
     }
 
 
-    private String[] mPermissions = new String[]{Manifest.permission.RECORD_AUDIO, Manifest.permission.CAMERA, Manifest.permission.ACCESS_FINE_LOCATION};
 
-    protected boolean checkPermission(int type) {
-        int hasPermission = ContextCompat.checkSelfPermission(getActivity(), mPermissions[type]);
-        if (hasPermission != PackageManager.PERMISSION_GRANTED) {
-            if (ActivityCompat.shouldShowRequestPermissionRationale(getActivity(), mPermissions[type])) {
-                ActivityCompat.requestPermissions(getActivity(), new String[]{mPermissions[type]}, 10);
-            } else {
-                //用户点击了拒绝并勾选不在询问则提示用户
-                ToastUtils.showShort("需要在设置中开启权限");
+    protected boolean checkPermission(String[] mPermissions) {
+        boolean isPermission = true;
+        for (int i =0; i < mPermissions.length; i ++){
+            if (ContextCompat.checkSelfPermission(getActivity(), mPermissions[i]) != PackageManager.PERMISSION_GRANTED){
+                isPermission = false;
             }
-        } else {
-            return true;
         }
-        return false;
+
+        if (!isPermission) {
+//            ActivityCompat.requestPermissions(getActivity(), mPermissions, 300);
+            MyToast.showInfoToast("需要在设置中开启权限");
+        }
+        return isPermission;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        PermissionsManager.getInstance().notifyPermissionsChange(permissions, grantResults);
     }
 
     /**
@@ -287,7 +296,7 @@ public abstract class EaseChatFragment extends EaseBaseFragment implements EMMes
 
             @Override
             public boolean onPressToSpeakBtnTouch(View v, MotionEvent event) {
-                if (checkPermission(0)) {
+                if (checkPermission(new String[]{Manifest.permission.RECORD_AUDIO})) {
                     return voiceRecorderView.onPressToSpeakBtnTouch(v, event, new EaseVoiceRecorderCallback() {
 
                         @Override
@@ -1262,12 +1271,40 @@ public abstract class EaseChatFragment extends EaseBaseFragment implements EMMes
             }
             switch (itemId) {
                 case ITEM_TAKE_PICTURE:
-                    if (checkPermission(1)) {
-                        selectPicFromCamera();
-                    }
+                    PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(EaseChatFragment.this,
+                            new String[]{
+                                    Manifest.permission.RECORD_AUDIO,
+                                    Manifest.permission.CAMERA,
+                                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                    Manifest.permission.READ_EXTERNAL_STORAGE
+                            }, new PermissionsResultAction() {
+                                @Override
+                                public void onGranted() {
+                                    selectPicFromCamera();
+                                }
+
+                                @Override
+                                public void onDenied(String permission) {
+                                    MyToast.showInfoToast("需要在设置中开启权限");
+                                }
+                            });
                     break;
                 case ITEM_PICTURE:
-                    selectPicFromLocal();
+                    PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(EaseChatFragment.this,
+                            new String[]{
+                                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                                    Manifest.permission.READ_EXTERNAL_STORAGE
+                            }, new PermissionsResultAction() {
+                                @Override
+                                public void onGranted() {
+                                    selectPicFromLocal();
+                                }
+
+                                @Override
+                                public void onDenied(String permission) {
+                                    MyToast.showInfoToast("需要在设置中开启权限");
+                                }
+                            });
                     break;
 //                case ITEM_LOCATION:
 //                    startActivityForResult(new Intent(getActivity(), EaseBaiduMapActivity.class), REQUEST_CODE_MAP);

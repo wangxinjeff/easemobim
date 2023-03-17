@@ -869,8 +869,16 @@ class ContactDetailsActivity : BaseActivity(), View.OnClickListener {
             .setItems(phoneList) { adapterView, view, position, l ->
                 dismissDialog()
                 if (position == 0) {
-                    if (checkPermission())
-                        callPhone()
+//                    if (checkPermission())
+                    PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(this, arrayOf(Manifest.permission.CALL_PHONE), object: PermissionsResultAction(){
+                        override fun onGranted() {
+                            callPhone()
+                        }
+
+                        override fun onDenied(permission: String?) {
+                            MyToast.showInfoToast( "需要在设置中开启权限")
+                        }
+                    })
                 }
                 false
             }.setNegative(getString(R.string.cancel), null).show(supportFragmentManager)

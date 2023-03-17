@@ -21,6 +21,7 @@ import com.hyphenate.easemob.im.mp.utils.FileObserverUtils;
 import com.hyphenate.easemob.R;
 import com.hyphenate.easemob.im.officeautomation.fragment.ChatFragment;
 import com.hyphenate.easemob.im.officeautomation.runtimepermissions.PermissionsManager;
+import com.hyphenate.easemob.im.officeautomation.utils.MyToast;
 import com.mylhyl.circledialog.CircleDialog;
 
 import java.util.ArrayList;
@@ -53,8 +54,7 @@ public class ChatActivity extends BaseActivity {
         getSupportFragmentManager().beginTransaction().add(R.id.container, chatFragment).commit();
 
         PermissionGen.with(this).addRequestCode(REQUEST_CODE_PERMISSION_FILE)
-                .permissions(Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                        Manifest.permission.READ_EXTERNAL_STORAGE).request();
+                .permissions(Manifest.permission.RECORD_AUDIO).request();
         initListener();
     }
 
@@ -166,7 +166,7 @@ public class ChatActivity extends BaseActivity {
     //申请失败
     @PermissionFail(requestCode = REQUEST_CODE_PERMISSION_FILE)
     public void doFailSomething() {
-        ToastUtils.showShort("授权失败");
+        MyToast.showInfoToast("需要在设置中开启权限");
     }
 
 

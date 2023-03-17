@@ -1,5 +1,6 @@
 package com.hyphenate.easemob.im.officeautomation.fragment;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -51,6 +52,8 @@ import com.hyphenate.EMCallBack;
 import com.hyphenate.EMValueCallBack;
 import com.hyphenate.easemob.easeui.utils.EaseCommonUtils;
 import com.hyphenate.easemob.im.officeautomation.domain.VoteMsgEntity;
+import com.hyphenate.easemob.im.officeautomation.runtimepermissions.PermissionsManager;
+import com.hyphenate.easemob.im.officeautomation.runtimepermissions.PermissionsResultAction;
 import com.hyphenate.easemob.im.officeautomation.ui.VoteCreateActivity;
 import com.hyphenate.easemob.im.officeautomation.ui.VoteDetailActivity;
 import com.hyphenate.easemob.im.officeautomation.widget.EaseChatVotePresenter;
@@ -1493,41 +1496,31 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                 selectFileFromLocal();
                 break;
             case ITEM_LOCATION:
-                if (checkPermission(2)) {
-                    inputMenu.hideExtendMenuContainer();
-                    final String[] items = {"发送位置", "共享实时位置"};
-//                    xPopup = new XPopup.Builder(getContext());
-////                        .maxWidth(600)
-//
-//                    xPopupView = xPopup.asCenterList(null, items,
-//                            new OnSelectListener() {
-//                                @Override
-//                                public void onSelect(int position, String text) {
-//                                    if (position == 0) {
-//                                        startActivityForResult(new Intent(getActivity(), EMBaiduMapActivity.class), REQUEST_CODE_MAP);
-//                                    } else if (position == 1) {
-//                                        startActivity(new Intent(getActivity(), ShareLocationActivity.class)
-//                                                .putExtra(Constant.EXTRA_USER_ID, toChatUsername));
-//                                        startRtLocation();
-//                                    }
-//                                }
-//                            })
-//                            .show();
-
-                    new ItemsDialogFragment.Builder((BaseActivity) getActivity()).setItems(items)
-                            .setItemSelectListener(new ItemsDialogFragment.OnItemSelectListener() {
-                                @Override
-                                public void onSelect(int position) {
-                                    if (position == 0) {
-                                        startActivityForResult(new Intent(getActivity(), EMBaiduMapActivity.class), REQUEST_CODE_MAP);
-                                    } else if (position == 1) {
-                                        startActivity(new Intent(getActivity(), ShareLocationActivity.class)
-                                                .putExtra(Constant.EXTRA_USER_ID, toChatUsername));
-                                        startRtLocation();
+                PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, new PermissionsResultAction() {
+                    @Override
+                    public void onGranted() {
+                        inputMenu.hideExtendMenuContainer();
+                        final String[] items = {"发送位置", "共享实时位置"};
+                        new ItemsDialogFragment.Builder((BaseActivity) getActivity()).setItems(items)
+                                .setItemSelectListener(new ItemsDialogFragment.OnItemSelectListener() {
+                                    @Override
+                                    public void onSelect(int position) {
+                                        if (position == 0) {
+                                            startActivityForResult(new Intent(getActivity(), EMBaiduMapActivity.class), REQUEST_CODE_MAP);
+                                        } else if (position == 1) {
+                                            startActivity(new Intent(getActivity(), ShareLocationActivity.class)
+                                                    .putExtra(Constant.EXTRA_USER_ID, toChatUsername));
+                                            startRtLocation();
+                                        }
                                     }
-                                }
-                            }).show();
-                }
+                                }).show();
+                    }
+
+                    @Override
+                    public void onDenied(String permission) {
+                        MyToast.showInfoToast("需要在设置中开启权限");
+                    }
+                });
 
                 break;
             case ITEM_BURN_AFTER_READING:

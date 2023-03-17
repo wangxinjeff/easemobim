@@ -93,7 +93,7 @@ public class ConversationListFragment extends EaseConversationListFragment {
         super.onCreate(savedInstanceState);
 //        MPEventBus.getDefault().register(this);
         // runtime permission for android 6.0, just require all permissions here for simple
-        requestAllPermissions();
+//        requestAllPermissions();
     }
 
     @Override
