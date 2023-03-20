@@ -532,4 +532,12 @@
     <string name="view_result">查看结果</string>
     <string name="voted_proportion">已投票 · 占比%s</string>
     <string name="vote_info">%s | %s | %s人已投</string>
+
+    <string name="deal_later">稍后处理</string>
+    <string name="unprocessed">未处理</string>
+    <string name="have_completed">已完成(%s)</string>
+
+    <string name="mark_completed">标为已完成</string>
+    <string name="clear">清除</string>
+    <string name="set_to_unprocessed">置为未处理</string>
 </resources>

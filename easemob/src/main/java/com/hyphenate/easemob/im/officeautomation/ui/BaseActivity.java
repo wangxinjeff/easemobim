@@ -261,6 +261,9 @@ public abstract class BaseActivity extends EaseBaseActivity {
      * 显示加载框
      */
     public void showProgressDialog(String... promptContent) {
+        if (progressDialog != null && progressDialog.isShowing()) {
+            return;
+        }
         progressDialog = new ProgressDialog(activity);
         progressDialog.show();
         View inflate = View.inflate(activity, R.layout.dialog_loading, null);

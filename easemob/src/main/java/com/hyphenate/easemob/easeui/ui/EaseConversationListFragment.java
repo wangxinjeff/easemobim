@@ -14,6 +14,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.hyphenate.EMCallBack;
 import com.hyphenate.EMConnectionListener;
@@ -62,6 +63,8 @@ public abstract class EaseConversationListFragment extends EaseBaseFragment {
 
     };
     protected RelativeLayout mRlSearch;
+    protected LinearLayout dealLaterView;
+    protected TextView tvDealLaterCount;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -120,6 +123,9 @@ public abstract class EaseConversationListFragment extends EaseBaseFragment {
         mRlSearch = getView().findViewById(R.id.rl_search);
         titleBar.setRightImageResource(R.drawable.icon_more_white);
         conversationListView.setEmptyView(getView().findViewById(R.id.empty_view));
+
+        dealLaterView = getView().findViewById(R.id.deal_later_view);
+        tvDealLaterCount = getView().findViewById(R.id.tv_deal_later_count);
     }
 
     @SuppressLint("ClickableViewAccessibility")

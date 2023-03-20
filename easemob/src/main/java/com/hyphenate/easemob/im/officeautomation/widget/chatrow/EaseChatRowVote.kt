@@ -140,7 +140,4 @@ class EaseChatRowVote(context: Context?, message: EMMessage?, position: Int,
         statusView.visibility = GONE
     }
 
-    override fun longClickEnable(): Boolean {
-        return false
-    }
 }

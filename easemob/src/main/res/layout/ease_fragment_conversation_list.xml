@@ -22,6 +22,46 @@
         />
 
     <LinearLayout
+        android:id="@+id/deal_later_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:gravity="center_vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="稍后处理"
+            android:textSize="@dimen/sp_14"
+            android:textColor="@color/label_text_color"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_11"
+            android:layout_marginBottom="@dimen/dp_11"
+            />
+
+        <TextView
+            android:id="@+id/tv_deal_later_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="@color/theme_color"
+            android:textSize="@dimen/sp_14"
+            android:textStyle="bold"
+            android:text="0"
+            android:layout_marginStart="@dimen/dp_5"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/deal_later_arrow"
+            android:layout_marginEnd="@dimen/dp_16"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/ll_pc_status"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_41"

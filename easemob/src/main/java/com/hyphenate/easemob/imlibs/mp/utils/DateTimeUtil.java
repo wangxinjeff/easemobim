@@ -71,7 +71,7 @@ public class DateTimeUtil {
         return delta < INTERVAL_IN_MILLISECONDS;
     }
 
-    private static boolean isSameDay(long inputTime) {
+    public static boolean isSameDay(long inputTime) {
 
         TimeInfo tStartAndEndTime = getTodayStartAndEndTime();
         if (inputTime > tStartAndEndTime.getStartTime() && inputTime < tStartAndEndTime.getEndTime())

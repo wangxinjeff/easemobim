@@ -574,6 +574,11 @@ public abstract class EaseChatFragment extends EaseBaseFragment implements EMMes
         if (!TextUtils.isEmpty(selectMsgId)) {
             refreshToMessage(selectMsgId);
         }
+
+        String positionMsgId = fragmentArgs.getString("positionMsgId");
+        if (!TextUtils.isEmpty(positionMsgId)){
+            skipMsgPosition(positionMsgId);
+        }
     }
 
     //显示输入面板，隐藏多选按钮
@@ -2064,6 +2069,17 @@ public abstract class EaseChatFragment extends EaseBaseFragment implements EMMes
         if (typingHandler != null) {
             typingHandler.removeMessages(MSG_TYPING_END);
             typingHandler.removeCallbacksAndMessages(null);
+        }
+    }
+
+    private void skipMsgPosition(String msgId){
+        final EMMessage message = EMClient.getInstance().chatManager().getMessage(msgId);
+        if(message != null){
+            refreshToMessage(msgId);
+        } else {
+            conversation.loadMoreMsgFromDB(conversation.getAllMessages().size() == 0 ? "" : conversation.getAllMessages().get(0).getMsgId(),
+                    pagesize);
+            skipMsgPosition(msgId);
         }
     }
 

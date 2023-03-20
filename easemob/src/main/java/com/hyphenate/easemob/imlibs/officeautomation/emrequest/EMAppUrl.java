@@ -390,4 +390,14 @@ public class EMAppUrl {
     //删除投票
     public static final String DELETE_VOTE = "/v2/groupVote/deleteVote?voteId=%s";
 
+    //======================稍后处理======================
+    //新增稍后处理消息
+    public static final String ADD_TO_DO_LIST = "/v2/user/addTodoList";
+    //查询所有稍后处理消息
+    public static final String GET_ALL_TO_DO_LIST = "/v2/user/todoList";
+    //处理稍后处理消息
+    public static final String DEAL_TO_DO_LIST = "/v2/user/dealTodoList";
+    //删除稍后处理消息
+    public static final String DELETE_TO_DO_LIST = "/v2/user/removeTodo?todoId=%s";
+
 }

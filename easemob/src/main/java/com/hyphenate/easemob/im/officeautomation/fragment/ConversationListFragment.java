@@ -34,9 +34,13 @@ import com.hyphenate.easemob.easeui.ui.EaseConversationListFragment;
 import com.hyphenate.easemob.easeui.utils.EaseUserUtils;
 import com.hyphenate.easemob.easeui.widget.WaterMarkBg;
 import com.hyphenate.easemob.easeui.widget.WaterMarkBgView;
+import com.hyphenate.easemob.im.officeautomation.domain.TodoListEntity;
 import com.hyphenate.easemob.im.officeautomation.runtimepermissions.PermissionsManager;
 import com.hyphenate.easemob.im.officeautomation.runtimepermissions.PermissionsResultAction;
+import com.hyphenate.easemob.im.officeautomation.ui.TodoListActivity;
+import com.hyphenate.easemob.imlibs.mp.events.EventDealLater;
 import com.hyphenate.easemob.imlibs.mp.events.EventUserInfoRefresh;
+import com.hyphenate.eventbus.MPEventBus;
 import com.hyphenate.eventbus.Subscribe;
 import com.hyphenate.eventbus.ThreadMode;
 import com.hyphenate.easemob.im.mp.AppHelper;
@@ -71,6 +75,7 @@ import com.zyyoona7.popup.XGravity;
 import com.zyyoona7.popup.YGravity;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -87,11 +92,12 @@ public class ConversationListFragment extends EaseConversationListFragment {
     private TextView errorText;
     private PopupWindow selectPopupWindow;
     private EasyPopup mEasyPopup;
+    private static final int REQUEST_CODE_DEAL_LATER = 204;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        MPEventBus.getDefault().register(this);
+        MPEventBus.getDefault().register(this);
         // runtime permission for android 6.0, just require all permissions here for simple
 //        requestAllPermissions();
     }
@@ -99,7 +105,7 @@ public class ConversationListFragment extends EaseConversationListFragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-//        MPEventBus.getDefault().unregister(this);
+        MPEventBus.getDefault().unregister(this);
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
@@ -164,6 +170,12 @@ public class ConversationListFragment extends EaseConversationListFragment {
             showSelectPopWindow(view, i);
             return true;
         });
+        dealLaterView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(getActivity(), TodoListActivity.class), REQUEST_CODE_DEAL_LATER);
+            }
+        });
 
 //        conversationListView.setOnItemLongClickListener((adapterView, view, i, l) -> {
 //            final FloatMenu floatMenu = new FloatMenu(getContext(), view);
@@ -222,6 +234,7 @@ public class ConversationListFragment extends EaseConversationListFragment {
         refreshWaterMark();
 
         asyncGetSessions();
+        fetchTodoListCount();
     }
 
     private void refreshWaterMark() {
@@ -381,8 +394,7 @@ public class ConversationListFragment extends EaseConversationListFragment {
         if (resultCode == RESULT_OK) {
             if (requestCode == 202) {
                 layoutPcStatus.setVisibility(View.GONE);
-            } else if (requestCode == 203) {
-
+            } else if (requestCode == 203 && data != null) {
                 String id = data.getExtras().getString("tochatname", null);
                 if (id != null) {
                     for (EMConversation conversation : conversationList) {
@@ -394,6 +406,13 @@ public class ConversationListFragment extends EaseConversationListFragment {
                         }
                     }
                 }
+            } else if (requestCode == REQUEST_CODE_DEAL_LATER) {
+//                int count = data.getExtras().getInt("unDealCount", 0);
+//                if(count > 0){
+//                    tvDealLaterCount.setText(count+"");
+//                } else {
+//                    tvDealLaterCount.setText("");
+//                }
             }
         }
     }
@@ -615,5 +634,39 @@ public class ConversationListFragment extends EaseConversationListFragment {
                                            @NonNull int[] grantResults) {
         PermissionsManager.getInstance().notifyPermissionsChange(permissions, grantResults);
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void onDealLaterUpdate(EventDealLater event){
+        fetchTodoListCount();
+    }
+
+    private void fetchTodoListCount(){
+        EMAPIManager.getInstance().getAllToDoList(new EMDataCallBack<String>() {
+            @Override
+            public void onSuccess(String value) {
+                try{
+                    JSONObject json = new JSONObject(value);
+                    TodoListEntity entity = TodoListEntity.create(json);
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(entity.getUnDealList().size() > 0){
+                                tvDealLaterCount.setText(entity.getUnDealList().size()+"");
+                            } else {
+                                tvDealLaterCount.setText("");
+                            }
+                        }
+                    });
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onError(int error, String errorMsg) {
+                MPLog.e(TAG, "getAllToDoList failed: " + error + ", " + errorMsg);
+            }
+        });
     }
 }

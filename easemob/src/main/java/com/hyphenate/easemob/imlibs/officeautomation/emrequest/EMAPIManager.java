@@ -2063,7 +2063,7 @@ public class EMAPIManager {
 
     /**
      * 获取服务器ip配置
-     * @param url
+     * @param ip
      * @param callBack
      */
     public void getServerIp(final String ip, final EMDataCallBack<String> callBack){
@@ -2071,6 +2071,61 @@ public class EMAPIManager {
             @Override
             public void run() {
                 EMRequestManager.getInstance().getServerIp(ip, callBack);
+            }
+        });
+    }
+
+    /**
+     * 添加稍后处理消息
+     * @param jsonBody
+     * @param callBack
+     */
+    public void addToDoList(final String jsonBody, final EMDataCallBack<String> callBack){
+        requestThreadPool.execute(new Runnable() {
+            @Override
+            public void run() {
+                EMRequestManager.getInstance().addToDoList(jsonBody, callBack);
+            }
+        });
+    }
+
+    /**
+     * 查询所有稍后处理消息
+     * @param callBack
+     */
+    public void getAllToDoList(final EMDataCallBack<String> callBack){
+        requestThreadPool.execute(new Runnable() {
+            @Override
+            public void run() {
+                EMRequestManager.getInstance().getAllToDoList(callBack);
+            }
+        });
+    }
+
+    /**
+     * 处理稍后处理消息
+     * @param jsonBody
+     * @param callBack
+     */
+    public void dealToDoList(final String jsonBody, final EMDataCallBack<String> callBack){
+        requestThreadPool.execute(new Runnable() {
+            @Override
+            public void run() {
+                EMRequestManager.getInstance().dealToDoList(jsonBody, callBack);
+            }
+        });
+    }
+
+    /**
+     * 删除稍后处理消息
+     * @param todoId
+     * @param callBack
+     */
+    public void removeToDoList(final String todoId, final EMDataCallBack<String> callBack){
+        requestThreadPool.execute(new Runnable() {
+            @Override
+            public void run() {
+                EMRequestManager.getInstance().removeToDoList(todoId, callBack);
             }
         });
     }

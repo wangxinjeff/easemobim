@@ -1551,12 +1551,14 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                 deleteAndRecallAndMultiChoice(imageView, v, message, position);
             } else if (EaseMessageUtils.isBigExprMessage(message)) {
                 doDFRM(imageView, v, message, position);
-            } else if (EaseMessageUtils.isInviteMessage(message) || EaseMessageUtils.isVoteMessage(message) || EaseMessageUtils.isNoticeMessage(message)) {
+            } else if (EaseMessageUtils.isInviteMessage(message) || EaseMessageUtils.isNoticeMessage(message)) {
 
             } else if (EaseMessageUtils.isStickerMessage(message)) {
                 doStickerMsg(imageView, v, message, position);
             } else if (EaseMessageUtils.isNameCard(message)) {
                 doDFRM(imageView, v, message, position);
+            } else if (EaseMessageUtils.isVoteMessage(message)) {
+                doDeleteAndTodo(imageView, v, message, position);
             } else {
                 doCDFRM(imageView, v, message, position);
             }
@@ -1670,6 +1672,8 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         resList.add(R.drawable.ic_cm_delete);
         itemList.add(getString(R.string.forward));
         resList.add(R.drawable.ic_cm_forward);
+        itemList.add(getString(R.string.deal_later));
+        resList.add(R.drawable.ic_cm_deal_later);
         boolean canMultiChoice = EaseMessageUtils.hasMultiChoices(message);
         if (canMultiChoice) {
             itemList.add(getString(R.string.multi_choice));
@@ -1696,6 +1700,8 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                     } else if (position == 2) {
                         doForward(message);
                     } else if (position == 3) {
+                        doDealLater(message);
+                    } else if (position == 4) {
                         if (canMultiChoice) {
                             doMultiChoice(message);
                         } else if (canRecall) {
@@ -1703,7 +1709,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                         } else if (canReference) {
                             doReference(message);
                         }
-                    } else if (position == 4) {
+                    } else if (position == 5) {
                         if(canMultiChoice){
                             if (canRecall) {
                                 doRecall(message);
@@ -1717,7 +1723,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                                 }
                             }
                         }
-                    } else if (position == 5) {
+                    } else if (position == 6) {
                         if (canReference) {
                             doReference(message);
                         }
@@ -1742,6 +1748,8 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         resList.add(R.drawable.ic_cm_delete);
         itemLists.add(getString(R.string.forward));
         resList.add(R.drawable.ic_cm_forward);
+        itemLists.add(getString(R.string.deal_later));
+        resList.add(R.drawable.ic_cm_deal_later);
         boolean canRecall = EaseMessageUtils.canRecall(message);
         if (canRecall) {
             itemLists.add(getString(R.string.recall));
@@ -1767,6 +1775,8 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                     } else if (position == 1) {
                         doForward(message);
                     } else if (position == 2) {
+                        doDealLater(message);
+                    } else if (position == 3) {
                         if (canRecall) {
                             doRecall(message);
                         } else if (multiChoice) {
@@ -1774,7 +1784,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                         } else if (canReference) {
                             doReference(message);
                         }
-                    } else if (position == 3) {
+                    } else if (position == 4) {
                         if(canRecall){
                             if (multiChoice) {
                                 doMultiChoice(message);
@@ -1788,7 +1798,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                                 }
                             }
                         }
-                    } else if (position == 4) {
+                    } else if (position == 5) {
                         if (canReference){
                             doReference(message);
                         }
@@ -1812,6 +1822,8 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
         boolean canRecall = EaseMessageUtils.canRecall(message);
         itemList.add(getString(R.string.delete));
         resList.add(R.drawable.ic_cm_delete);
+        itemList.add(getString(R.string.deal_later));
+        resList.add(R.drawable.ic_cm_deal_later);
         boolean multiChoice = EaseMessageUtils.hasMultiChoices(message);
         if (multiChoice) {
             itemList.add(getString(R.string.multi_choice));
@@ -1832,7 +1844,9 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
             public void onSelected(int position) {
                     if (position == 0) {
                         doDelete(message);
-                    } else if (position == 1) {
+                    }  else if (position == 1) {
+                        doDealLater(message);
+                    } else if (position == 2) {
                         if (multiChoice) {
                             doMultiChoice(message);
                         } else if (canRecall) {
@@ -1840,7 +1854,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                         } else if (canReference) {
                             doReference(message);
                         }
-                    } else if (position == 2) {
+                    } else if (position == 3) {
                         if(multiChoice){
                             if (canRecall) {
                                 doRecall(message);
@@ -1854,7 +1868,7 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                                 }
                             }
                         }
-                    } else if (position == 3) {
+                    } else if (position == 4) {
                         if (canReference) {
                             doReference(message);
                         }
@@ -1866,6 +1880,35 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
             @Override
             public void run() {
                 xPopupView = xPopup.positionByWindowCenter(true).isDestroyOnDismiss(true).asCustom(customLayout).show();
+            }
+        }, 200);
+    }
+
+    // 删除和稍后处理
+    private void doDeleteAndTodo(ImageView imageView, View v, EMMessage message, int position){
+        List<String> itemList = new ArrayList<>();
+        List<Integer> resList = new ArrayList<>();
+        itemList.add(getString(R.string.delete));
+        resList.add(R.drawable.ic_cm_delete);
+        itemList.add(getString(R.string.deal_later));
+        resList.add(R.drawable.ic_cm_deal_later);
+        CustomLayout customLayout = new CustomLayout(getContext(), itemList.toArray(new String[0]), resList.stream().mapToInt(Integer::intValue).toArray());
+        customLayout.setOnSelectListener(new CustomLayout.OnSelectListener() {
+            @Override
+            public void onSelected(int position) {
+                if (position == 0){
+                    doDelete(message);
+                } else if (position == 1){
+                    doDealLater(message);
+                }
+            }
+        });
+
+        scrollItemPosition(imageView, v, position, customLayout);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                xPopupView = xPopup.isDestroyOnDismiss(true).asCustom(customLayout).show();
             }
         }, 200);
     }
@@ -2824,5 +2867,47 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                 }
             }
         }, 300);
+    }
+
+    private void doDealLater(EMMessage message){
+        try{
+            JSONObject jsonObject = new JSONObject();
+            jsonObject.put("msgId", message.getMsgId());
+            jsonObject.put("msgExt", new JSONObject(message.ext()).toString());
+            EMAPIManager.getInstance().addToDoList(jsonObject.toString(), new EMDataCallBack<String>() {
+                @Override
+                public void onSuccess(String value) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            MyToast.showInfoToast("已添加至稍后处理");
+                        }
+                    });
+                }
+
+                @Override
+                public void onError(int error, String errorMsg) {
+                    MPLog.e(TAG, "addToDoList failed: " + error + "," + errorMsg);
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(error == 400){
+                                try {
+                                    JSONObject errorJson = new JSONObject(errorMsg);
+                                    int errorCode = errorJson.optInt("errorCode");
+                                    if(errorCode == 1400003){
+                                        MyToast.showErrorToast("重复添加稍后处理");
+                                    }
+                                } catch (JSONException e){
+                                    e.printStackTrace();
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+        } catch (JSONException e){
+            e.printStackTrace();
+        }
     }
 }

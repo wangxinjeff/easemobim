@@ -41,6 +41,7 @@ import com.hyphenate.easemob.imlibs.easeui.prefs.PreferenceUtils;
 import com.hyphenate.easemob.imlibs.mp.ConnectionListener;
 import com.hyphenate.easemob.imlibs.mp.EMDataCallBack;
 import com.hyphenate.easemob.imlibs.mp.MPClient;
+import com.hyphenate.easemob.imlibs.mp.events.EventDealLater;
 import com.hyphenate.easemob.imlibs.officeautomation.emrequest.EMAPIManager;
 import com.hyphenate.eventbus.MPEventBus;
 import com.hyphenate.exceptions.HyphenateException;
@@ -552,6 +553,8 @@ public class AppHelper {
                         }catch (JSONException | HyphenateException e) {
 
                         }
+                    } else if (TextUtils.equals(action, "new_todoList") || TextUtils.equals(action, "deal_todoList") || TextUtils.equals(action, "remove_todoList")){
+                        MPEventBus.getDefault().post(new EventDealLater(0));
                     }
                 }
             }

@@ -1537,11 +1537,46 @@ class EMRequestManager {
 
     /**
      * 获取服务器ip配置
-     * @param url
+     * @param ip
      * @param callBack
      */
     public void getServerIp(String ip, EMDataCallBack<String> callBack){
         setHttpGetDataCallBack(String.format(EMAppUrl.GET_SERVER_JSON, ip), null, callBack);
+    }
+
+    /**
+     * 添加稍后处理消息
+     * @param jsonBody
+     * @param callBack
+     */
+    public void addToDoList(String jsonBody, EMDataCallBack<String> callBack){
+        setHttpPostDataCallBack(getRealRequestUrl(EMAppUrl.ADD_TO_DO_LIST), jsonBody, callBack);
+    }
+
+    /**
+     * 查询所有稍后处理消息
+     * @param callBack
+     */
+    public void getAllToDoList(EMDataCallBack<String> callBack){
+        setHttpGetDataCallBack(getRealRequestUrl(EMAppUrl.GET_ALL_TO_DO_LIST), null, callBack);
+    }
+
+    /**
+     * 处理稍后处理消息
+     * @param jsonBody
+     * @param callBack
+     */
+    public void dealToDoList(String jsonBody, EMDataCallBack<String> callBack) {
+        setHttpPutDataCallBack(getRealRequestUrl(EMAppUrl.DEAL_TO_DO_LIST), jsonBody, callBack);
+    }
+
+    /**
+     * 删除稍后处理消息
+     * @param todoId
+     * @param callBack
+     */
+    public void removeToDoList(String todoId, EMDataCallBack<String> callBack){
+        setHttpDeleteDataCallBack(getRealRequestUrl(String.format(EMAppUrl.DELETE_TO_DO_LIST, todoId)), callBack);
     }
 }
 
