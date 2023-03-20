@@ -4,6 +4,8 @@ import android.app.ProgressDialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.text.TextUtils;
@@ -19,6 +21,8 @@ import com.google.gson.Gson;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.easemob.easeui.domain.MPGroupEntity;
 import com.hyphenate.easemob.easeui.ui.EaseBaseFragment;
+import com.hyphenate.easemob.im.officeautomation.adapter.SearchRecordAdapter;
+import com.hyphenate.easemob.imlibs.easeui.prefs.PreferenceUtils;
 import com.hyphenate.easemob.imlibs.mp.EMDataCallBack;
 import com.hyphenate.easemob.imlibs.mp.MPClient;
 import com.hyphenate.easemob.R;
@@ -73,6 +77,9 @@ public class SearchActivity extends BaseActivity {
     private List<MPGroupEntity> searchGroupsList = new ArrayList<>();
     private List<SearchConversation> searchConversationList = new ArrayList<>();
     private ProgressDialog progressDialog;
+    private RecyclerView recyclerView;
+    private SearchRecordAdapter adapter;
+    private List<String> recordList;
 
     @Override
     protected void onCreate(Bundle arg0) {
@@ -95,6 +102,13 @@ public class SearchActivity extends BaseActivity {
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("正在加载...");
+
+        recyclerView = findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        adapter = new SearchRecordAdapter();
+        recyclerView.setAdapter(adapter);
+        recordList = PreferenceUtils.getInstance().getSearchRecord();
     }
 
     private void initListeners() {
@@ -126,6 +140,7 @@ public class SearchActivity extends BaseActivity {
                             return;
                         }
                         hideSoftKeyboard();
+                        mSearch.clearFocus();
                         toSearch(searchText, true);
                     }
                 }
@@ -166,6 +181,32 @@ public class SearchActivity extends BaseActivity {
 
             }
         });
+
+        mSearch.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if(hasFocus){
+                    recordList = PreferenceUtils.getInstance().getSearchRecord();
+                    adapter.setData(recordList);
+                    recyclerView.setVisibility(View.VISIBLE);
+                } else {
+                    recyclerView.setVisibility(View.GONE);
+                }
+
+            }
+        });
+
+        adapter.setListener(new SearchRecordAdapter.OnItemSelectListener() {
+            @Override
+            public void onSelect(int position) {
+                String searchText = recordList.get(position);
+                mSearch.setText(searchText);
+                mSearch.setSelection(searchText.length());
+                hideSoftKeyboard();
+                mSearch.clearFocus();
+                toSearch(searchText, true);
+            }
+        });
     }
 
     private void initData() {
@@ -203,6 +244,14 @@ public class SearchActivity extends BaseActivity {
     }
 
     private void toSearch(String searchText, boolean forceRequest) {
+        if(searchText != null){
+            if(!TextUtils.isEmpty(searchText.trim())){
+                if(!recordList.contains(searchText)){
+                    recordList.add(0, searchText);
+                    PreferenceUtils.getInstance().saveSearchRecord(recordList.size() > 10 ? recordList.subList(0, 10) : recordList);
+                }
+            }
+        }
         switch (currentItem) {
             case 0:
                 if (forceRequest) {

@@ -2,6 +2,11 @@ package com.hyphenate.easemob.imlibs.easeui.prefs;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.text.TextUtils;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * author liyuzhao
@@ -30,6 +35,8 @@ public class PreferenceUtils {
 	private static final String SHARED_KEY_RECALL_DURATION = "shared_key_recall_duration";
 	private static final String SHARED_KEY_SHOW_READ = "shared_key_show_read";
 	private static final String SHARED_KEY_VOICE_DURATION = "shared_key_voice_duration";
+	private static final String SHARED_KEY_SEARCH_RECORD = "shared_key_search_record";
+
 
 	private PreferenceUtils() {
 	}
@@ -158,5 +165,35 @@ public class PreferenceUtils {
 
 	public void setShowRead(boolean showRead){
 		editor.putBoolean(SHARED_KEY_SHOW_READ, showRead).apply();
+	}
+
+	/**
+	 * 保存搜索记录
+	 * @param data
+	 */
+	public void saveSearchRecord(List<String> data){
+		StringBuffer buffer = new StringBuffer();
+		for(int i = 0; i < data.size(); i ++){
+			buffer.append(data.get(i));
+			if(i != data.size() - 1){
+				buffer.append(",");
+			}
+		}
+		editor.putString(SHARED_KEY_SEARCH_RECORD, buffer.toString()).apply();
+	}
+
+	/**
+	 * 获取搜索记录
+	 * @return
+	 */
+	public List<String> getSearchRecord(){
+		String s = mSharedPreferences.getString(SHARED_KEY_SEARCH_RECORD, "");
+		String[] items = s.split(",");
+		if(items.length == 1){
+			if(TextUtils.isEmpty(items[0].trim())){
+				return new ArrayList<>();
+			}
+		}
+		return new ArrayList<>(Arrays.asList(items));
 	}
 }
