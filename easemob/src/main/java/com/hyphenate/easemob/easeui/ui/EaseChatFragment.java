@@ -178,7 +178,7 @@ public abstract class EaseChatFragment extends EaseBaseFragment implements EMMes
     private String selectMsgId;
     protected boolean isRegion;
     protected final List<AtUserBean> mAtUserBeans = new ArrayList<>(); // 存储所@的用户信息
-
+    private boolean useLocalMsg = false;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -463,6 +463,12 @@ public abstract class EaseChatFragment extends EaseBaseFragment implements EMMes
 
         }
 
+        String positionMsgId = fragmentArgs.getString("positionMsgId");
+        if (!TextUtils.isEmpty(positionMsgId)){
+            useLocalMsg = true;
+            skipMsgPosition(positionMsgId);
+        }
+
         if (chatType != EaseConstant.CHATTYPE_CHATROOM) {
             onConversationInit();
             onMessageListInit();
@@ -573,11 +579,6 @@ public abstract class EaseChatFragment extends EaseBaseFragment implements EMMes
 
         if (!TextUtils.isEmpty(selectMsgId)) {
             refreshToMessage(selectMsgId);
-        }
-
-        String positionMsgId = fragmentArgs.getString("positionMsgId");
-        if (!TextUtils.isEmpty(positionMsgId)){
-            skipMsgPosition(positionMsgId);
         }
     }
 
@@ -729,7 +730,7 @@ public abstract class EaseChatFragment extends EaseBaseFragment implements EMMes
         // the number of messages loaded into conversation is getChatOptions().getNumberOfMessagesLoaded
         // you can change this number
 
-        if (!isRoaming) {
+        if (!isRoaming || useLocalMsg) {
             final List<EMMessage> msgs = conversation.getAllMessages();
             int msgCount = msgs != null ? msgs.size() : 0;
             if (msgCount < conversation.getAllMsgCount() && msgCount < pagesize) {
@@ -887,6 +888,7 @@ public abstract class EaseChatFragment extends EaseBaseFragment implements EMMes
             try {
                 messages = conversation.loadMoreMsgFromDB(conversation.getAllMessages().size() == 0 ? "" : conversation.getAllMessages().get(0).getMsgId(),
                         pagesize);
+                messageList.refresh();
             } catch (Exception e1) {
                 swipeRefreshLayout.setRefreshing(false);
                 return false;

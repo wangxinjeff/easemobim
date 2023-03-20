@@ -77,7 +77,8 @@ class TodoListAdapter : RecyclerView.Adapter<TodoListAdapter.TodoListHolder>(){
                     }
 
                     "vote" -> {
-                        content = "[投票]"
+                        val voteJson = JSONObject(extJson.optString("voteJson"))
+                        content = "[投票]" + voteJson.optString("subject")
                     }
                 }
             }
@@ -100,16 +101,12 @@ class TodoListAdapter : RecyclerView.Adapter<TodoListAdapter.TodoListHolder>(){
                         content = "[语音]"
                     }
 
-                    "voice" -> {
-                        content = "[语音]"
-                    }
-
                     "file" -> {
                         content = "[文件]"
                     }
 
                     "loc" -> {
-                        content = "[位置]"
+                        content = "[位置]" + entity.msgEntity.addr
                     }
                 }
             }
@@ -132,16 +129,12 @@ class TodoListAdapter : RecyclerView.Adapter<TodoListAdapter.TodoListHolder>(){
                         content = "[语音]"
                     }
 
-                    "voice" -> {
-                        content = "[语音]"
-                    }
-
                     "file" -> {
                         content = "[文件]"
                     }
 
                     "loc" -> {
-                        content = "[位置]"
+                        content = "[位置]" + entity.msgEntity.addr
                     }
                 }
             }
