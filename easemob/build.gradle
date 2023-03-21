@@ -109,6 +109,8 @@ dependencies {
     implementation 'com.baidu.lbsyun:BaiduMapSDK_Util:7.4.0'
     implementation 'com.baidu.lbsyun:BaiduMapSDK_Location:9.1.8'
 
+    implementation 'com.google.android:flexbox:2.0.1'
+
 }
 
 afterEvaluate {

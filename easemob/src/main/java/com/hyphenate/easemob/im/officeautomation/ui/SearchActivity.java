@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
@@ -14,9 +15,15 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.flexbox.AlignItems;
+import com.google.android.flexbox.FlexDirection;
+import com.google.android.flexbox.FlexWrap;
+import com.google.android.flexbox.FlexboxLayoutManager;
+import com.google.android.flexbox.JustifyContent;
 import com.google.gson.Gson;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.easemob.easeui.domain.MPGroupEntity;
@@ -77,6 +84,8 @@ public class SearchActivity extends BaseActivity {
     private List<MPGroupEntity> searchGroupsList = new ArrayList<>();
     private List<SearchConversation> searchConversationList = new ArrayList<>();
     private ProgressDialog progressDialog;
+    private ConstraintLayout searchRecordView;
+    private ImageView ivRemoveRecord;
     private RecyclerView recyclerView;
     private SearchRecordAdapter adapter;
     private List<String> recordList;
@@ -103,9 +112,17 @@ public class SearchActivity extends BaseActivity {
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("正在加载...");
 
+        searchRecordView = findViewById(R.id.search_record_view);
+        ivRemoveRecord = findViewById(R.id.iv_remove_record);
         recyclerView = findViewById(R.id.recycler_view);
+
+        FlexboxLayoutManager manager = new FlexboxLayoutManager(this);
+        manager.setFlexDirection(FlexDirection.ROW);
+        manager.setFlexWrap(FlexWrap.WRAP);
+        manager.setAlignItems(AlignItems.CENTER);
+        manager.setJustifyContent(JustifyContent.FLEX_START);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setLayoutManager(manager);
         adapter = new SearchRecordAdapter();
         recyclerView.setAdapter(adapter);
         recordList = PreferenceUtils.getInstance().getSearchRecord();
@@ -187,10 +204,12 @@ public class SearchActivity extends BaseActivity {
             public void onFocusChange(View v, boolean hasFocus) {
                 if(hasFocus){
                     recordList = PreferenceUtils.getInstance().getSearchRecord();
-                    adapter.setData(recordList);
-                    recyclerView.setVisibility(View.VISIBLE);
+                    if(recordList.size() > 0){
+                        adapter.setData(recordList);
+                        searchRecordView.setVisibility(View.VISIBLE);
+                    }
                 } else {
-                    recyclerView.setVisibility(View.GONE);
+                    searchRecordView.setVisibility(View.GONE);
                 }
 
             }
@@ -205,6 +224,15 @@ public class SearchActivity extends BaseActivity {
                 hideSoftKeyboard();
                 mSearch.clearFocus();
                 toSearch(searchText, true);
+            }
+        });
+
+        ivRemoveRecord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                PreferenceUtils.getInstance().clearSearchRecord();
+                recordList.clear();
+                searchRecordView.setVisibility(View.GONE);
             }
         });
     }

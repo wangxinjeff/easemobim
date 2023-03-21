@@ -196,4 +196,8 @@ public class PreferenceUtils {
 		}
 		return new ArrayList<>(Arrays.asList(items));
 	}
+
+	public void clearSearchRecord(){
+		editor.putString(SHARED_KEY_SEARCH_RECORD, "").apply();
+	}
 }
