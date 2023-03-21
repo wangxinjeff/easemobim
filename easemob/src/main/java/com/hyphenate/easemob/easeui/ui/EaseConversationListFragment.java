@@ -305,6 +305,10 @@ public abstract class EaseConversationListFragment extends EaseBaseFragment {
         }
     }
 
+    public void refreshWithDelay() {
+        handler.sendEmptyMessageDelayed(MSG_REFRESH, 200);
+    }
+
     /**
      * load conversation list
      *

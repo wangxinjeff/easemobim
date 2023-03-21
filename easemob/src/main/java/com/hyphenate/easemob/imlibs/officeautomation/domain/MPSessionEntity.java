@@ -40,11 +40,7 @@ public class MPSessionEntity {
         if (jsonChatGroup != null) {
             sessionEntity.name = jsonChatGroup.optString("name");
             sessionEntity.avatar = jsonChatGroup.optString("avatar");
-
-            JSONObject jsonImGroup = jsonChatGroup.optJSONObject("imChatGroup");
-            if (jsonImGroup != null) {
-                sessionEntity.imId = jsonImGroup.optString("imChatGroupId");
-            }
+            sessionEntity.imId = jsonChatGroup.optString("imChatGroupId");
             sessionEntity.isDisturb = jsonChatGroup.optBoolean("disturb");
         }
 
@@ -52,10 +48,7 @@ public class MPSessionEntity {
         if (jsonUser != null) {
             sessionEntity.name = jsonUser.optString("realName");
             sessionEntity.avatar = jsonUser.optString("avatar");
-            JSONObject jsonImUser = jsonUser.optJSONObject("imUser");
-            if (jsonImUser != null) {
-                sessionEntity.imId = jsonImUser.optString("imUsername");
-            }
+            sessionEntity.imId = jsonUser.optString("imUsername");
             sessionEntity.isDisturb = jsonUser.optBoolean("disturb");
         }
         return sessionEntity;

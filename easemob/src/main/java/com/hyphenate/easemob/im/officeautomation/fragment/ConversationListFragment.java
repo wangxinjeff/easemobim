@@ -580,26 +580,29 @@ public class ConversationListFragment extends EaseConversationListFragment {
                         }
                         if (chatType.equals(SessionCache.CHATTYPE_CHAT)) { // singleChat
                             EMConversation conversation = EMClient.getInstance().chatManager().getConversation(item.getImId(), EMConversationType.Chat, true);
-                            if (conversation == null || conversation.getAllMsgCount() == 0) {
+                            if (conversation.getAllMsgCount() == 0) {
                                 try {
                                     EMClient.getInstance().chatManager().fetchHistoryMessages(
                                             item.getImId(), EMConversationType.Chat, 20, "");
+                                    conversation.markAllMessagesAsRead();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
                         } else if (chatType.equals(SessionCache.CHATTYPE_GROUPCHAT)) { // chatGroups
                             EMConversation conversation = EMClient.getInstance().chatManager().getConversation(item.getImId(), EMConversationType.GroupChat, true);
-                            if (conversation == null || conversation.getAllMsgCount() == 0) {
+                            if (conversation.getAllMsgCount() == 0) {
                                 try {
                                     EMClient.getInstance().chatManager().fetchHistoryMessages(
                                             item.getImId(), EMConversationType.GroupChat, 20, "");
+                                    conversation.markAllMessagesAsRead();
                                 } catch (Exception e) {
                                     e.printStackTrace();
                                 }
                             }
                         }
                     }
+                    refreshWithDelay();
                 } catch (Exception e) {
                     e.printStackTrace();
                     MPLog.e(TAG, "getSession:" + MPLog.getStackTraceString(e));
