@@ -11,7 +11,6 @@ import android.util.Log;
 import com.facebook.stetho.Stetho;
 import com.google.gson.Gson;
 import com.hyphenate.EMCallBack;
-import com.hyphenate.EMConferenceListener;
 import com.hyphenate.EMMessageListener;
 import com.hyphenate.EMValueCallBack;
 import com.hyphenate.easemob.im.EnvHelper;
@@ -386,20 +385,6 @@ public class AppHelper {
     private EaseUser getUserInfo(String username) {
         return InternalAppHelper.getInstance().getUserInfo(username);
     }
-
-    private EMConferenceListener emConferenceListener;
-
-    public void setConferenceListener(EMConferenceListener listener) {
-        this.emConferenceListener = listener;
-    }
-
-    public void clearListeners() {
-        if (conferenceListener != null) {
-            EMClient.getInstance().conferenceManager().removeConferenceListener(conferenceListener);
-        }
-    }
-
-    private EMConferenceListener conferenceListener = null;
 
     /**
      * set global listener

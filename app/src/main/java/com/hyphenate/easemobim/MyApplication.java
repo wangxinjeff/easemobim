@@ -36,7 +36,7 @@ public class MyApplication extends Application {
         applicationContext = this;
         instance = this;
         notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        AppHelper.getInstance().init(applicationContext, new HOCEnv());
+        AppHelper.getInstance().init(applicationContext, new DevEnv());
 
         registerLifecycleCallbacks();
 
@@ -195,7 +195,6 @@ public class MyApplication extends Application {
     @Override
     public void onTerminate() {
         super.onTerminate();
-        AppHelper.getInstance().clearListeners();
     }
 
 

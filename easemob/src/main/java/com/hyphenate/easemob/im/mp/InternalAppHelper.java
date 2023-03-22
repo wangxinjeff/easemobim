@@ -1506,7 +1506,6 @@ class InternalAppHelper {
         NoDisturbManager.getInstance().clear();
         StickerManager.get().clearAll();
         UserProvider.getInstance().clear();
-        EMClient.getInstance().conferenceManager().exitConference(null);
         PreferenceManager.getInstance().clearAll();
         isSyncingGroupsWithServer = false;
         getModel().setGroupsSynced(false);
