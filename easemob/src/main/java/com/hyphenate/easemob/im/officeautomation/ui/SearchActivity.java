@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -90,6 +92,8 @@ public class SearchActivity extends BaseActivity {
     private SearchRecordAdapter adapter;
     private List<String> recordList;
 
+    private Handler handler = new Handler(Looper.getMainLooper());
+
     @Override
     protected void onCreate(Bundle arg0) {
         super.onCreate(arg0);
@@ -111,6 +115,8 @@ public class SearchActivity extends BaseActivity {
 
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("正在加载...");
+        progressDialog.setCanceledOnTouchOutside(false);
+        progressDialog.setCancelable(false);
 
         searchRecordView = findViewById(R.id.search_record_view);
         ivRemoveRecord = findViewById(R.id.iv_remove_record);
@@ -315,7 +321,14 @@ public class SearchActivity extends BaseActivity {
 
 
     private void searchFromServer(String queryContent, int size, String type) {
-        if (!progressDialog.isShowing()) progressDialog.show();
+        if (!progressDialog.isShowing()) {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialog.show();
+                }
+            });
+        }
         searchContactsList.clear();
         searchGroupsList.clear();
         searchConversationList.clear();
@@ -353,7 +366,12 @@ public class SearchActivity extends BaseActivity {
 
                 runOnUiThread(() -> {
                     if(progressDialog != null && progressDialog.isShowing()) {
-                        progressDialog.dismiss();
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                progressDialog.dismiss();
+                            }
+                        });
                     }
                     if ("user".equals(type) || "chatgroup".equals(type)) {
                         toSearch(searchText, false);
@@ -373,7 +391,12 @@ public class SearchActivity extends BaseActivity {
             public void onError(int error, String errorMsg) {
                 runOnUiThread(() -> {
                     if(progressDialog != null && progressDialog.isShowing()) {
-                        progressDialog.dismiss();
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                progressDialog.dismiss();
+                            }
+                        });
                     }
                 });
             }
@@ -405,7 +428,14 @@ public class SearchActivity extends BaseActivity {
 
 
     private void searchMsgStatistics(String type) {
-        if (!progressDialog.isShowing()) progressDialog.show();
+        if (!progressDialog.isShowing()) {
+            handler.post(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialog.show();
+                }
+            });
+        }
         searchConversationList.clear();
         long beginTime = System.currentTimeMillis() - (90 * 24 * 60 * 60 * 1000L);
         long endTime = System.currentTimeMillis();
@@ -428,7 +458,12 @@ public class SearchActivity extends BaseActivity {
                     e.printStackTrace();
                 }
                 runOnUiThread(() -> {
-                    progressDialog.dismiss();
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressDialog.dismiss();
+                        }
+                    });
                     if (searchConversationList.size() == 0 && "msg".equals(type))
                         Toast.makeText(SearchActivity.this, "未查到数据", Toast.LENGTH_SHORT).show();
                     if ("all".equals(type) && searchConversationList.size() == 0 && searchGroupsList.size() == 0 && searchContactsList.size() == 0) {
@@ -442,7 +477,12 @@ public class SearchActivity extends BaseActivity {
             public void onError(int error, String errorMsg) {
 
                 runOnUiThread(() -> {
-                    progressDialog.dismiss();
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            progressDialog.dismiss();
+                        }
+                    });
                     Toast.makeText(SearchActivity.this, errorMsg, Toast.LENGTH_SHORT).show();
                 });
             }
