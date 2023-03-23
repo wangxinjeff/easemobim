@@ -101,6 +101,8 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+import kr.co.namee.permissiongen.PermissionGen;
+
 /**
  * you can new an EaseChatFragment to use or you can inherit it to expand.
  * You need call setArguments to pass chatType and userId
@@ -234,16 +236,15 @@ public abstract class EaseChatFragment extends EaseBaseFragment implements EMMes
         }
 
         if (!isPermission) {
-//            ActivityCompat.requestPermissions(getActivity(), mPermissions, 300);
-            MyToast.showInfoToast("需要在设置中开启权限");
+            ActivityCompat.requestPermissions(getActivity(), mPermissions, 300);
         }
         return isPermission;
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         PermissionsManager.getInstance().notifyPermissionsChange(permissions, grantResults);
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     /**
@@ -1278,40 +1279,52 @@ public abstract class EaseChatFragment extends EaseBaseFragment implements EMMes
             }
             switch (itemId) {
                 case ITEM_TAKE_PICTURE:
-                    PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(EaseChatFragment.this,
-                            new String[]{
-                                    Manifest.permission.RECORD_AUDIO,
-                                    Manifest.permission.CAMERA,
-                                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                                    Manifest.permission.READ_EXTERNAL_STORAGE
-                            }, new PermissionsResultAction() {
-                                @Override
-                                public void onGranted() {
-                                    selectPicFromCamera();
-                                }
+//                    PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(EaseChatFragment.this,
+//                            new String[]{
+//                                    Manifest.permission.RECORD_AUDIO,
+//                                    Manifest.permission.CAMERA,
+//                                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                                    Manifest.permission.READ_EXTERNAL_STORAGE
+//                            }, new PermissionsResultAction() {
+//                                @Override
+//                                public void onGranted() {
+//                                    selectPicFromCamera();
+//                                }
+//
+//                                @Override
+//                                public void onDenied(String permission) {
+//                                    MyToast.showInfoToast("需要在设置中开启权限");
+//                                }
+//                            });
 
-                                @Override
-                                public void onDenied(String permission) {
-                                    MyToast.showInfoToast("需要在设置中开启权限");
-                                }
-                            });
+                    if(checkPermission(new String[]{Manifest.permission.RECORD_AUDIO,
+                            Manifest.permission.CAMERA,
+                            Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_EXTERNAL_STORAGE})){
+                        selectPicFromCamera();
+                    }
                     break;
                 case ITEM_PICTURE:
-                    PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(EaseChatFragment.this,
-                            new String[]{
-                                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                                    Manifest.permission.READ_EXTERNAL_STORAGE
-                            }, new PermissionsResultAction() {
-                                @Override
-                                public void onGranted() {
-                                    selectPicFromLocal();
-                                }
+//                    PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(EaseChatFragment.this,
+//                            new String[]{
+//                                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                                    Manifest.permission.READ_EXTERNAL_STORAGE
+//                            }, new PermissionsResultAction() {
+//                                @Override
+//                                public void onGranted() {
+//                                    selectPicFromLocal();
+//                                }
+//
+//                                @Override
+//                                public void onDenied(String permission) {
+//                                    MyToast.showInfoToast("需要在设置中开启权限");
+//                                }
+//                            });
 
-                                @Override
-                                public void onDenied(String permission) {
-                                    MyToast.showInfoToast("需要在设置中开启权限");
-                                }
-                            });
+                    if(checkPermission(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                            Manifest.permission.READ_EXTERNAL_STORAGE})){
+                        selectPicFromLocal();
+                    }
                     break;
 //                case ITEM_LOCATION:
 //                    startActivityForResult(new Intent(getActivity(), EaseBaiduMapActivity.class), REQUEST_CODE_MAP);

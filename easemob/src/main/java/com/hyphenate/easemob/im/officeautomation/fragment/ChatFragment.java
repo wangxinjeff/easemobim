@@ -1493,35 +1493,29 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
                 startActivityForResult(intent, REQUEST_CODE_SELECT_VIDEO);
                 break;
             case ITEM_FILE: //file
-                selectFileFromLocal();
+                if(checkPermission(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                        Manifest.permission.READ_EXTERNAL_STORAGE})){
+                    selectFileFromLocal();
+                }
                 break;
             case ITEM_LOCATION:
-                PermissionsManager.getInstance().requestPermissionsIfNecessaryForResult(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, new PermissionsResultAction() {
-                    @Override
-                    public void onGranted() {
-                        inputMenu.hideExtendMenuContainer();
-                        final String[] items = {"发送位置", "共享实时位置"};
-                        new ItemsDialogFragment.Builder((BaseActivity) getActivity()).setItems(items)
-                                .setItemSelectListener(new ItemsDialogFragment.OnItemSelectListener() {
-                                    @Override
-                                    public void onSelect(int position) {
-                                        if (position == 0) {
-                                            startActivityForResult(new Intent(getActivity(), EMBaiduMapActivity.class), REQUEST_CODE_MAP);
-                                        } else if (position == 1) {
-                                            startActivity(new Intent(getActivity(), ShareLocationActivity.class)
-                                                    .putExtra(Constant.EXTRA_USER_ID, toChatUsername));
-                                            startRtLocation();
-                                        }
+                if(checkPermission(new String[]{Manifest.permission.ACCESS_FINE_LOCATION})){
+                    inputMenu.hideExtendMenuContainer();
+                    final String[] items = {"发送位置", "共享实时位置"};
+                    new ItemsDialogFragment.Builder((BaseActivity) getActivity()).setItems(items)
+                            .setItemSelectListener(new ItemsDialogFragment.OnItemSelectListener() {
+                                @Override
+                                public void onSelect(int position) {
+                                    if (position == 0) {
+                                        startActivityForResult(new Intent(getActivity(), EMBaiduMapActivity.class), REQUEST_CODE_MAP);
+                                    } else if (position == 1) {
+                                        startActivity(new Intent(getActivity(), ShareLocationActivity.class)
+                                                .putExtra(Constant.EXTRA_USER_ID, toChatUsername));
+                                        startRtLocation();
                                     }
-                                }).show();
-                    }
-
-                    @Override
-                    public void onDenied(String permission) {
-                        MyToast.showInfoToast("需要在设置中开启权限");
-                    }
-                });
-
+                                }
+                            }).show();
+                }
                 break;
             case ITEM_BURN_AFTER_READING:
                 inputMenu.hideExtendMenuContainer();
