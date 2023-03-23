@@ -49,10 +49,7 @@
         android:layout_marginRight="@dimen/dp_10"
         android:layout_toLeftOf="@id/time"
         android:layout_toRightOf="@id/avatar_container"
-        android:clickable="false"
         android:ellipsize="middle"
-        android:focusable="false"
-        android:inputType="textNoSuggestions"
         android:singleLine="true"
         android:textColor="@color/list_itease_primary_color"
         android:textSize="@dimen/sp_16" />
