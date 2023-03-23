@@ -234,7 +234,7 @@ public class ConversationListFragment extends EaseConversationListFragment {
         refreshWaterMark();
 
         asyncGetSessions();
-        fetchTodoListCount();
+//        fetchTodoListCount();
     }
 
     private void refreshWaterMark() {
@@ -641,7 +641,7 @@ public class ConversationListFragment extends EaseConversationListFragment {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     public void onDealLaterUpdate(EventDealLater event){
-        fetchTodoListCount();
+//        fetchTodoListCount();
     }
 
     private void fetchTodoListCount(){

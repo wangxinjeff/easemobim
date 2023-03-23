@@ -2864,44 +2864,50 @@ public class ChatFragment extends EaseChatFragment implements EaseChatFragmentHe
     }
 
     private void doDealLater(EMMessage message){
-        try{
-            JSONObject jsonObject = new JSONObject();
-            jsonObject.put("msgId", message.getMsgId());
-            jsonObject.put("msgExt", new JSONObject(message.ext()).toString());
-            EMAPIManager.getInstance().addToDoList(jsonObject.toString(), new EMDataCallBack<String>() {
-                @Override
-                public void onSuccess(String value) {
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            MyToast.showInfoToast("已添加至稍后处理");
-                        }
-                    });
-                }
-
-                @Override
-                public void onError(int error, String errorMsg) {
-                    MPLog.e(TAG, "addToDoList failed: " + error + "," + errorMsg);
-                    getActivity().runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            if(error == 400){
-                                try {
-                                    JSONObject errorJson = new JSONObject(errorMsg);
-                                    int errorCode = errorJson.optInt("errorCode");
-                                    if(errorCode == 1400003){
-                                        MyToast.showErrorToast("重复添加稍后处理");
-                                    }
-                                } catch (JSONException e){
-                                    e.printStackTrace();
-                                }
-                            }
-                        }
-                    });
-                }
-            });
-        } catch (JSONException e){
-            e.printStackTrace();
-        }
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                MyToast.showInfoToast("功能正在开发中");
+            }
+        });
+//        try{
+//            JSONObject jsonObject = new JSONObject();
+//            jsonObject.put("msgId", message.getMsgId());
+//            jsonObject.put("msgExt", new JSONObject(message.ext()).toString());
+//            EMAPIManager.getInstance().addToDoList(jsonObject.toString(), new EMDataCallBack<String>() {
+//                @Override
+//                public void onSuccess(String value) {
+//                    getActivity().runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            MyToast.showInfoToast("已添加至稍后处理");
+//                        }
+//                    });
+//                }
+//
+//                @Override
+//                public void onError(int error, String errorMsg) {
+//                    MPLog.e(TAG, "addToDoList failed: " + error + "," + errorMsg);
+//                    getActivity().runOnUiThread(new Runnable() {
+//                        @Override
+//                        public void run() {
+//                            if(error == 400){
+//                                try {
+//                                    JSONObject errorJson = new JSONObject(errorMsg);
+//                                    int errorCode = errorJson.optInt("errorCode");
+//                                    if(errorCode == 1400003){
+//                                        MyToast.showErrorToast("重复添加稍后处理");
+//                                    }
+//                                } catch (JSONException e){
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//                        }
+//                    });
+//                }
+//            });
+//        } catch (JSONException e){
+//            e.printStackTrace();
+//        }
     }
 }

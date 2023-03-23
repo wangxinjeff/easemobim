@@ -371,7 +371,7 @@ public class GroupDetailInfoActivity extends BaseActivity implements View.OnClic
     }
 
     private void updateGroupInfo() {
-        dialog = ProgressDialog.show(GroupDetailInfoActivity.this, "获取群成员", "加载中...", true, true);
+        dialog = ProgressDialog.show(GroupDetailInfoActivity.this, "", "加载中...", true, true);
         EMAPIManager.getInstance().getGroupDetailWithMemberList(chatGroupId, isRegion, new EMDataCallBack<String>() {
             @Override
             public void onSuccess(String value) {
