@@ -53,8 +53,8 @@ public class ChatActivity extends BaseActivity {
         chatFragment.setArguments(getIntent().getExtras());
         getSupportFragmentManager().beginTransaction().add(R.id.container, chatFragment).commit();
 
-        PermissionGen.with(this).addRequestCode(REQUEST_CODE_PERMISSION_FILE)
-                .permissions(Manifest.permission.RECORD_AUDIO).request();
+//        PermissionGen.with(this).addRequestCode(REQUEST_CODE_PERMISSION_FILE)
+//                .permissions(Manifest.permission.RECORD_AUDIO).request();
         initListener();
     }
 

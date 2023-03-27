@@ -212,6 +212,14 @@ public class EaseChatInputMenu extends LinearLayout implements ImageDataSource.O
             }
 
             @Override
+            public boolean onCheckVoicePermission() {
+                if(listener != null){
+                    return listener.onCheckVoicePermission();
+                }
+                return false;
+            }
+
+            @Override
             public void onToggleVoiceBtnClicked() {
                 hideExtendMenuContainer();
             }
@@ -466,6 +474,11 @@ public class EaseChatInputMenu extends LinearLayout implements ImageDataSource.O
          * @param emojicon
          */
         void onStickerClicked(EaseEmojicon emojicon);
+
+        /**
+         * request voice permission
+         */
+        boolean onCheckVoicePermission();
 
         /**
          * when speak button is touched

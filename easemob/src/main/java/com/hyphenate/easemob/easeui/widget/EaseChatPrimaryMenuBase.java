@@ -113,7 +113,12 @@ public abstract class EaseChatPrimaryMenuBase extends RelativeLayout{
          * when typing on the edit-text layout.
          */
         void onTyping(CharSequence s, int start, int before, int count);
-        
+
+        /**
+         * request voice permission
+         */
+        boolean onCheckVoicePermission();
+
         /**
          * when speak button is touched
          * @return

@@ -297,16 +297,13 @@ public abstract class EaseChatFragment extends EaseBaseFragment implements EMMes
 
             @Override
             public boolean onPressToSpeakBtnTouch(View v, MotionEvent event) {
-                if (checkPermission(new String[]{Manifest.permission.RECORD_AUDIO})) {
-                    return voiceRecorderView.onPressToSpeakBtnTouch(v, event, new EaseVoiceRecorderCallback() {
+                return voiceRecorderView.onPressToSpeakBtnTouch(v, event, new EaseVoiceRecorderCallback() {
 
-                        @Override
-                        public void onVoiceRecordComplete(String voiceFilePath, int voiceTimeLength) {
-                            sendVoiceMessage(voiceFilePath, voiceTimeLength);
-                        }
-                    });
-                }
-                return false;
+                    @Override
+                    public void onVoiceRecordComplete(String voiceFilePath, int voiceTimeLength) {
+                        sendVoiceMessage(voiceFilePath, voiceTimeLength);
+                    }
+                });
             }
 
             @Override
@@ -317,6 +314,11 @@ public abstract class EaseChatFragment extends EaseBaseFragment implements EMMes
             @Override
             public void onStickerClicked(EaseEmojicon emojicon) {
                 onRealStickerClicked(emojicon);
+            }
+
+            @Override
+            public boolean onCheckVoicePermission() {
+                return checkPermission(new String[]{Manifest.permission.RECORD_AUDIO});
             }
 
             @Override

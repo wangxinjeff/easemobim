@@ -195,6 +195,12 @@ public class EaseChatPrimaryMenu extends EaseChatPrimaryMenuBase implements OnCl
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
+                if (listener != null) {
+                    if(!listener.onCheckVoicePermission()){
+                        return false;
+                    }
+                }
+
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         buttonPressPrompt.setText(getResources().getString(R.string.release_to_finish));
